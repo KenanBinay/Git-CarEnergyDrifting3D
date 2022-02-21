@@ -30,7 +30,7 @@ public class CamFollow : MonoBehaviour
                 transform.position = SmoothedPosition;
                 transform.rotation = Quaternion.Slerp(transform.rotation, smoothedRot, CamZoomSmooth * Time.deltaTime);
             }
-            else if(LevelEndController.clickCounter >= 10)
+            else if(LevelEndController.clickCounter >= 6)
             {
                 if (delayWaited == false)
                 { StartCoroutine(DelayForLvlEndCam()); }

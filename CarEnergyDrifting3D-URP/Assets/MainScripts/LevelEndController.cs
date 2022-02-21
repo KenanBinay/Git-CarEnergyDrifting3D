@@ -19,26 +19,17 @@ public class LevelEndController : MonoBehaviour
         GreenLight.SetActive(false);
         clickCounter = 0;
         lvlEndEnter = delayedClick = endDriftCntrl = false;
-        HandRot.x=transform.rotation.x;
+        HandRot.x = 40;
     }
 
     public void FixedUpdate()
     {
         if (lvlEndEnter)
-        {        
-            if (CarController.carStopped && clickCounter < 10)
+        {
+            if (CarController.carStopped && clickCounter < 6)
             {
                 TxtTap.SetActive(true);
-          
-                
-             /*   Vector3 rotHand = new Vector3(HandRot.x, 3, 24);
-                Quaternion quaHandRot = Quaternion.Euler(rotHand);
 
-                handIconTap.transform.rotation = Quaternion.Lerp(handIconTap.transform.rotation, quaHandRot, Time.deltaTime * 5);
-
-                       
-                handIconTap.transform.rotation = Quaternion.Slerp(handIconTap.transform.rotation, quaHandRot, 10 * Time.deltaTime);
-             */
             }
 
             if (carRx == 2)
@@ -71,12 +62,12 @@ public class LevelEndController : MonoBehaviour
 
     void ClickCount()
     {
-        if (clickCounter >= 5)
+        if (clickCounter >= 3)
         {
             RedLight.SetActive(false);
             YellowLight.SetActive(true);
         }
-        if (clickCounter >= 10)
+        if (clickCounter >= 6)
         {
             Debug.Log("ClickDone EXECUTE DRIFTT!!");
 
@@ -94,8 +85,6 @@ public class LevelEndController : MonoBehaviour
                 CarRot.x = 2;
             }
             else { CarRot.x = 0; }
-
-            HandRot.x = 50;
 
             Instantiate(smoke, smoke.transform.position, smoke.transform.rotation);
             smoke.SetActive(true);
