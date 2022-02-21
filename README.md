@@ -2,5 +2,5 @@
  
 Early In Game Footage:
 
-Uploading 2022-02-18 23-56-19.mp4…
+https://user-images.githubusercontent.com/72802504/155013503-68c8197d-a1bb-4abd-bfd3-fe1cec7ab547.mp4
 
