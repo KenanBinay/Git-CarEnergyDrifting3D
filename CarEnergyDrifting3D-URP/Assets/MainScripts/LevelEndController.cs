@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelEndController : MonoBehaviour
 {
-    public GameObject carBodyM, flameM, flameL, smoke, GreenLight, RedLight, YellowLight, TxtTap, handIconTap,textTap;
+    public GameObject carBodyM, flameM, flameL, smoke, GreenLight, RedLight, YellowLight, TxtTap, textTap;
     public static bool lvlEndEnter, delayedClick, endDriftCntrl;
     public static float clickCounter;
 
@@ -29,7 +29,6 @@ public class LevelEndController : MonoBehaviour
             if (CarController.carStopped && clickCounter < 6)
             {
                 TxtTap.SetActive(true);
-
             }
 
             if (carRx == 2)

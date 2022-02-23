@@ -292,6 +292,7 @@ public class CarController : MonoBehaviour
 
             Debug.Log("WeightIncrease weight: " + MainCarWeight);
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+
             Destroy(coll.gameObject);
 
             if (Glass.glassEnter == false)
