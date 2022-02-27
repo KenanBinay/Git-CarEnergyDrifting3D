@@ -16,9 +16,9 @@ public class GlassSpawner : MonoBehaviour
         int[] GlassPos = { 1, 2, 3, 4 };
         float desiredPos = GlassPos[Random.Range(0, GlassPos.Length)];
 
-        if (sceneName == "Level1")
+        if (sceneName == "level1")
         {
-            Debug.Log("Level 1 Loaded");
+            Debug.Log("level1 Loaded");
             switch (desiredPos)
             {
                 case 1:

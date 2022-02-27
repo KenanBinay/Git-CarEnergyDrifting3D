@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
-    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts;
+    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed;
     private bool isDraging;
@@ -264,6 +264,7 @@ public class CarController : MonoBehaviour
             }
             else
             {
+                speedIncreaseEffect.SetActive(true);
                 ExhaustFlameEx.SetActive(true);
                 ExhaustFlame.SetActive(false);
             }
@@ -309,6 +310,7 @@ public class CarController : MonoBehaviour
 
             ExhaustFlame.SetActive(false);
             ExhaustFlameEx.SetActive(false);
+            speedIncreaseEffect.SetActive(false);
             movingSpeed = normalSpeed;
             MainSpeed = 0;
             spin = 0;
@@ -349,6 +351,7 @@ public class CarController : MonoBehaviour
         yield return new WaitForSeconds(3);
         ExhaustFlame.SetActive(false);
         ExhaustFlameEx.SetActive(false);
+        speedIncreaseEffect.SetActive(false);
         movingSpeed = normalSpeed;
         MainSpeed = 0;
         spin = 0;
@@ -360,6 +363,7 @@ public class CarController : MonoBehaviour
         yield return new WaitForSeconds(3);
         MainCarWeight = 0;
         movingSpeed = normalSpeed;
+        speedIncreaseEffect.SetActive(false);
         transform.localScale = CarSizes;
         Glass.glassEnter = false;
     }
