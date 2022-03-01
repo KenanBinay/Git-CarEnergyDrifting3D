@@ -8,7 +8,14 @@ public class CamFollow : MonoBehaviour
     public float smoothSpeed = 0.125f, followSpeed, lvlEndSmoothSpeed, CamZoomSmooth;
     public Vector3 offset, lvlEndOffset, lookLvlEnd, lvlEndDriftCamPos,lvlEndDriftCamRot;
 
+    public bool camMovedFinish;
     bool delayWaited;
+
+    private void Start()
+    {
+        camMovedFinish = false;    
+    }
+
     void FixedUpdate()
     {
         if (LevelEndController.lvlEndEnter == false)
@@ -20,7 +27,7 @@ public class CamFollow : MonoBehaviour
         }
         else if (LevelEndController.lvlEndEnter)
         {
-            if (LevelEndController.clickCounter <= 0)
+            if (LevelEndController.clickCounter < 6)
             {
                 Vector3 desiredPosition = new Vector3(target.position.x + lvlEndOffset.x, target.position.y + lvlEndOffset.y, target.position.z + lvlEndOffset.z);
                 Vector3 desiredLook = new Vector3(target.position.x + lookLvlEnd.x, target.position.y + lookLvlEnd.y, 0);
@@ -30,12 +37,13 @@ public class CamFollow : MonoBehaviour
                 transform.position = SmoothedPosition;
                 transform.rotation = Quaternion.Slerp(transform.rotation, smoothedRot, CamZoomSmooth * Time.deltaTime);
             }
-            else if(LevelEndController.clickCounter >= 6)
+            else if(LevelEndController.clickCounter == 6)
             {
                 if (delayWaited == false)
                 { StartCoroutine(DelayForLvlEndCam()); }
                 else if (delayWaited)
                 {
+                    camMovedFinish = true;
                     Vector3 desiredPosition = new Vector3(lvlEndDriftCamPos.x, lvlEndDriftCamPos.y, lvlEndDriftCamPos.z);
                     Vector3 desiredLook = new Vector3(lvlEndDriftCamRot.x, lvlEndDriftCamRot.y, 0);
                     Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, lvlEndSmoothSpeed);

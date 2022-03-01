@@ -26,6 +26,7 @@ public class LevelEndController : MonoBehaviour
     {
         if (lvlEndEnter)
         {
+            
             if (CarController.carStopped && clickCounter < 6)
             {
                 TxtTap.SetActive(true);
@@ -35,7 +36,7 @@ public class LevelEndController : MonoBehaviour
             {
                 flameM.SetActive(false);
                 CarRot.x = 0;
-            }
+            }       
 
             if (delayedClick == false)
             {
@@ -45,7 +46,7 @@ public class LevelEndController : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    ClickCount();
+                    ClickCount();      
                 }
             }
          
@@ -61,12 +62,12 @@ public class LevelEndController : MonoBehaviour
 
     void ClickCount()
     {
-        if (clickCounter >= 3)
+        if (clickCounter == 3)
         {
             RedLight.SetActive(false);
             YellowLight.SetActive(true);
         }
-        if (clickCounter >= 6)
+        if (clickCounter == 6)
         {
             Debug.Log("ClickDone EXECUTE DRIFTT!!");
 
@@ -77,10 +78,10 @@ public class LevelEndController : MonoBehaviour
             endDriftCntrl = true;
             CarRot.x = 4;
         }
-        else
+        if (clickCounter < 6)
         {
             if (CarRot.x == 0)
-            {             
+            {
                 CarRot.x = 2;
             }
             else { CarRot.x = 0; }
@@ -91,9 +92,8 @@ public class LevelEndController : MonoBehaviour
             Debug.Log("Click: " + clickCounter + " || carRot.z: " + CarRot.z);
 
         }
-
     }
-    
+
     public IEnumerator DelayForClickCounter()
     {
         yield return new WaitForSeconds(2.7f);
