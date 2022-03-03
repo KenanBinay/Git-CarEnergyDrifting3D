@@ -14,7 +14,7 @@ public class LevelController : MonoBehaviour
     }
 
     
-    void FixedUpdate()
+    void Update()
     {
       /*  if (currentLevel < 11)
         {

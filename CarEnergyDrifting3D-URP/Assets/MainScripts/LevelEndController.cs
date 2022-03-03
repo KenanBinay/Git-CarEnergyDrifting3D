@@ -22,7 +22,7 @@ public class LevelEndController : MonoBehaviour
         HandRot.x = 40;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (lvlEndEnter)
         {
