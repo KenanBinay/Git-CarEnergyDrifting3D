@@ -180,7 +180,12 @@ public class CarController : MonoBehaviour
                 carStopping = false;
             }
         }
-       
+
+        if (LevelEndController.lvlEndEnter && LevelEndController.clickCounter >= 6)
+        {
+          
+        }
+
         boostTakenPos = new Vector3(transform.position.x, -1f, transform.position.z);
     }          
 
