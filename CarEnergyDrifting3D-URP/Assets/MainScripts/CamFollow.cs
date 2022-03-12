@@ -8,7 +8,7 @@ public class CamFollow : MonoBehaviour
     public float smoothSpeed = 0.125f, followSpeed, lvlEndSmoothSpeed, CamZoomSmooth;
     public Vector3 offset, lvlEndOffset, lookLvlEnd, lvlEndDriftCamPos,lvlEndDriftCamRot;
 
-    public bool camMovedFinish;
+    public static bool camMovedFinish;
     bool delayWaited;
 
     private void Start()
@@ -58,8 +58,9 @@ public class CamFollow : MonoBehaviour
 
     public IEnumerator DelayForLvlEndCam()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         delayWaited = true;
     }
+
 }

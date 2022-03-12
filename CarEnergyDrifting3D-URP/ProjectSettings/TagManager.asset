@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SpeedBoost
+  - Road
+  - WeightBoost
+  - GlassRoad
+  - lvlEndEnter
+  - PlayerCar
+  - GlassParts
+  - Glass
+  - BoostParticle
+  - stopSignRB
+  - lvlEndCircle
   layers:
   - Default
   - TransparentFX

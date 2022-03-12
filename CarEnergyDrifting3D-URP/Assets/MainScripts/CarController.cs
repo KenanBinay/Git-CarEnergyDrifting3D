@@ -12,17 +12,14 @@ public class CarController : MonoBehaviour
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos;
 
-    public static bool carStopped, carStopping;
+    public static bool carStopped, carStopping, circleLvlEnd;
     public static float MainCarWeight, MainSpeed;
-    float skidMarkControl = 0;
-    float spin;
+    float spin, turn, skidMarkControl;
 
     private void Start()
-    {        
-        MainCarWeight = MainSpeed = 0;
-        skidMarkControl = 0;
-        spin = 0;
-        isDraging = false;
+    {
+        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
+        isDraging = circleLvlEnd = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
@@ -35,7 +32,7 @@ public class CarController : MonoBehaviour
     {
         #region InGameController
 
-        if (LevelEndController.lvlEndEnter == false)
+        if (LevelEndController.lvlEndEnter == false && LevelEndController.clickCounter < 6)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -68,7 +65,7 @@ public class CarController : MonoBehaviour
 
                 if (x < 0)
                 {
-                 //   Debug.Log("Left X= " + swipeDelta.x.ToString() + " || XPos= " + transform.position.x);
+                    //   Debug.Log("Left X= " + swipeDelta.x.ToString() + " || XPos= " + transform.position.x);
                     XPos = -1;
                     if (transform.position.x >= -3f) { LocalMoveL(XPos); }
 
@@ -77,7 +74,7 @@ public class CarController : MonoBehaviour
                 }
                 else
                 {
-                  //  Debug.Log("Right X= " + swipeDelta.x.ToString() + " || XPos= " + transform.position.x);
+                    //  Debug.Log("Right X= " + swipeDelta.x.ToString() + " || XPos= " + transform.position.x);
                     XPos = 1;
                     if (transform.position.x <= 3f) { LocalMoveR(XPos); }
 
@@ -92,7 +89,7 @@ public class CarController : MonoBehaviour
 
                 if (spin != 35)
                 {
-                   // Debug.Log("360 Spin Turn!!");
+                    // Debug.Log("360 Spin Turn!!");
                     SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f);
                     transform.Rotate(Vector3.up * 500 * Time.deltaTime);
                     spin++;
@@ -100,7 +97,7 @@ public class CarController : MonoBehaviour
 
             }
 
-            if (Glass.controlGlassSolid == 0) { transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime; }
+            if (Glass.controlGlassSolid == 0) { transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime; } //Car move
             else { Debug.Log("GameOver!!"); }
 
             if (skidMarkControl == 1)
@@ -108,58 +105,59 @@ public class CarController : MonoBehaviour
                 if (SkidMarks.transform.localPosition == new Vector3(0.48f, 0, -1.36f)) { }
                 else { SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f); }
             }
-        }
 
-        if (isDraging)
-        {
-            if (Input.touches.Length > 0)
-            {
-                swipeDelta = Input.touches[0].position - startTouch;
-            }
-            else if (Input.GetMouseButton(0))
-            {
-                swipeDelta = (Vector2)Input.mousePosition - startTouch;
-            }
 
-        }
-        else if (isDraging == false)
-        {
-            if (transform.eulerAngles.y != 180)
+            if (isDraging)
             {
-                //  Debug.Log("ReturningRotation! Rot: " + transform.eulerAngles.y);
-
-                //if (transform.position.x <= 0.24)
-                if (transform.eulerAngles.y < 180)
+                if (Input.touches.Length > 0)
                 {
-                    // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
-                    transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime);
-
+                    swipeDelta = Input.touches[0].position - startTouch;
                 }
-                // else if (transform.position.x >= 0.26)
-                if (transform.eulerAngles.y > 180)
+                else if (Input.GetMouseButton(0))
                 {
-                    // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
-                    transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
-
+                    swipeDelta = (Vector2)Input.mousePosition - startTouch;
                 }
 
-                wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
-                wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-                wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
-                wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-
-                if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
-
             }
-            else
+            else if (isDraging == false)
             {
-                //    Debug.Log("NormalRotation Rot: " + transform.eulerAngles.y);
+                if (transform.eulerAngles.y != 180)
+                {
+                    //  Debug.Log("ReturningRotation! Rot: " + transform.eulerAngles.y);
+
+                    //if (transform.position.x <= 0.24)
+                    if (transform.eulerAngles.y < 180)
+                    {
+                        // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
+                        transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime);
+
+                    }
+                    // else if (transform.position.x >= 0.26)
+                    if (transform.eulerAngles.y > 180)
+                    {
+                        // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
+                        transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
+
+                    }
+
+                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
+                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+                    wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
+                    wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
+
+                    if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
+
+                }
+                else
+                {
+                    //    Debug.Log("NormalRotation Rot: " + transform.eulerAngles.y);
+                }
             }
-        }    
+        }
         #endregion
 
-        if (LevelEndController.lvlEndEnter && LevelEndController.endDriftCntrl == false)
+        if (LevelEndController.lvlEndEnter && LevelEndController.endDriftCntrl == false && LevelEndController.clickCounter != 6)
         {
             if (movingSpeed > 0)
             {
@@ -183,11 +181,42 @@ public class CarController : MonoBehaviour
 
         if (LevelEndController.lvlEndEnter && LevelEndController.clickCounter >= 6)
         {
-          
+            if (circleLvlEnd)
+            {
+                wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+                wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
+
+                wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
+                wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
+
+                if (transform.rotation.eulerAngles.y < 21) { transform.Rotate(Vector3.up * driftAngle * Time.deltaTime); }
+               
+
+                /* if (turn != 30)
+                 {
+                     transform.Rotate(Vector3.down * 60 * Time.deltaTime);
+                     turn++;
+                 }
+                 else if (turn >= 30)
+                 {
+                     transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
+                 }
+                */
+
+              //  transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+
+            }
+            else if (circleLvlEnd != true)
+            {
+                if (movingSpeed < 6) { movingSpeed += 4.7f * Time.deltaTime; }
+                
+                SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f);
+                transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+            }
         }
 
         boostTakenPos = new Vector3(transform.position.x, -1f, transform.position.z);
-    }          
+    }
 
     // float Rturn, Lturn;
     void LocalMoveL(float x)
@@ -316,7 +345,7 @@ public class CarController : MonoBehaviour
             ExhaustFlame.SetActive(false);
             ExhaustFlameEx.SetActive(false);
             speedIncreaseEffect.SetActive(false);
-            movingSpeed = normalSpeed;
+          //  movingSpeed = normalSpeed;
             MainSpeed = 0;
             spin = 0;
             MainCarWeight = 0;
@@ -324,6 +353,10 @@ public class CarController : MonoBehaviour
             Glass.glassEnter = false;
 
             LevelEndController.lvlEndEnter = true;
+        }
+        if (other.gameObject.CompareTag("lvlEndCircle"))
+        {
+            circleLvlEnd = true;
         }
     }
 

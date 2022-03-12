@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Inspector
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 938, y: 492}
   m_MaxSize: {x: 20008, y: 14042}
   vertical: 0
-  controlID: 8669
+  controlID: 48
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 492}
   m_MaxSize: {x: 12006, y: 14042}
   vertical: 1
-  controlID: 8670
+  controlID: 49
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 221}
   m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
-  controlID: 8671
+  controlID: 50
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -456,20 +456,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: e0f6feffecf6fefff0f6feff0cf7feff0ef7feff12f7feff4efefeff52fefeff5efefeff64fefeff78fefeff7afefeff760affff800affff840affff900affffa40affffa80affff7e17ffff8017ffff8617ffff8c17ffff9417ffffa017ffffdc24ffff4027ffff4427ffff5827ffff6627ffff6a27ffffa82affffb02affffb22affff122effff182effff1a2effff262fffff2a2fffff2e2fffffa230ffffa630ffffaa30ffffa232ffffa632ffffaa32ffff1c33ffff2433ffff2633ffff8e33ffff9233ffff9633ffff7a35ffff983fffffa63fffffa83ffffff840ffffec47ffff9c4dffffda50ffff805dffff7a9effff829effff849effff289fffff2c9fffff309fffffc8a4ffffcca4ffff24a5ffff28a5ffff2ca5ffff70a7ffff74a7ffff78a7ffffacabffffb0abffffb4abffff9eacffffa6acffffa8acffff70adffff74adffff78adffffcaafffffd2afffffccb0ffffd0b0ffffd4b0ffff12b2ffff1ab2ffff1cb2ffff74b3ffff78b3ffff7cb3ffff8eb4ffff92b8ffff04ddffffd4deffff44efffffc8f5ffff6efbffff824c0000104d00003a4e00008e4e0000a44e0000e84f0000005000003850000078510000a2510000ce5100005c520000c2520000c65200003e53000050530000b0530000fc5400003856000094570000d057000068580000625900008e5900004c5a0000065c0000345c0000705c0000045d0000a05d0000145e00002a5e00005c5e0000345f0000f65f0000d86000007e6100003462000082620000b8630000ca63000024640000f0640000146500006065000094650000c4650000ce6500009e660000026700005668000044690000386a0000986a0000ec6a0000366b0000486b00006a6b0000b26b0000d46b0000ec6b0000366c0000346d0000ce6d0000786e0000406f0000fe6f0000327000006e700000e670000062710000667100007a7200008672000090720000d87300000c740000587400005c740000907500002a76000030770000e2790000067a0000267a0000327a00007c7a0000907a0000
+      m_SelectedIDs: b2750000
+      m_LastClickedID: 30130
+      m_ExpandedIDs: 6efbffff66740000b2750000ae810000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Car_CarBodyMain
-        m_OriginalName: Car_CarBodyMain
+        m_Name: CarMain
+        m_OriginalName: CarMain
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 31170
+        m_UserData: 33198
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -543,9 +543,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 183.41301, y: -155.8749, z: 697.57214}
+    m_Target: {x: -280.20682, y: -196.95103, z: 629.9037}
     speed: 2
-    m_Value: {x: 183.41301, y: -155.8749, z: 697.57214}
+    m_Value: {x: -280.20682, y: -196.95103, z: 629.9037}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -592,9 +592,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.21849638, y: -0.29460955, z: 0.06926929, w: -0.927566}
+    m_Target: {x: 0.23169427, y: -0.45499584, z: 0.123701856, w: 0.8507192}
     speed: 2
-    m_Value: {x: -0.21991919, y: -0.2945477, z: 0.069720924, w: -0.9273706}
+    m_Value: {x: 0.2317257, y: -0.45505756, z: 0.123718634, w: 0.8508346}
   m_Size:
     m_Target: 202.07545
     speed: 2
@@ -747,22 +747,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/MainScripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 44
   m_LastFolders:
-  - Assets/Materials
+  - Assets/MainScripts
   m_LastFoldersGridSize: 44
   m_LastProjectPath: C:\Users\kenan\Documents\Git-CarEnergyDrifting3D\CarEnergyDrifting3D-URP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 37}
-    m_SelectedIDs: 94870000
-    m_LastClickedID: 34708
-    m_ExpandedIDs: 000000009087000092870000948700009687000000ca9a3b
+    m_SelectedIDs: f0900000
+    m_LastClickedID: 37104
+    m_ExpandedIDs: 00000000c08f0000c28f0000c48f0000c68f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -790,7 +790,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009087000092870000948700009687000000ca9a3b
+    m_ExpandedIDs: 00000000c08f0000c28f0000c48f0000c68f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -19396
+  m_LastSelectedObjectID: 30130
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
