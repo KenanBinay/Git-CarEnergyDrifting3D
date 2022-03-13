@@ -31,6 +31,51 @@ public class CarController : MonoBehaviour
     void FixedUpdate()
     {
         #region InGameController
+      
+        if (LevelEndController.clickCounter < 6)
+        {
+            if (isDraging)
+            {
+                if (Input.touches.Length > 0)
+                {
+                    swipeDelta = Input.touches[0].position - startTouch;
+                }
+                else if (Input.GetMouseButton(0))
+                {
+                    swipeDelta = (Vector2)Input.mousePosition - startTouch;
+                }
+
+            }
+            else if (isDraging == false)
+            {
+                if (transform.eulerAngles.y != 180)
+                {
+            
+                    if (transform.eulerAngles.y < 180)
+                    {
+                        // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
+                        transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime);
+
+                    }
+                
+                    if (transform.eulerAngles.y > 180)
+                    {
+                        // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
+                        transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
+
+                    }
+
+                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
+                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+                    wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
+                    wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
+
+                    if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
+
+                }
+            }
+        }
 
         if (LevelEndController.lvlEndEnter == false && LevelEndController.clickCounter < 6)
         {
@@ -107,54 +152,10 @@ public class CarController : MonoBehaviour
             }
 
 
-            if (isDraging)
-            {
-                if (Input.touches.Length > 0)
-                {
-                    swipeDelta = Input.touches[0].position - startTouch;
-                }
-                else if (Input.GetMouseButton(0))
-                {
-                    swipeDelta = (Vector2)Input.mousePosition - startTouch;
-                }
-
-            }
-            else if (isDraging == false)
-            {
-                if (transform.eulerAngles.y != 180)
-                {
-                    //  Debug.Log("ReturningRotation! Rot: " + transform.eulerAngles.y);
-
-                    //if (transform.position.x <= 0.24)
-                    if (transform.eulerAngles.y < 180)
-                    {
-                        // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
-                        transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime);
-
-                    }
-                    // else if (transform.position.x >= 0.26)
-                    if (transform.eulerAngles.y > 180)
-                    {
-                        // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
-                        transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
-
-                    }
-
-                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
-                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-                    wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
-                    wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-
-                    if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
-
-                }
-                else
-                {
-                    //    Debug.Log("NormalRotation Rot: " + transform.eulerAngles.y);
-                }
-            }
         }
+        
+    
+
         #endregion
 
         if (LevelEndController.lvlEndEnter && LevelEndController.endDriftCntrl == false && LevelEndController.clickCounter != 6)
@@ -183,25 +184,34 @@ public class CarController : MonoBehaviour
         {
             if (circleLvlEnd)
             {
-                wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
-                wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
+                /*  wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+                  wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
 
-                wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
-                wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
+                  wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
+                  wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
 
-                if (transform.rotation.eulerAngles.y < 21) { transform.Rotate(Vector3.up * driftAngle * Time.deltaTime); }
-               
+                  if (transform.rotation.eulerAngles.y < 21) { transform.Rotate(Vector3.up * driftAngle * Time.deltaTime); }
+                 */
+                
+                    if (turn != 25)
+                    {
+                        transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
+                        wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+                        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
 
-                /* if (turn != 30)
-                 {
-                     transform.Rotate(Vector3.down * 60 * Time.deltaTime);
-                     turn++;
-                 }
-                 else if (turn >= 30)
-                 {
-                     transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
-                 }
-                */
+                        wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
+                        wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
+                        turn++;
+                    }
+                    else if (turn >= 25)
+                    {
+                        transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
+                        wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
+                        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
+
+                        wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
+                        wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);
+                    }
 
               //  transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
 
