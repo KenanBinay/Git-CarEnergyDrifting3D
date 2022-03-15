@@ -7,14 +7,14 @@ public class CarController : MonoBehaviour
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
     [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect;
     private float XPos, normalSpeed;
-    public float Speed, driftAngle, recoverSpeed, movingSpeed;
+    public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
     private bool isDraging;
     private Vector2 startTouch, swipeDelta;
-    private Vector3 CarSizes, boostTakenRot, boostTakenPos;
+    private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
     public static bool carStopped, carStopping, circleLvlEnd;
     public static float MainCarWeight, MainSpeed;
-    float spin, turn, skidMarkControl;
+    float spin, turn, skidMarkControl, angle;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
-     //   Debug.Log("Rot y: " + transform.eulerAngles.y);
+        center = new Vector3(5, -1.55f, 454);
 
     }
 
@@ -184,36 +184,29 @@ public class CarController : MonoBehaviour
         {
             if (circleLvlEnd)
             {
-                /*  wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
-                  wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
+                if (turn != 25)
+                {
+                    transform.Rotate(Vector3.up * 100 * Time.deltaTime);
+                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
 
-                  wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
-                  wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
+                    wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
+                    wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
+                    turn++;
+                }
+                else if (turn >= 25)
+                {
+                    transform.Rotate(Vector3.down * 110 * Time.deltaTime);
+                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
+                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
 
-                  if (transform.rotation.eulerAngles.y < 21) { transform.Rotate(Vector3.up * driftAngle * Time.deltaTime); }
-                 */
-                
-                    if (turn != 25)
-                    {
-                        transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
-                        wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
-                        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
+                    wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
+                    wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);
 
-                        wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
-                        wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
-                        turn++;
-                    }
-                    else if (turn >= 25)
-                    {
-                        transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
-                        wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
-                        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
-
-                        wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
-                        wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);
-                    }
-
-              //  transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+                    angle += Time.deltaTime * angularSpeed;
+                    Vector3 direction = Quaternion.AngleAxis(angle, new Vector3(0, -1, 0)) * Vector3.left;
+                    transform.position = center + direction * 5;
+                }           
 
             }
             else if (circleLvlEnd != true)
