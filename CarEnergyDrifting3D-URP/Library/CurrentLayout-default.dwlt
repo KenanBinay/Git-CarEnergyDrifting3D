@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,10 +120,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 938, y: 492}
-  m_MaxSize: {x: 20008, y: 14042}
+  m_MinSize: {x: 937, y: 492}
+  m_MaxSize: {x: 20007, y: 14042}
   vertical: 0
-  controlID: 113
+  controlID: 146
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 492}
   m_MaxSize: {x: 12006, y: 14042}
   vertical: 1
-  controlID: 114
+  controlID: 147
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 221}
   m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
-  controlID: 115
+  controlID: 148
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -329,8 +329,8 @@ MonoBehaviour:
     y: 0
     width: 489
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 24}
   m_Panes:
   - {fileID: 24}
@@ -421,7 +421,7 @@ MonoBehaviour:
       width: 1080.5723
       height: 1920
     m_MinimalGUI: 1
-  m_defaultScale: 0.32777777
+  m_defaultScale: 0.32760417
   m_LastWindowPixelSize: {x: 354, y: 650}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -456,9 +456,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: d8090000
       m_LastClickedID: 0
-      m_ExpandedIDs: 6efbffff785c00002c6a00001a740000b0750000
+      m_ExpandedIDs: 6efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -543,9 +543,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -153.0127, y: -270.1195, z: 718.9594}
+    m_Target: {x: -64.87719, y: -243.42828, z: 772.2203}
     speed: 2
-    m_Value: {x: -153.0127, y: -270.1195, z: 718.9594}
+    m_Value: {x: -64.87719, y: -243.42828, z: 772.2203}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -592,13 +592,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.33838788, y: -0.23686199, z: 0.08825057, w: 0.90628237}
+    m_Target: {x: 0.31001297, y: -0.09308534, z: 0.030332152, w: 0.94554687}
     speed: 2
-    m_Value: {x: 0.33707085, y: -0.23702416, z: 0.08790652, w: 0.9069042}
+    m_Value: {x: 0.31005144, y: -0.0930969, z: 0.030335916, w: 0.9456642}
   m_Size:
-    m_Target: 218.44621
+    m_Target: 217.5656
     speed: 2
-    m_Value: 218.44621
+    m_Value: 217.5656
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -747,22 +747,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3DPrefabs
+    - Assets/MainScripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 44
   m_LastFolders:
-  - Assets/3DPrefabs
+  - Assets/MainScripts
   m_LastFoldersGridSize: 44
   m_LastProjectPath: C:\Users\kenan\Documents\Git-CarEnergyDrifting3D\CarEnergyDrifting3D-URP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 37}
-    m_SelectedIDs: 04900000
-    m_LastClickedID: 36868
-    m_ExpandedIDs: 00000000c68f0000c88f0000ca8f0000cc8f000000ca9a3b
+    m_SelectedIDs: a0900000
+    m_LastClickedID: 37024
+    m_ExpandedIDs: 00000000768f0000788f00007a8f00007c8f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -790,7 +790,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c68f0000c88f0000ca8f0000cc8f0000
+    m_ExpandedIDs: 00000000768f0000788f00007a8f00007c8f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 33204
+  m_LastSelectedObjectID: 33128
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52

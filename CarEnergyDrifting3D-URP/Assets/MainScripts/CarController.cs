@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
-        center = new Vector3(5, -1.55f, 454);
+        center = new Vector3(1, -1.55f, 454);
 
     }
 
