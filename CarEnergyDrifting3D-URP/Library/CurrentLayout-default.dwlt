@@ -120,10 +120,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 937, y: 492}
-  m_MaxSize: {x: 20007, y: 14042}
+  m_MinSize: {x: 938, y: 492}
+  m_MaxSize: {x: 20008, y: 14042}
   vertical: 0
-  controlID: 146
+  controlID: 17
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 492}
   m_MaxSize: {x: 12006, y: 14042}
   vertical: 1
-  controlID: 147
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 221}
   m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
-  controlID: 148
+  controlID: 19
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -329,8 +329,8 @@ MonoBehaviour:
     y: 0
     width: 489
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 24}
   m_Panes:
   - {fileID: 24}
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d8090000
+      m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 6efbffff
       m_RenameOverlay:
@@ -543,9 +543,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -64.87719, y: -243.42828, z: 772.2203}
+    m_Target: {x: -138.93272, y: -324.0157, z: 663.9972}
     speed: 2
-    m_Value: {x: -64.87719, y: -243.42828, z: 772.2203}
+    m_Value: {x: -138.93272, y: -324.0157, z: 663.9972}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -592,13 +592,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.31001297, y: -0.09308534, z: 0.030332152, w: 0.94554687}
+    m_Target: {x: 0.41816366, y: -0.2497922, z: 0.12053118, w: 0.8648561}
     speed: 2
-    m_Value: {x: 0.31005144, y: -0.0930969, z: 0.030335916, w: 0.9456642}
+    m_Value: {x: -0.41816366, y: 0.2497922, z: -0.12053118, w: -0.86485606}
   m_Size:
-    m_Target: 217.5656
+    m_Target: 217.12503
     speed: 2
-    m_Value: 217.5656
+    m_Value: 227.35605
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -957,7 +957,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 8
   m_GlobalObjectId: 
   m_LockTracker:
     m_IsLocked: 0
