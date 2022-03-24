@@ -8,7 +8,7 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
-        currentLevel = PlayerPrefs.GetFloat("level_main", 0);
+     //   currentLevel = PlayerPrefs.GetFloat("level_main", 0);
         Debug.Log("CurrentLevel: " + PlayerPrefs.GetFloat("level_main"));
     }
     
