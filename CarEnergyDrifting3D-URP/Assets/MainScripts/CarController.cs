@@ -184,9 +184,21 @@ public class CarController : MonoBehaviour
         {
             if (circleLvlEnd)
             {
+                Vector3 direction = Quaternion.AngleAxis(angle, new Vector3(0, -1, 0)) * Vector3.left;
+                if (direction.x >= 0f)
+                {
+                    directApp = true;
+                    turn = 17;
+                }
+                else
+                {
+                    transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+                    movingSpeed -= 3.4f * Time.deltaTime;
+                }
+
                 if (turn != 17)
                 {
-                    transform.localPosition += new Vector3(0, 0, 1) * 5 * Time.deltaTime;
+                    
                     transform.Rotate(Vector3.up * 100 * Time.deltaTime);
                     wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
                     wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
@@ -198,9 +210,9 @@ public class CarController : MonoBehaviour
                 else if (turn >= 17)
                 {
                     angle += Time.deltaTime * angularSpeed;
-                    Vector3 direction = Quaternion.AngleAxis(angle, new Vector3(0, -1, 0)) * Vector3.left;
-                    Debug.Log("Direction: " + direction);
-                    if (direction.x >= 0f) { directApp = true; }
+                   
+                   // Debug.Log("Direction: " + direction);
+                  
                     if (directApp) { transform.position = center + direction * 5; }           
                     
                     transform.Rotate(Vector3.down * 107 * Time.deltaTime);

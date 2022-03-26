@@ -22,7 +22,7 @@ public class ProgressBarController : MonoBehaviour
                     {
                         transform.position += new Vector3(0.0014f, 0, 0);
                         BarRect.position -= new Vector3(0.0007f, 0, 0);
-                        BarRect.localScale += Vector3.right * Time.deltaTime * 1.57f;
+                        BarRect.localScale += Vector3.right * Time.deltaTime * 1.401f;
                     }
                     break;
             }
@@ -30,8 +30,8 @@ public class ProgressBarController : MonoBehaviour
         }
         else if (Glass.controlGlassSolid == 1)
         {
-            transform.position = new Vector3(-407f, transform.position.y, 500);
-            BarRect.localPosition.Set(-0.116f, 0, 0);
+           
+          //  BarRect.localPosition.Set(-0.116f, 0, 0);
             BarRect.localScale = scaleRect;
         }
     }
