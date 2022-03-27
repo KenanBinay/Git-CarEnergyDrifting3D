@@ -4,35 +4,47 @@ using UnityEngine;
 
 public class ProgressBarController : MonoBehaviour
 {
-    public Transform BarRect;
-    Vector3 scaleRect;
+    [SerializeField] private Transform filForm, endLineTransform, carTransform;
+    Vector3 fillBar, endLinePos;
+    float fullDistance, realtimeDistance;
+
     void Start()
     {
-        scaleRect = BarRect.localScale;
+        endLinePos = endLineTransform.position;
+        fillBar = filForm.localScale;
+        fullDistance = getDistance();
+        Debug.Log("Distance: " + fullDistance);
     }
 
     void Update()
     {
-        if (Glass.controlGlassSolid == 0 && LevelEndController.lvlEndEnter == false)
+        if (Glass.controlGlassSolid == 0 && LevelEndController.lvlEndEnter == false && RoadGlassController.roadGlassBroke == false)
         {
-            switch (LevelController.currentLevel)
+            realtimeDistance = getDistance();
+            float progressValue = Mathf.InverseLerp(fullDistance, 0f, realtimeDistance);
+
+            if (realtimeDistance > 10 && fullDistance >= 100 && transform.localPosition.x <= 480)
             {
-                case 0:
-                    if (transform.localPosition.x < 480)
-                    {
-                        transform.position += new Vector3(0.0014f, 0, 0);
-                        BarRect.position -= new Vector3(0.0007f, 0, 0);
-                        BarRect.localScale += Vector3.right * Time.deltaTime * 1.401f;
-                    }
-                    break;
+                updateProgressBar(progressValue);
             }
 
         }
         else if (Glass.controlGlassSolid == 1)
         {
-           
-          //  BarRect.localPosition.Set(-0.116f, 0, 0);
-            BarRect.localScale = scaleRect;
+            filForm.localScale = fillBar;
         }
     }
+
+    private float getDistance()
+    {
+        //  return Vector3.Distance(carTransform.position, endLinePos);
+        return (endLinePos - carTransform.position).sqrMagnitude;
+    }
+
+    private void updateProgressBar(float value)
+    {
+    //    Debug.Log("ProgressValue: " + value);
+        transform.position += new Vector3(value, 0, 0) * Time.deltaTime / 8.4f;
+    }
+
 }

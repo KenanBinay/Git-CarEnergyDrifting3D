@@ -16,6 +16,8 @@ public class CarController : MonoBehaviour
     public static float MainCarWeight, MainSpeed;
     float spin, turn, skidMarkControl, angle;
 
+   // public delegate void levelEnd();
+  //  public static event levelEnd enterEnd;
     private void Start()
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
@@ -360,7 +362,7 @@ public class CarController : MonoBehaviour
         if (other.gameObject.CompareTag("lvlEndEnter"))
         {
             Debug.Log("LevelEndReached!!");
-
+        
             ExhaustFlame.SetActive(false);
             ExhaustFlameEx.SetActive(false);
             speedIncreaseEffect.SetActive(false);

@@ -6,11 +6,12 @@ public class RoadGlassController : MonoBehaviour
 {
     public GameObject solidGlass1, HalfBroken, GlassBrokenParts, Boosts;
     float broke,crack;
-  
+    public static bool roadGlassBroke;
     void Start()
     {
         broke = crack = 0f;
-        
+
+        roadGlassBroke = false;
         Boosts.SetActive(true);
         solidGlass1.SetActive(true);
         HalfBroken.SetActive(false);
@@ -54,6 +55,7 @@ public class RoadGlassController : MonoBehaviour
             Instantiate(GlassBrokenParts,transform.position,transform.rotation);
             solidGlass1.SetActive(false);
             Destroy(gameObject);
+            roadGlassBroke = true;
             broke = 1f;
         }
     }
