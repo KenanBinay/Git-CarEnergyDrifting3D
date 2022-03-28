@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProgressBarController : MonoBehaviour
 {
-    [SerializeField] private Transform filForm, endLineTransform, carTransform;
-    Vector3 fillBar, endLinePos;
+    [SerializeField] private Transform endLineTransform, carTransform, barPoint;
+    [SerializeField] private Image fillForm;
+    Vector3 endLinePos;
     float fullDistance, realtimeDistance;
 
     void Start()
     {
         endLinePos = endLineTransform.position;
-        fillBar = filForm.localScale;
         fullDistance = getDistance();
         Debug.Log("Distance: " + fullDistance);
     }
@@ -29,10 +30,6 @@ public class ProgressBarController : MonoBehaviour
             }
 
         }
-        else if (Glass.controlGlassSolid == 1)
-        {
-            filForm.localScale = fillBar;
-        }
     }
 
     private float getDistance()
@@ -44,7 +41,8 @@ public class ProgressBarController : MonoBehaviour
     private void updateProgressBar(float value)
     {
     //    Debug.Log("ProgressValue: " + value);
-        transform.position += new Vector3(value, 0, 0) * Time.deltaTime / 8.4f;
+        fillForm.fillAmount = value;
+
     }
 
 }
