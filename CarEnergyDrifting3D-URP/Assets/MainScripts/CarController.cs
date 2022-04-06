@@ -355,6 +355,18 @@ public class CarController : MonoBehaviour
             { StartCoroutine(WeightDelay()); }
       
         }
+
+        if (coll.gameObject.CompareTag("Coin"))
+        {
+            Coin_Controller.coinCurrent += 1;
+            Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
+            Quaternion posParticle = Quaternion.Euler(boostTakenPos);
+            Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
+            Destroy(coll.gameObject);
+
+            Debug.Log("CoinTake: " + Coin_Controller.coinCurrent);
+
+        }
     }
 
     public void OnTriggerEnter(Collider other)

@@ -15,6 +15,7 @@ TagManager:
   - BoostParticle
   - stopSignRB
   - lvlEndCircle
+  - Coin
   layers:
   - Default
   - TransparentFX
