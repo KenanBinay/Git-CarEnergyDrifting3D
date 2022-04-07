@@ -5,11 +5,14 @@ using UnityEngine;
 public class Coin_Controller : MonoBehaviour
 {
     public static int coinCurrent;
-
+    [SerializeField] Vector3 originPos;
     void Start()
     {
      //   coinCurrent = PlayerPrefs.GetInt("coin_main", 0);
         Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin_main"));
+
+        float posX = Random.Range(-3.3f, 3.1f);
+        transform.localPosition = new Vector3(posX, -1.1f, transform.localPosition.z);
     }
 
     void Update()

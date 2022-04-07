@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 938, y: 492}
   m_MaxSize: {x: 20008, y: 14042}
   vertical: 0
-  controlID: 80
+  controlID: 110
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 492}
   m_MaxSize: {x: 12006, y: 14042}
   vertical: 1
-  controlID: 18
+  controlID: 111
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_MinSize: {x: 461, y: 221}
   m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
-  controlID: 19
+  controlID: 112
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -456,23 +456,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 6efbffff427e0000128e00000aab0000
+      m_SelectedIDs: 0489ffff
+      m_LastClickedID: -30460
+      m_ExpandedIDs: 68dcffff6efbffff1855000054610000307b0000427e0000128e00000aab000034ad0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: CoinModel
+        m_OriginalName: CoinModel
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -30460
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 6}
       m_SearchString: 
@@ -543,9 +543,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.563086, y: 4.8706903, z: -8.424385}
+    m_Target: {x: 0.09504032, y: -1.113766, z: 10.585823}
     speed: 2
-    m_Value: {x: -3.563086, y: 4.8706903, z: -8.424385}
+    m_Value: {x: 0.09504178, y: -1.1137655, z: 10.585822}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -592,13 +592,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.16361615, y: 0.16423318, z: -0.02814008, w: 0.9722598}
+    m_Target: {x: 0.1499152, y: -0.53153336, z: 0.09566791, w: 0.82805604}
     speed: 2
-    m_Value: {x: 0.16363056, y: 0.16424765, z: -0.028142558, w: 0.9723455}
+    m_Value: {x: 0.14992784, y: -0.5315782, z: 0.095675975, w: 0.82812583}
   m_Size:
-    m_Target: 1.6951509
+    m_Target: 2.7799368
     speed: 2
-    m_Value: 1.6951509
+    m_Value: 2.6602266
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -747,21 +747,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3DModels
+    - Assets/3DPrefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 44
   m_LastFolders:
-  - Assets/3DModels
+  - Assets/3DPrefabs
   m_LastFoldersGridSize: 44
   m_LastProjectPath: C:\Users\kenan\Documents\Git-CarEnergyDrifting3D\CarEnergyDrifting3D-URP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 39}
-    m_SelectedIDs: 06c10000
-    m_LastClickedID: 49414
+    scrollPos: {x: 0, y: 62}
+    m_SelectedIDs: 08c10000
+    m_LastClickedID: 49416
     m_ExpandedIDs: 00000000cac00000ccc00000cec00000d0c0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 36370
+  m_LastSelectedObjectID: -30460
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
