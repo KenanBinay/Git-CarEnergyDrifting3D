@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coin_Controller : MonoBehaviour
 {
     public static int coinCurrent;
-    [SerializeField] Vector3 originPos;
+
     void Start()
     {
      //   coinCurrent = PlayerPrefs.GetInt("coin_main", 0);
