@@ -9,19 +9,28 @@ public class coinSpawnerController : MonoBehaviour
     private float zPosCoin;
     void Start()
     {
-       // for(int load=0;load<= GlassSpawner.coinCount; load++) { }
+        coinTime = 0;
     }
 
     void Update()
     {
-        if (coinTime <= GlassSpawner.coinCount)
+        if (LevelEndController.endDriftCntrl == false && Glass.controlGlassSolid != 1)
         {
-            if (GlassSpawner.desiredPos == 1) { zPosCoin = Random.Range(65, 350); }
-           
-            Vector3 spawnPointZ = new Vector3(0, -1.1f, zPosCoin);
+            if (coinTime <= GlassSpawner.coinCount)
+            {
+                if (GlassSpawner.desiredPos == 1) { zPosCoin = Random.Range(65, 350); }
 
-            Instantiate(coin, spawnPointZ, transform.rotation = Quaternion.Euler(90, -40, 0));
-            coinTime++;
+              //  Debug.Log("zPosCoin: " + zPosCoin);
+
+                Vector3 spawnPointZ = new Vector3(0, -1.1f, zPosCoin);
+
+                if (zPosCoin != 0)
+                {
+                    Instantiate(coin, spawnPointZ, transform.rotation = Quaternion.Euler(90, -40, 0));
+                    coinTime++;
+                }
+                else { return; }
+            }
         }
                            
     }
