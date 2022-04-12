@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
-    public static bool carStopped, carStopping, circleLvlEnd;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd;
     public static float MainCarWeight, MainSpeed;
     float spin, turn, skidMarkControl, angle;
 
@@ -144,7 +144,7 @@ public class CarController : MonoBehaviour
 
             }
 
-            if (Glass.controlGlassSolid == 0) { transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime; } //Car move
+            if (gameEnd == false) { transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime; } //Car move
             else { Debug.Log("GameOver!!"); }
 
             if (skidMarkControl == 1)

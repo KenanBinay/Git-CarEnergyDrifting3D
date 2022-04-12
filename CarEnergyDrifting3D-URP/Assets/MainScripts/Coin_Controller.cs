@@ -9,7 +9,7 @@ public class Coin_Controller : MonoBehaviour
     void Start()
     {
      //   coinCurrent = PlayerPrefs.GetInt("coin_main", 0);
-        Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin_main"));
+     //   Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin_main"));
 
         float posX = Random.Range(-3.3f, 3.1f);
         transform.localPosition = new Vector3(posX, -1.1f, transform.localPosition.z);

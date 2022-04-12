@@ -5,11 +5,9 @@ using UnityEngine;
 public class Glass : MonoBehaviour
 {
     public GameObject GlassBreak;
-    public static float controlGlassSolid;
     public static bool glassEnter;
     void Start()
     {
-        controlGlassSolid = 0;
         glassEnter = false;
     }
 
@@ -22,13 +20,13 @@ public class Glass : MonoBehaviour
 
             if (CarController.MainCarWeight > 1 || CarController.MainSpeed > 1)
             {
-                controlGlassSolid = 0;    
+                CarController.gameEnd = false;
                 Instantiate(GlassBreak, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
             else
             {
-                controlGlassSolid = 1;
+                CarController.gameEnd = true;
             }
         }
     }

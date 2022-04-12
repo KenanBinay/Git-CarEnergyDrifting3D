@@ -8,7 +8,7 @@ public class GlassSpawner : MonoBehaviour
     [SerializeField] Vector3 originPos;
     public float pos1, pos2, pos3, pos4;
     public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign;
-    public static int coinCount;
+    public static int coinAmount;
     public static float desiredPos;
     void Start()
     {
@@ -18,8 +18,8 @@ public class GlassSpawner : MonoBehaviour
         int[] GlassPos = { 1, 2, 3, 4 };
         desiredPos = GlassPos[Random.Range(0, GlassPos.Length)];
 
-        int[] coinAmounts = { 3, 4, 5, 6 };
-        coinCount = coinAmounts[Random.Range(1, coinAmounts.Length)];
+        int[] coinAmounts = { 6, 7, 8, 9, 10 };
+        coinAmount = coinAmounts[Random.Range(0, coinAmounts.Length)];
 
         //   if (sceneName == "level1")
         if (LevelController.currentLevel == 0)
@@ -39,7 +39,7 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, 167), transform.rotation = Quaternion.Euler(0, -90, 0));
                     GlassRoad1.SetActive(true);
                     Road1.SetActive(false);
-                    Debug.Log("Level1 | inserted pos 1 | desiredPos: " + desiredPos);
+                    Debug.Log("Level 1 | inserted pos 1 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 2:
@@ -55,7 +55,7 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, 299.6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     GlassRoad2.SetActive(true);
                     Road2.SetActive(false);
-                    Debug.Log("Level1 | inserted pos 2 | desiredPos: " + desiredPos);
+                    Debug.Log("Level 1 | inserted pos 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 3:
@@ -68,7 +68,7 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos3 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos4 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
 
-                    Debug.Log("Level1 | inserted pos 3 | desiredPos: " + desiredPos);
+                    Debug.Log("Level 1 | inserted pos 3 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 4:
@@ -84,7 +84,7 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, 299.6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     GlassRoad2.SetActive(true);
                     Road2.SetActive(false);
-                    Debug.Log("Level1 | inserted pos 4 | desiredPos: " + desiredPos);
+                    Debug.Log("Level 1 | inserted pos 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
             }
         }

@@ -19,7 +19,7 @@ public class ProgressBarController : MonoBehaviour
 
     void Update()
     {
-        if (Glass.controlGlassSolid == 0 && LevelEndController.lvlEndEnter == false && RoadGlassController.roadGlassBroke == false)
+        if (CarController.gameEnd == false && LevelEndController.lvlEndEnter == false && RoadGlassController.roadGlassBroke == false)
         {
             realtimeDistance = getDistance();
             float progressValue = Mathf.InverseLerp(fullDistance, 0f, realtimeDistance);
@@ -28,7 +28,6 @@ public class ProgressBarController : MonoBehaviour
             {
                 updateProgressBar(progressValue);
             }
-
         }
     }
 
