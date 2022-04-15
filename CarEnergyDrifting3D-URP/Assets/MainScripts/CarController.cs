@@ -12,8 +12,11 @@ public class CarController : MonoBehaviour
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
+    public delegate void coinValueAction();
+    public static event coinValueAction coinGained;
     public static bool carStopped, carStopping, circleLvlEnd, gameEnd;
     public static float MainCarWeight, MainSpeed;
+    public static int coinVal;
     float spin, turn, skidMarkControl, angle;
 
    // public delegate void levelEnd();
@@ -21,6 +24,7 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
+        coinVal = 0;
         isDraging = circleLvlEnd = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
@@ -358,12 +362,15 @@ public class CarController : MonoBehaviour
 
         if (coll.gameObject.CompareTag("Coin"))
         {
-            Coin_Controller.coinCurrent += 1;
+            Coin_Controller.coinCurrent++;
+            coinVal++;
+
             Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
             Quaternion posParticle = Quaternion.Euler(boostTakenPos);
             Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
             Destroy(coll.gameObject);
 
+            coinGained();
             Debug.Log("CoinTake: " + Coin_Controller.coinCurrent);
 
         }
