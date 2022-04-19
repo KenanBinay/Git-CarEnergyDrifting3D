@@ -370,6 +370,7 @@ public class CarController : MonoBehaviour
             Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
             Destroy(coll.gameObject);
 
+            Score_Controller._scoreMain += 5;
             coinGained();
             Debug.Log("CoinTake: " + Coin_Controller.coinCurrent);
 

@@ -50,5 +50,6 @@ public class LevelEndUI_Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         star_Delay = true;
+
     }
 }
