@@ -330,7 +330,6 @@ public class CarController : MonoBehaviour
 
             Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
             Quaternion posParticle = Quaternion.Euler(boostTakenPos);
-            //  Instantiate(boostTakenParticle, boostTakenPos * 1.02349f, rotParticle);
             Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
 
             Destroy(coll.gameObject);
@@ -347,7 +346,6 @@ public class CarController : MonoBehaviour
 
             Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
             Quaternion posParticle = Quaternion.Euler(boostTakenPos);
-          //  Instantiate(boostTakenParticle, boostTakenPos * 1.02349f, rotParticle);
             Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
 
             Debug.Log("WeightIncrease weight: " + MainCarWeight);
@@ -370,7 +368,7 @@ public class CarController : MonoBehaviour
             Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
             Destroy(coll.gameObject);
 
-            Score_Controller._scoreMain += 5;
+           // Score_Controller._scoreMain += 5;
             coinGained();
             Debug.Log("CoinTake: " + Coin_Controller.coinCurrent);
 

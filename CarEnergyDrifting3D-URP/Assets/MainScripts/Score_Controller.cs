@@ -13,7 +13,7 @@ public class Score_Controller : MonoBehaviour
 
     void Update()
     {
-        if (CarController.gameEnd == false && LevelEndController.lvlEndEnter == false)
+     /*   if (CarController.gameEnd == false && LevelEndController.lvlEndEnter == false)
         {
             _scoreMain += 2 * Time.deltaTime;
         }
@@ -21,6 +21,7 @@ public class Score_Controller : MonoBehaviour
         {
             Debug.Log("FINAL SCORE : " + _scoreMain);
         }
+     */
     }
 
 }
