@@ -1,27 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Next_Button : MonoBehaviour
 {
-    [SerializeField] GameObject _carMain, _skidMarks, _mainCam;
+    [SerializeField] private Image _img;
+    [SerializeField] private Sprite _default, _pressed;
     public static bool nextLevel_Button;
+    bool _buttonClick;
     void Start()
     {
-        
+        _img.sprite = _default;
+        _buttonClick = false;
     }
 
-    public void NextLevel_Button()
+    public void NextLevel()
+    {    
+
+        if (_buttonClick == false)
+        {
+            _img.sprite = _pressed;
+            StartCoroutine(nextButtonDelay());
+        }
+        else
+        {
+            if (LevelController.currentLevel != 9) { LevelController.currentLevel++; }
+
+            Debug.Log("next level  | currentLevel : " + LevelController.currentLevel);
+
+          /*  switch (LevelController.currentLevel)
+            {
+                case 0:
+                    SceneManager.LoadScene("levelMap_1");
+                    break;
+                case 1:
+                    SceneManager.LoadScene("levelMap_2");
+                    break;
+                case 2:
+                    SceneManager.LoadScene("levelMap_3");
+                    break;
+                case 3:
+                    SceneManager.LoadScene("levelMap_4");
+                    break;
+                case 4:
+                    SceneManager.LoadScene("levelMap_5");
+                    break;
+                case 5:
+                    SceneManager.LoadScene("levelMap_6");
+                    break;
+                case 6:
+                    SceneManager.LoadScene("levelMap_7");
+                    break;
+                case 7:
+                    SceneManager.LoadScene("levelMap_8");
+                    break;
+                case 8:
+                    SceneManager.LoadScene("levelMap_9");
+                    break;
+            }
+          */
+        }
+    }
+
+    IEnumerator nextButtonDelay()
     {
-        if (LevelController.currentLevel != 9) { LevelController.currentLevel++; }
-
-        _carMain.transform.position = new Vector3(-0.25f, -1.55f, 1.69f);
-        _mainCam.transform.position = new Vector3(0, 3.1f, -7.59f);
-        _mainCam.transform.rotation = Quaternion.Euler(15, 0, 0);
-        LevelEndController.endDriftCntrl = LevelEndController.lvlEndEnter = CarController.gameEnd = LevelEndUI_Controller.LevelEndUI_Delay = LevelEndUI_Controller.star_Delay = false;
-        LevelEndController.clickCounter = 0;
-        _skidMarks.SetActive(true);
-        Debug.Log("next level  | currentLevel : " + LevelController.currentLevel);
+        yield return new WaitForSeconds(0.5f);
+        _buttonClick = true;
+        NextLevel();
     }
-
 }

@@ -22,11 +22,11 @@ public class GlassSpawner : MonoBehaviour
         coinAmount = coinAmounts[Random.Range(0, coinAmounts.Length)];
 
         //   if (sceneName == "level1")
-        if (LevelController.currentLevel == 0)
+        if (sceneName == "levelMap_1")
         {
             switch (desiredPos)
             {
-                case 1:                                
+                case 1:
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos1), transform.rotation);
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos3), transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos1 - 65), transform.rotation);
@@ -89,7 +89,7 @@ public class GlassSpawner : MonoBehaviour
             }
         }
 
-        if (LevelController.currentLevel == 1)
+        if (sceneName == "levelMap_2")
         {
             switch (desiredPos)
             {

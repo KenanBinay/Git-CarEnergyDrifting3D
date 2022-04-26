@@ -8,7 +8,7 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
-    private bool isDraging,directApp;
+    private bool isDraging, directApp;
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
@@ -37,7 +37,7 @@ public class CarController : MonoBehaviour
     void FixedUpdate()
     {
         #region InGameController
-      
+
         if (LevelEndController.clickCounter < 6)
         {
             if (isDraging)
@@ -56,14 +56,14 @@ public class CarController : MonoBehaviour
             {
                 if (transform.eulerAngles.y != 180)
                 {
-            
+
                     if (transform.eulerAngles.y < 180)
                     {
                         // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
                         transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime);
 
                     }
-                
+
                     if (transform.eulerAngles.y > 180)
                     {
                         // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
@@ -81,6 +81,11 @@ public class CarController : MonoBehaviour
 
                 }
             }
+            else
+            {
+
+            }
+
         }
 
         if (LevelEndController.lvlEndEnter == false && LevelEndController.clickCounter < 6)
@@ -121,16 +126,15 @@ public class CarController : MonoBehaviour
                     if (transform.position.x >= -3f) { LocalMoveL(XPos); }
 
                     if (transform.position.x <= -3f) { CarRotateHome(); }
-
                 }
                 else
                 {
                     //  Debug.Log("Right X= " + swipeDelta.x.ToString() + " || XPos= " + transform.position.x);
                     XPos = 1;
+
                     if (transform.position.x <= 3f) { LocalMoveR(XPos); }
 
                     if (transform.position.x >= 3f) { CarRotateHome(); }
-
                 }
             }
             else { XPos = 0; }
@@ -148,7 +152,10 @@ public class CarController : MonoBehaviour
 
             }
 
-            if (gameEnd == false) { transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime; } //Car move
+            if (gameEnd == false) //Car move
+            {
+                transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+            }
             else
             {
                 if (_frontCollision)
@@ -159,7 +166,7 @@ public class CarController : MonoBehaviour
                         crashEffects.SetActive(true);
                     }
                 }
-               
+
             }
 
             if (skidMarkControl == 1)
@@ -170,9 +177,6 @@ public class CarController : MonoBehaviour
 
 
         }
-        
-    
-
         #endregion
 
         if (LevelEndController.lvlEndEnter && LevelEndController.endDriftCntrl == false && LevelEndController.clickCounter != 6)
