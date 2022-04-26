@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
-    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect;
+    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
     private bool isDraging,directApp;
@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
 
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
-    public static bool carStopped, carStopping, circleLvlEnd, gameEnd;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision;
     public static float MainCarWeight, MainSpeed;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle;
@@ -25,13 +25,13 @@ public class CarController : MonoBehaviour
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
         coinVal = 0;
-        isDraging = circleLvlEnd = false;
+        isDraging = circleLvlEnd = _frontCollision = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
         center = new Vector3(0, -1.55f, 454);
-
+        crashEffects.SetActive(false);
     }
 
     void FixedUpdate()
@@ -149,7 +149,18 @@ public class CarController : MonoBehaviour
             }
 
             if (gameEnd == false) { transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime; } //Car move
-            else { Debug.Log("GameOver!!"); }
+            else
+            {
+                if (_frontCollision)
+                {
+                    if (!crashEffects.activeSelf)
+                    {
+                        Debug.Log("GameOver!!");
+                        crashEffects.SetActive(true);
+                    }
+                }
+               
+            }
 
             if (skidMarkControl == 1)
             {

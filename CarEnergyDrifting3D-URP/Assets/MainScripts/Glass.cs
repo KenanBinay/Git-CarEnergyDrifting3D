@@ -26,6 +26,7 @@ public class Glass : MonoBehaviour
             }
             else
             {
+                CarController._frontCollision = true;
                 CarController.gameEnd = true;
             }
         }

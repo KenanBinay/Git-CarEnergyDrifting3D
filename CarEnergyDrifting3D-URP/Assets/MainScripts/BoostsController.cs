@@ -8,8 +8,9 @@ public class BoostsController : MonoBehaviour
     public GameObject particle;
     void Start()
     {
+
         if (gameObject.CompareTag("SpeedBoost"))
-        {       
+        {
             OriginPos = new Vector3(transform.localPosition.x, -4.5f, transform.localPosition.z);
             float PosX = Random.Range(-0.63f, 5.56f);
 
@@ -22,17 +23,6 @@ public class BoostsController : MonoBehaviour
 
             transform.localPosition = new Vector3(PosX, OriginPos.y, OriginPos.z);
         }
-       
-    }
-/*
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (gameObject.CompareTag("PlayerCar"))
-        {
-            Quaternion posParticle = Quaternion.Euler(OriginPos);
-            Instantiate(particle, OriginPos, transform.rotation);
 
-        }
     }
-*/
 }

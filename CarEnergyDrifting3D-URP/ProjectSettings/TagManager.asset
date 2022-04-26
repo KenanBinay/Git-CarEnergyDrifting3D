@@ -16,6 +16,7 @@ TagManager:
   - stopSignRB
   - lvlEndCircle
   - Coin
+  - roadTurn
   layers:
   - Default
   - TransparentFX

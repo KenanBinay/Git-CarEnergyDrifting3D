@@ -7,7 +7,7 @@ public class LevelEndUI_Controller : MonoBehaviour
 {
     public Transform LevelEnd_UI;
     public TMPro.TextMeshProUGUI coinTxt_levelEndUI;
-    bool LevelEndUI_Delay,star_Delay;
+    public static bool LevelEndUI_Delay,star_Delay;
     Vector3 newPosUp = new Vector3(0, 114, 572);
     //  Vector3 newPosDown = new Vector3(0, -1200f, -2377f);
     private Vector3 endVelocity = Vector3.zero;
@@ -53,6 +53,10 @@ public class LevelEndUI_Controller : MonoBehaviour
                 }
 
             }
+        }
+        else
+        {
+            LevelEnd_UI.localPosition = new Vector3(0, -3000f, 572);
         }
     }
 

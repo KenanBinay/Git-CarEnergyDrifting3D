@@ -61,6 +61,14 @@ public class LevelEndController : MonoBehaviour
                 carBodyM.transform.rotation = Quaternion.Slerp(carBodyM.transform.rotation, smoothedRot, CarRotSmooth * Time.deltaTime);
             }
         }
+        else
+        {
+            RedLight.SetActive(true);
+            YellowLight.SetActive(false);
+            GreenLight.SetActive(false);
+            flameLooped.SetActive(false);
+            TxtTap.SetActive(false);
+        }
     }
 
     void ClickCount()
