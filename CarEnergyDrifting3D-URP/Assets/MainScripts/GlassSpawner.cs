@@ -7,7 +7,7 @@ public class GlassSpawner : MonoBehaviour
 {
     [SerializeField] Vector3 originPos;
     public float pos1, pos2, pos3, pos4;
-    public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign;
+    public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign,roadBlocker;
     public static int coinAmount;
     public static float desiredPos;
     void Start()
@@ -96,6 +96,8 @@ public class GlassSpawner : MonoBehaviour
                 case 1:
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos1), transform.rotation);
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos4), transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 85), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 250), roadBlocker.transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos1 - 65), transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos4 - 65), transform.rotation);
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos1), transform.rotation = Quaternion.Euler(0, 90, 0));
@@ -112,6 +114,7 @@ public class GlassSpawner : MonoBehaviour
                 case 2:
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos3), transform.rotation);
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos4), transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 111), roadBlocker.transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos3 - 65), transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos4 - 65), transform.rotation);
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos3), transform.rotation = Quaternion.Euler(0, 90, 0));
@@ -128,6 +131,7 @@ public class GlassSpawner : MonoBehaviour
                 case 3:
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos2), transform.rotation);
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos4), transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 220), roadBlocker.transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos2 - 65), transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos4 - 65), transform.rotation);
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos2), transform.rotation = Quaternion.Euler(0, 90, 0));

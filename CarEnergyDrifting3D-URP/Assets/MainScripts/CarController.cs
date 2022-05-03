@@ -15,7 +15,7 @@ public class CarController : MonoBehaviour
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
     public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision;
-    public static float MainCarWeight, MainSpeed;
+    public static float MainCarWeight, MainSpeed,_carTransformZ;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle;
 
@@ -23,6 +23,7 @@ public class CarController : MonoBehaviour
   //  public static event levelEnd enterEnd;
     private void Start()
     {
+     
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
         coinVal = 0;
         isDraging = circleLvlEnd = _frontCollision = false;
@@ -155,6 +156,7 @@ public class CarController : MonoBehaviour
             if (gameEnd == false) //Car move
             {
                 transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+                _carTransformZ = transform.position.z;
             }
             else
             {
