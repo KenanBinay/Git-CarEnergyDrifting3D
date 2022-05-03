@@ -17,6 +17,7 @@ TagManager:
   - lvlEndCircle
   - Coin
   - roadTurn
+  - roadBlocker
   layers:
   - Default
   - TransparentFX
