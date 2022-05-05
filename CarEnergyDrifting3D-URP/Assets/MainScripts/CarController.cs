@@ -31,7 +31,6 @@ public class CarController : MonoBehaviour
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
-        center = new Vector3(0, -1.55f, 454);
         crashEffects.SetActive(false);
     }
 
@@ -413,6 +412,7 @@ public class CarController : MonoBehaviour
         if (other.gameObject.CompareTag("lvlEndCircle"))
         {
             circleLvlEnd = true;
+            center = new Vector3(0, -1.55f, transform.position.z + 7);
         }
     }
 

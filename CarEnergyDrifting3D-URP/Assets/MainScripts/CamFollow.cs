@@ -15,7 +15,7 @@ public class CamFollow : MonoBehaviour
     {
         camMovedFinish = false;    
     }
-
+ 
     void FixedUpdate()
     {
         if (LevelEndController.lvlEndEnter == false)
@@ -44,7 +44,7 @@ public class CamFollow : MonoBehaviour
                 else if (delayWaited)
                 {
                     camMovedFinish = true;
-                    Vector3 desiredPosition = new Vector3(lvlEndDriftCamPos.x, lvlEndDriftCamPos.y, lvlEndDriftCamPos.z);
+                    Vector3 desiredPosition = new Vector3(lvlEndDriftCamPos.x, lvlEndDriftCamPos.y, transform.position.z);
                     Vector3 desiredLook = new Vector3(lvlEndDriftCamRot.x, lvlEndDriftCamRot.y, 0);
                     Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, lvlEndSmoothSpeed);
                     Quaternion smoothedRot = Quaternion.Euler(desiredLook);
