@@ -7,7 +7,7 @@ public class GlassSpawner : MonoBehaviour
 {
     [SerializeField] Vector3 originPos;
     public float pos1, pos2, pos3, pos4;
-    public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign,roadBlocker;
+    public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign, roadBlocker;
     public static int coinAmount;
     public static float desiredPos;
     void Start()
@@ -46,7 +46,7 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos4), transform.rotation);
                     Instantiate(GlassPrefab, new Vector3(0, 0, pos1), transform.rotation);
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos4 - 65), transform.rotation);
-                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos1 - 65), transform.rotation);      
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.35f, pos1 - 65), transform.rotation);
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos1), transform.rotation = Quaternion.Euler(0, 90, 0));
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos4), transform.rotation = Quaternion.Euler(0, 90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos1 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
@@ -172,6 +172,28 @@ public class GlassSpawner : MonoBehaviour
                     break;
             }
 
+        }
+
+        if (sceneName == "levelMap_3")
+        {
+            switch (desiredPos)
+            {
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+            }
         }
     }
 }

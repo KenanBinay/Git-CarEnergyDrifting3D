@@ -42,31 +42,31 @@ public class Next_Button : MonoBehaviour
 
             /*  switch (LevelController.currentLevel)
               {
-                  case 0:
+                  case 1:
                       SceneManager.LoadScene("levelMap_1");
                       break;
-                  case 1:
+                  case 2:
                       SceneManager.LoadScene("levelMap_2");
                       break;
-                  case 2:
+                  case 3:
                       SceneManager.LoadScene("levelMap_3");
                       break;
-                  case 3:
+                  case 4:
                       SceneManager.LoadScene("levelMap_4");
                       break;
-                  case 4:
+                  case 5:
                       SceneManager.LoadScene("levelMap_5");
                       break;
-                  case 5:
+                  case 6:
                       SceneManager.LoadScene("levelMap_6");
                       break;
-                  case 6:
+                  case 7:
                       SceneManager.LoadScene("levelMap_7");
                       break;
-                  case 7:
+                  case 8:
                       SceneManager.LoadScene("levelMap_8");
                       break;
-                  case 8:
+                  case 9:
                       SceneManager.LoadScene("levelMap_9");
                       break;
               }
