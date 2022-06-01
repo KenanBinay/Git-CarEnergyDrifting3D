@@ -382,10 +382,10 @@ public class CarController : MonoBehaviour
             Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
             Quaternion posParticle = Quaternion.Euler(boostTakenPos);
             Instantiate(boostTakenParticle, boostTakenPos, rotParticle);
-            Destroy(coll.gameObject);
+            coinGained();
 
            // Score_Controller._scoreMain += 5;
-            coinGained();
+            Destroy(coll.gameObject);
             Debug.Log("CoinTake: " + Coin_Controller.coinCurrent);
 
         }
