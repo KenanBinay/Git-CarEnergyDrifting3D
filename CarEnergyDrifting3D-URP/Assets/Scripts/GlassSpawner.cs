@@ -250,5 +250,27 @@ public class GlassSpawner : MonoBehaviour
                     break;
             }
         }
+
+        if (sceneName == "levelMap_4")
+        {
+            switch (desiredPos)
+            {
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+            }
+        }
     }
 }

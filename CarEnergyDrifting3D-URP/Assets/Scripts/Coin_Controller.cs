@@ -12,7 +12,7 @@ public class Coin_Controller : MonoBehaviour
      //   Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin_main"));
 
         float posX = Random.Range(-3.3f, 3.1f);
-        transform.localPosition = new Vector3(posX, -1.1f, transform.localPosition.z);
+        transform.localPosition = new Vector3(posX, transform.localPosition.y, transform.localPosition.z);
     }
 
     void Update()
