@@ -11,7 +11,7 @@ public class roadBlockerController : MonoBehaviour
     void Start()
     {
         
-        downPos = new Vector3(_blockers.transform.position.x, -2f, _blockers.transform.position.z);
+        downPos = new Vector3(_blockers.transform.position.x, -3f, _blockers.transform.position.z);
         _dropPoint = transform.position.z - 35;
         _blockers.transform.position = downPos;
     }
@@ -21,7 +21,7 @@ public class roadBlockerController : MonoBehaviour
         _distance = CarController._carTransformZ;
         if (_distance > _dropPoint)
         {
-            _blockers.transform.localPosition = Vector3.SmoothDamp(_blockers.transform.localPosition, upPos, ref endVelocity, 0.2f);
+            _blockers.transform.localPosition = Vector3.SmoothDamp(_blockers.transform.localPosition, upPos, ref endVelocity, 0.25f);
         }
     }
 

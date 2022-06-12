@@ -37,9 +37,9 @@ public class coinSpawnerController : MonoBehaviour
                 Vector3 spawnPointZ_Stack = new Vector3 (0, 15.3f, zPosCoin);
 
                 if (zPosCoin != 0)
-                {
-                    Instantiate(coin, spawnPointZ, transform.rotation = Quaternion.Euler(90, -40, 0));
-                    Instantiate(coinStack, spawnPointZ_Stack, transform.rotation = Quaternion.Euler(180, 0, 180));
+                {                       
+                    if (GlassSpawner.sceneName == "levelMap_4") { Instantiate(coinStack, spawnPointZ_Stack, transform.rotation = Quaternion.Euler(180, 0, 180)); }
+                    else { Instantiate(coin, spawnPointZ, transform.rotation = Quaternion.Euler(90, -40, 0)); }
                     coinCount++;
                 }                    
             }

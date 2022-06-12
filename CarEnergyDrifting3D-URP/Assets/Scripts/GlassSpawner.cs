@@ -10,16 +10,18 @@ public class GlassSpawner : MonoBehaviour
     public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign, roadBlocker;
     public static int coinAmount;
     public static float desiredPos;
+    public static string sceneName;
+
     void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
+        sceneName = currentScene.name;
 
         int[] GlassPos = { 1, 2, 3, 4 };
         desiredPos = GlassPos[Random.Range(0, GlassPos.Length)];
 
         int[] coinAmounts = { 6, 7, 8, 9, 10 };
-        coinAmount = coinAmounts[Random.Range(0, coinAmounts.Length)];
+        coinAmount = coinAmounts[Random.Range(3, coinAmounts.Length)];
 
         //   if (sceneName == "level1")
         if (sceneName == "levelMap_1")
@@ -256,19 +258,31 @@ public class GlassSpawner : MonoBehaviour
             switch (desiredPos)
             {
                 case 1:
-
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 118), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 192), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 265), roadBlocker.transform.rotation);
+                    Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 2:
-
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 50), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 144), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 214), roadBlocker.transform.rotation);
+                    Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 3:
-
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 50), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 192), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 214), roadBlocker.transform.rotation);
+                    Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 4:
-
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 110), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 144), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 265), roadBlocker.transform.rotation);
+                    Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
             }
         }

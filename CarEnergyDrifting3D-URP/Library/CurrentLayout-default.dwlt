@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,8 +74,8 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LoadedToolbars:
-  - {fileID: 33}
-  m_MainToolbar: {fileID: 33}
+  - {fileID: 31}
+  m_MainToolbar: {fileID: 31}
   m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
@@ -121,10 +121,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 938, y: 492}
-  m_MaxSize: {x: 22006, y: 14042}
+  m_MinSize: {x: 937, y: 492}
+  m_MaxSize: {x: 22005, y: 14042}
   vertical: 0
-  controlID: 17
+  controlID: 1195
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_MinSize: {x: 259, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 18
+  controlID: 995
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_MinSize: {x: 259, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 19
+  controlID: 996
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 122
+  controlID: 1144
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -380,8 +380,8 @@ MonoBehaviour:
     y: 0
     width: 434
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 27}
   m_Panes:
   - {fileID: 27}
@@ -507,20 +507,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6a5b0000
-      m_LastClickedID: 23402
-      m_ExpandedIDs: 5689fdff5e89fdff2e8afdff409afeff68fbffff10590000d45f00004862000064620000e6730000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 68fbffff2c600000a062000010710000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: CoinStack(Clone)
-        m_OriginalName: CoinStack(Clone)
+        m_Name: CanvasMain
+        m_OriginalName: CanvasMain
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -170134
+        m_UserData: 28944
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -594,9 +594,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.014025986, y: -1.180578, z: 1.4239209}
+    m_Target: {x: 135.22173, y: 165.2012, z: 369.6153}
     speed: 2
-    m_Value: {x: -0.014025915, y: -1.1805773, z: 1.4239503}
+    m_Value: {x: 135.22173, y: 165.2012, z: 369.6153}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -643,13 +643,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.08885915, y: -0.042618457, z: -0.0026872018, w: 0.9947448}
+    m_Target: {x: 0.2640986, y: -0.68772286, z: 0.28518003, w: 0.6125214}
     speed: 2
-    m_Value: {x: 0.088893086, y: -0.042634733, z: -0.0026882282, w: 0.9951247}
+    m_Value: {x: 0.2646292, y: -0.68707097, z: 0.28489456, w: 0.6137914}
   m_Size:
-    m_Target: 3.497644
+    m_Target: 2.0063148
     speed: 2
-    m_Value: 3.497644
+    m_Value: 2.0063152
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -667,7 +667,7 @@ MonoBehaviour:
     m_FarClip: 9997.77
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.22281806, y: -0.09491372, z: 0.016121503, w: 0.9697486}
+  m_LastSceneViewRotation: {x: 0.21172082, y: -0.036829576, z: 0.0010438012, w: 0.97623867}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1859,22 +1859,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3DPrefabs
+    - Assets/Textures/Desert/Houses
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 44
   m_LastFolders:
-  - Assets/3DPrefabs
+  - Assets/Textures/Desert/Houses
   m_LastFoldersGridSize: 44
   m_LastProjectPath: C:\Users\kenan\Documents\Git-CarEnergyDrifting3D\CarEnergyDrifting3D-URP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 287d0000
-    m_LastClickedID: 32040
-    m_ExpandedIDs: 00000000767c0000787c00007c7c0000407d000000ca9a3b
+    scrollPos: {x: 0, y: 295}
+    m_SelectedIDs: 28f70100
+    m_LastClickedID: 128808
+    m_ExpandedIDs: 00000000ca7f0000cc7f0000ce7f0000d07f00005e80000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1902,7 +1902,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000767c0000787c00007a7c00007c7c0000
+    m_ExpandedIDs: 00000000ca7f0000cc7f0000ce7f0000d07f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1929,7 +1929,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000886a00006e3d00003a49000008390000cc300000e43800005a4200007c360000f238000098380000ba3a00003846000086410000d46800009e4400000042000074eaffffbc85050000000000d0860000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1980,12 +1980,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 282
     y: 726
-    width: 828
+    width: 830
     height: 273
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 51408
+  m_LastSelectedObjectID: 28944
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2150,56 +2150,6 @@ MonoBehaviour:
     height: 926
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &31
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12059, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEditor.CoreModule:UnityEditor.Experimental.TerrainAPI:PaintTextureTool
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Failed to load
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 320
-    height: 550
-  m_ViewDataDictionary: {fileID: 0}
---- !u!114 &32
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12059, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEditor.CoreModule:UnityEditor.Experimental.TerrainAPI:SetHeightTool
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Failed to load
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 320
-    height: 550
-  m_ViewDataDictionary: {fileID: 0}
---- !u!114 &33
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
