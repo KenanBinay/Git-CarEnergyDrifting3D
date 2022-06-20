@@ -258,30 +258,45 @@ public class GlassSpawner : MonoBehaviour
             switch (desiredPos)
             {
                 case 1:
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos1), transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos3), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos1 - 65), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos3 - 65), transform.rotation);
                     Instantiate(roadBlocker, new Vector3(0, -0.937f, 118), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 192), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 265), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 245), roadBlocker.transform.rotation);
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 2:
-                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 50), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 144), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 214), roadBlocker.transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos2), transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos4), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos2 - 65), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos4 - 65), transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 60), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 185), roadBlocker.transform.rotation);
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 3:
-                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 50), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 192), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 214), roadBlocker.transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos2), transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos3), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos2 - 65), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos3 - 65), transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 65), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 170), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 230), roadBlocker.transform.rotation);
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
                 case 4:
-                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 110), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 144), roadBlocker.transform.rotation);
-                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 265), roadBlocker.transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos1), transform.rotation);
+                    Instantiate(GlassPrefab, new Vector3(0, 0, pos4), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos1 - 65), transform.rotation);
+                    Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos4 - 65), transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 80), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 130), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(0, -0.937f, 165), roadBlocker.transform.rotation);
+                    Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 215), roadBlocker.transform.rotation);
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
             }
