@@ -31,46 +31,35 @@ public class Next_Button : MonoBehaviour
         {
             if (pressControl == false)
             {
-                if (LevelController.currentLevel != 9)
+                if (LevelController.currentLevel != 4)
                 {
                     LevelController.currentLevel++;
                     pressControl = true;
+                    sceneLoad();
                 }
-            }
+                else { }
+            }     
+        }
+    }
 
-            Debug.Log("next level  | currentLevel : " + LevelController.currentLevel);
+    void sceneLoad()
+    {
+        Debug.Log("next level  | currentLevel : " + LevelController.currentLevel);
 
-            /*  switch (LevelController.currentLevel)
-              {
-                  case 1:
-                      SceneManager.LoadScene("levelMap_1");
-                      break;
-                  case 2:
-                      SceneManager.LoadScene("levelMap_2");
-                      break;
-                  case 3:
-                      SceneManager.LoadScene("levelMap_3");
-                      break;
-                  case 4:
-                      SceneManager.LoadScene("levelMap_4");
-                      break;
-                  case 5:
-                      SceneManager.LoadScene("levelMap_5");
-                      break;
-                  case 6:
-                      SceneManager.LoadScene("levelMap_6");
-                      break;
-                  case 7:
-                      SceneManager.LoadScene("levelMap_7");
-                      break;
-                  case 8:
-                      SceneManager.LoadScene("levelMap_8");
-                      break;
-                  case 9:
-                      SceneManager.LoadScene("levelMap_9");
-                      break;
-              }
-            */
+        switch (LevelController.currentLevel)
+        {
+            case 1:
+                SceneManager.LoadScene("levelMap_1");
+                break;
+            case 2:
+                SceneManager.LoadScene("levelMap_2");
+                break;
+            case 3:
+                SceneManager.LoadScene("levelMap_3");
+                break;
+            case 4:
+                SceneManager.LoadScene("levelMap_4");
+                break;
         }
     }
 

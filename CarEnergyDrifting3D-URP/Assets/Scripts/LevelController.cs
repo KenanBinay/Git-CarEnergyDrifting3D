@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public static int currentLevel, levelSave;
+    public static int currentLevel = 1, levelSave;
 
     void Start()
     {
