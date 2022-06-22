@@ -264,6 +264,10 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos3 - 65), transform.rotation);
                     Instantiate(roadBlocker, new Vector3(0, -0.937f, 118), roadBlocker.transform.rotation);
                     Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 245), roadBlocker.transform.rotation);
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos1), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos3), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos1 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos3 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -274,6 +278,10 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(BoostsPrefab, new Vector3(-2.23f, 2.3f, pos4 - 65), transform.rotation);
                     Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 60), roadBlocker.transform.rotation);
                     Instantiate(roadBlocker, new Vector3(0, -0.937f, 185), roadBlocker.transform.rotation);
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos2), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos4), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos2 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos4 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -285,6 +293,10 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(roadBlocker, new Vector3(0, -0.937f, 65), roadBlocker.transform.rotation);
                     Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 170), roadBlocker.transform.rotation);
                     Instantiate(roadBlocker, new Vector3(0, -0.937f, 230), roadBlocker.transform.rotation);
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos2), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos3), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos2 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos3 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -297,6 +309,10 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 130), roadBlocker.transform.rotation);
                     Instantiate(roadBlocker, new Vector3(0, -0.937f, 165), roadBlocker.transform.rotation);
                     Instantiate(roadBlocker, new Vector3(-4.3f, -0.937f, 215), roadBlocker.transform.rotation);
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos1), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos4), transform.rotation = Quaternion.Euler(0, 90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos1 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
+                    Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos4 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
             }
