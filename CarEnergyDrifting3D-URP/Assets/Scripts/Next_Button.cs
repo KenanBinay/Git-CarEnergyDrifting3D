@@ -9,6 +9,8 @@ public class Next_Button : MonoBehaviour
     [SerializeField] private Sprite _default, _pressed;
     public static bool nextLevel_Button;
     bool _buttonClick, pressControl;
+    private int[] levelRand = { 1, 2, 3, 4 };
+
     void Start()
     {
         pressControl = false;
@@ -25,7 +27,6 @@ public class Next_Button : MonoBehaviour
                 _img.sprite = _pressed;
                 StartCoroutine(nextButtonDelay());
             }
-
         }
         else
         {
@@ -37,7 +38,12 @@ public class Next_Button : MonoBehaviour
                     pressControl = true;
                     sceneLoad();
                 }
-                else { }
+                else if (LevelController.currentLevel >= 4)
+                {
+                    LevelController.currentLevel = levelRand[Random.Range(0, levelRand.Length)];
+                    pressControl = true;
+                    sceneLoad();
+                }
             }     
         }
     }

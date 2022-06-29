@@ -81,10 +81,7 @@ public class CarController : MonoBehaviour
 
                 }
             }
-            else
-            {
-
-            }
+            else { }
 
         }
 
@@ -141,7 +138,6 @@ public class CarController : MonoBehaviour
 
             if (MainSpeed >= 2)
             {
-
                 if (spin != 35)
                 {
                     // Debug.Log("360 Spin Turn!!");
@@ -149,7 +145,6 @@ public class CarController : MonoBehaviour
                     transform.Rotate(Vector3.up * 500 * Time.deltaTime);
                     spin++;
                 }
-
             }
 
             if (gameEnd == false) //Car move
