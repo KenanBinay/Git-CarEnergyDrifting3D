@@ -10,11 +10,10 @@ public class Menu_Controller : MonoBehaviour
     public Button button_TapToPLay, button_shop, button_settings;
     public Animator shopIcon;
     public TextMeshProUGUI coinText; 
-    public static int coinMain;
 
     void Start()
     {
-        coinText.text = coinMain.ToString();
+        coinText.text = LevelController.coinSaved.ToString();     
     }
 
     void Update()

@@ -13,8 +13,10 @@ public class LevelEndUI_Controller : MonoBehaviour
     private Vector3 endVelocity = Vector3.zero;
     public GameObject tireSkidMarks, _starLeft, _starMid, _starRight;
     int scoreTime;
+    bool saved;
     void Start()
     {
+        saved = false;
         LevelEndUI_Delay = star_Delay = false;
         _starLeft.SetActive(false);
         _starMid.SetActive(false);
@@ -32,6 +34,7 @@ public class LevelEndUI_Controller : MonoBehaviour
             }
             else if (LevelEndUI_Delay)
             {
+
                 LevelEnd_UI.localPosition = Vector3.SmoothDamp(LevelEnd_UI.localPosition, newPosUp, ref endVelocity, 0.2f);
 
                 if (LevelEnd_UI.localPosition.y > -300)
@@ -51,13 +54,21 @@ public class LevelEndUI_Controller : MonoBehaviour
                         coinTxt_levelEndUI.text = scoreTime.ToString();
                     }
                 }
-
+                if (saved == false) { saveIt(); }
             }
         }
         else
         {
             LevelEnd_UI.localPosition = new Vector3(0, -3000f, 572);
         }
+    }
+
+    void saveIt()
+    {
+        LevelController.coinSaved += CarController.coinVal;
+        PlayerPrefs.SetInt("coin", LevelController.coinSaved);
+        Debug.Log("coin: " + PlayerPrefs.GetInt("coin", 0));
+        saved = true;
     }
 
     public IEnumerator delayLevelEndUI()
