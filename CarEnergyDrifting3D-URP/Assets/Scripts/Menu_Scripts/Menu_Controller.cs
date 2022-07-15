@@ -9,11 +9,14 @@ public class Menu_Controller : MonoBehaviour
 {
     public Button button_TapToPLay, button_shop, button_settings;
     public Animator shopIcon;
-    public TextMeshProUGUI coinText; 
+    public TextMeshProUGUI coinText;
+    public GameObject mainMenu, shopMenu;
 
     void Start()
     {
-        coinText.text = LevelController.coinSaved.ToString();     
+        coinText.text = LevelController.coinSaved.ToString();
+        shopMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     void Update()
@@ -31,7 +34,8 @@ public class Menu_Controller : MonoBehaviour
 
     void shopLoad()
     {
-
+        mainMenu.SetActive(false);
+        shopMenu.SetActive(true);
     }
 
     void settingsLoad()
