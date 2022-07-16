@@ -7,10 +7,10 @@ using TMPro;
 
 public class Menu_Controller : MonoBehaviour
 {
-    public Button button_TapToPLay, button_shop, button_settings;
+    public Button button_TapToPLay, button_shop, button_settings, button_home, button_buy;
     public Animator shopIcon;
     public TextMeshProUGUI coinText;
-    public GameObject mainMenu, shopMenu;
+    public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed;
 
     void Start()
     {
@@ -30,6 +30,8 @@ public class Menu_Controller : MonoBehaviour
         button_TapToPLay.onClick.AddListener(() => SceneManager.LoadScene(LevelController.currentLevel));
         button_shop.onClick.AddListener(() => shopLoad());
         button_settings.onClick.AddListener(() => settingsLoad());
+        button_home.onClick.AddListener(() => homeLoad());
+        button_buy.onClick.AddListener(() => buyButtonOnPress());
     }
 
     void shopLoad()
@@ -38,8 +40,28 @@ public class Menu_Controller : MonoBehaviour
         shopMenu.SetActive(true);
     }
 
+    void homeLoad()
+    {
+        mainMenu.SetActive(true);
+        shopMenu.SetActive(false);
+    }
+
     void settingsLoad()
     {
 
+    }
+
+    void buyButtonOnPress()
+    {
+        buyButtonNormal.SetActive(false);
+        buyButtonPressed.SetActive(true);
+        StartCoroutine(buyButtonDelay());
+    }
+
+    IEnumerator buyButtonDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        buyButtonPressed.SetActive(false);
+        buyButtonNormal.SetActive(true);
     }
 }
