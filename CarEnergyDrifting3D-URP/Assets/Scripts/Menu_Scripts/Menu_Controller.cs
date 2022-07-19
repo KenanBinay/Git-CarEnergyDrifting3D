@@ -7,10 +7,11 @@ using TMPro;
 
 public class Menu_Controller : MonoBehaviour
 {
-    public Button button_TapToPLay, button_shop, button_settings, button_home, button_buy;
+    public Button button_TapToPLay, button_shop, button_settings, button_home, button_buy, button_R, button_L;
     public Animator shopIcon;
     public TextMeshProUGUI coinText;
     public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed;
+    int carNumb;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class Menu_Controller : MonoBehaviour
         button_settings.onClick.AddListener(() => settingsLoad());
         button_home.onClick.AddListener(() => homeLoad());
         button_buy.onClick.AddListener(() => buyButtonOnPress());
+        button_R.onClick.AddListener(() => carNumb++);
+        button_R.onClick.AddListener(() => carNumb--);
     }
 
     void shopLoad()
