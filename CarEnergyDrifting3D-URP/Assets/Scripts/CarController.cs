@@ -19,11 +19,8 @@ public class CarController : MonoBehaviour
     public static int coinVal;
     float spin, turn, skidMarkControl, angle;
 
-   // public delegate void levelEnd();
-  //  public static event levelEnd enterEnd;
     private void Start()
     {
-     
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
         coinVal = 0;
         isDraging = circleLvlEnd = _frontCollision = false;
