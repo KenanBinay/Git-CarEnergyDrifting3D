@@ -7,7 +7,7 @@ public class GlassSpawner : MonoBehaviour
 {
     [SerializeField] Vector3 originPos;
     public float pos1, pos2, pos3, pos4;
-    public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign, roadBlocker;
+    public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign, roadBlocker, ramp;
     public static int coinAmount;
     public static float desiredPos;
     public static string sceneName;

@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
 
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
-    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered;
     public static float MainCarWeight, MainSpeed, _carTransformZ;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle;
@@ -23,7 +23,7 @@ public class CarController : MonoBehaviour
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
         coinVal = 0;
-        isDraging = circleLvlEnd = _frontCollision = false;
+        isDraging = circleLvlEnd = _frontCollision = rampEntered = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
@@ -142,6 +142,23 @@ public class CarController : MonoBehaviour
                     transform.Rotate(Vector3.up * 500 * Time.deltaTime);
                     spin++;
                 }
+            }
+            if (rampEntered)
+            {
+                speedIncreaseEffect.SetActive(true);
+                ExhaustFlameEx.SetActive(true);
+                ExhaustFlame.SetActive(false);
+
+                if (spin != 35)
+                {
+                    SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f);
+                    transform.Rotate(Vector3.up * 500 * Time.deltaTime);
+                    spin++;
+                }
+            }
+            else
+            {
+                StartCoroutine(rampDelay());
             }
 
             if (gameEnd == false) //Car move
@@ -326,7 +343,7 @@ public class CarController : MonoBehaviour
             {
                 ExhaustFlame.SetActive(true);
             }
-            else
+            if (MainSpeed >= 2)
             {
                 speedIncreaseEffect.SetActive(true);
                 ExhaustFlameEx.SetActive(true);
@@ -385,11 +402,11 @@ public class CarController : MonoBehaviour
         if (other.gameObject.CompareTag("lvlEndEnter"))
         {
             Debug.Log("LevelEndReached!!");
-        
+
             ExhaustFlame.SetActive(false);
             ExhaustFlameEx.SetActive(false);
             speedIncreaseEffect.SetActive(false);
-          //  movingSpeed = normalSpeed;
+            //  movingSpeed = normalSpeed;
             MainSpeed = 0;
             spin = 0;
             MainCarWeight = 0;
@@ -402,6 +419,14 @@ public class CarController : MonoBehaviour
         {
             circleLvlEnd = true;
             center = new Vector3(0, -1.55f, transform.position.z + 7);
+        }
+        if (other.gameObject.CompareTag("ramp"))
+        {
+            rampEntered = true;
+        }
+        if (other.gameObject.CompareTag("rampOut"))
+        {
+            rampEntered = false;
         }
     }
 
@@ -456,5 +481,10 @@ public class CarController : MonoBehaviour
         yield return new WaitForSeconds(2);
         SkidMarks.transform.localPosition = new Vector3(0, -30, -15);
         skidMarkControl = 0;
+    }
+    public IEnumerator rampDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
     }
 }

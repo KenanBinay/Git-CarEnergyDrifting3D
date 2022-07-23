@@ -19,6 +19,7 @@ TagManager:
   - roadTurn
   - roadBlocker
   - ramp
+  - rampOut
   layers:
   - Default
   - TransparentFX
