@@ -6,6 +6,7 @@ public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
     [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects;
+    public Rigidbody RB_carMain;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
     private bool isDraging, directApp;
@@ -17,11 +18,11 @@ public class CarController : MonoBehaviour
     public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered;
     public static float MainCarWeight, MainSpeed, _carTransformZ;
     public static int coinVal;
-    float spin, turn, skidMarkControl, angle;
+    float spin, turn, skidMarkControl, angle, jumpRate, verticalVelocity;
 
     private void Start()
     {
-        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = 0;
+        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = 0;
         coinVal = 0;
         isDraging = circleLvlEnd = _frontCollision = rampEntered = false;
         normalSpeed = movingSpeed;
@@ -155,15 +156,22 @@ public class CarController : MonoBehaviour
                     transform.Rotate(Vector3.up * 500 * Time.deltaTime);
                     spin++;
                 }
+
+                if (jumpRate!=30)
+                {
+                    //    SkidMarks.transform.localPosition = new Vector3(0, -30, -15);
+                    verticalVelocity += 1.3f * Time.deltaTime;
+                    jumpRate++;
+                }
             }
             else
             {
-                StartCoroutine(rampDelay());
+
             }
 
-            if (gameEnd == false) //Car move
+            if (gameEnd == false) //Car movement control
             {
-                transform.localPosition += new Vector3(0, 0, 1) * movingSpeed * Time.deltaTime;
+                transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime;
                 _carTransformZ = transform.position.z;
             }
             else
@@ -423,10 +431,11 @@ public class CarController : MonoBehaviour
         if (other.gameObject.CompareTag("ramp"))
         {
             rampEntered = true;
+            movingSpeed += 4;
         }
         if (other.gameObject.CompareTag("rampOut"))
         {
-            rampEntered = false;
+            StartCoroutine(rampDelay());
         }
     }
 
@@ -484,7 +493,9 @@ public class CarController : MonoBehaviour
     }
     public IEnumerator rampDelay()
     {
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(2f);
+        rampEntered = false;
+        jumpRate = spin = verticalVelocity = 0;
+        movingSpeed = normalSpeed;
     }
 }
