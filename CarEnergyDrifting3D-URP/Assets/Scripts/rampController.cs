@@ -9,8 +9,7 @@ public class rampController : MonoBehaviour
 
     void Start()
     {
-
-      float carNum = carRand[Random.Range(0, carRand.Length)];
+        float carNum = carRand[Random.Range(0, carRand.Length)];
 
         if (carNum == 1)
         {
@@ -40,10 +39,5 @@ public class rampController : MonoBehaviour
             car1.SetActive(false);
             car3.SetActive(false);
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

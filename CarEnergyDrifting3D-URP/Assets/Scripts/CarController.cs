@@ -5,8 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
-    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects;
-    public Rigidbody RB_carMain;
+    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame1, rampFlame2;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
     private bool isDraging, directApp;
@@ -22,7 +21,7 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = 0;
+        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = 0;
         coinVal = 0;
         isDraging = circleLvlEnd = _frontCollision = rampEntered = false;
         normalSpeed = movingSpeed;
@@ -30,6 +29,8 @@ public class CarController : MonoBehaviour
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
         crashEffects.SetActive(false);
+        rampFlame1.SetActive(false);
+        rampFlame2.SetActive(false);
     }
 
     void FixedUpdate()
@@ -134,7 +135,7 @@ public class CarController : MonoBehaviour
             }
             else { XPos = 0; }
 
-            if (MainSpeed >= 2)
+            if (movingSpeed >= 14)
             {
                 if (spin != 35)
                 {
@@ -146,10 +147,6 @@ public class CarController : MonoBehaviour
             }
             if (rampEntered)
             {
-                speedIncreaseEffect.SetActive(true);
-                ExhaustFlameEx.SetActive(true);
-                ExhaustFlame.SetActive(false);
-
                 if (spin != 35)
                 {
                     SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f);
@@ -157,9 +154,8 @@ public class CarController : MonoBehaviour
                     spin++;
                 }
 
-                if (jumpRate!=30)
+                if (jumpRate!=20)
                 {
-                    //    SkidMarks.transform.localPosition = new Vector3(0, -30, -15);
                     verticalVelocity += 1.3f * Time.deltaTime;
                     jumpRate++;
                 }
@@ -171,6 +167,21 @@ public class CarController : MonoBehaviour
 
             if (gameEnd == false) //Car movement control
             {
+                if (movingSpeed >= 14f)
+                {
+                    MainCarWeight = 0;
+                    transform.localScale = CarSizes;
+                    speedIncreaseEffect.SetActive(true);
+                    ExhaustFlameEx.SetActive(true);
+                    ExhaustFlame.SetActive(false);
+                }
+                else if (movingSpeed == normalSpeed)
+                {
+                    speedIncreaseEffect.SetActive(false);
+                    ExhaustFlameEx.SetActive(false);
+                    ExhaustFlame.SetActive(false);
+                }
+
                 transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime;
                 _carTransformZ = transform.position.z;
             }
@@ -351,12 +362,6 @@ public class CarController : MonoBehaviour
             {
                 ExhaustFlame.SetActive(true);
             }
-            if (MainSpeed >= 2)
-            {
-                speedIncreaseEffect.SetActive(true);
-                ExhaustFlameEx.SetActive(true);
-                ExhaustFlame.SetActive(false);
-            }
 
             Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
             Quaternion posParticle = Quaternion.Euler(boostTakenPos);
@@ -430,8 +435,12 @@ public class CarController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("ramp"))
         {
-            rampEntered = true;
-            movingSpeed += 4;
+            rampFlame1.SetActive(true);
+            rampFlame2.SetActive(true);
+            rampEntered = true;          
+            movingSpeed += 6;
+            transform.localScale = CarSizes;
+            MainCarWeight = 0;
         }
         if (other.gameObject.CompareTag("rampOut"))
         {
@@ -466,10 +475,8 @@ public class CarController : MonoBehaviour
     public IEnumerator SpeedDelay()
     {
         yield return new WaitForSeconds(3);
-        ExhaustFlame.SetActive(false);
-        ExhaustFlameEx.SetActive(false);
-        speedIncreaseEffect.SetActive(false);
-        movingSpeed = normalSpeed;
+        if (transform.localPosition.y < -1.60) { movingSpeed = normalSpeed; }
+
         MainSpeed = 0;
         spin = 0;
         Glass.glassEnter = false;
@@ -478,9 +485,9 @@ public class CarController : MonoBehaviour
     public IEnumerator WeightDelay()
     {
         yield return new WaitForSeconds(3);
-        MainCarWeight = 0;
-        movingSpeed = normalSpeed;
-        speedIncreaseEffect.SetActive(false);
+        if (transform.localPosition.y < -1.60) { movingSpeed = normalSpeed; }
+
+        MainCarWeight = 0;   
         transform.localScale = CarSizes;
         Glass.glassEnter = false;
     }
@@ -493,9 +500,9 @@ public class CarController : MonoBehaviour
     }
     public IEnumerator rampDelay()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         rampEntered = false;
-        jumpRate = spin = verticalVelocity = 0;
         movingSpeed = normalSpeed;
+        verticalVelocity = 0;
     }
 }
