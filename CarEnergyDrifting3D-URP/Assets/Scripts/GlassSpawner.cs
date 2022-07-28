@@ -9,7 +9,7 @@ public class GlassSpawner : MonoBehaviour
     public float pos1, pos2, pos3, pos4;
     public GameObject GlassPrefab, BoostsPrefab, GlassRoad1, GlassRoad2, Road1, Road2, dubaS, stopSign, roadBlocker, ramp;
     public static int coinAmount;
-    public static float desiredPos;
+    public static float desiredPos, randRamp;
     public static string sceneName;
 
     void Start()
@@ -23,7 +23,9 @@ public class GlassSpawner : MonoBehaviour
         int[] coinAmounts = { 6, 7, 8, 9, 10 };
         coinAmount = coinAmounts[Random.Range(3, coinAmounts.Length)];
 
-        //   if (sceneName == "level1")
+        int[] rampPos = { 1, 2, 3, 4 };
+        randRamp = GlassPos[Random.Range(0, GlassPos.Length)];
+
         if (sceneName == "levelMap_1")
         {
             switch (desiredPos)
@@ -110,6 +112,15 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, 167), transform.rotation = Quaternion.Euler(0, -90, 0));
                     GlassRoad2.SetActive(true);
                     Road2.SetActive(false);
+
+                    if (randRamp == 2)
+                    {
+                        Instantiate(ramp, new Vector3(141, 320.77f, -595f), ramp.transform.rotation);
+                    }
+                    else if (randRamp == 4)
+                    {
+                        Instantiate(ramp, new Vector3(136.9f, 320.77f, -633), ramp.transform.rotation);
+                    }
                     Debug.Log("Level 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -127,6 +138,15 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, 167), transform.rotation = Quaternion.Euler(0, -90, 0));
                     GlassRoad1.SetActive(true);
                     Road1.SetActive(false);
+
+                    if (randRamp == 2)
+                    {
+                        Instantiate(ramp, new Vector3(141, 320.77f, -600), ramp.transform.rotation);
+                    }
+                    else if (randRamp == 4)
+                    {
+                        Instantiate(ramp, new Vector3(136.9f, 320.77f, -600), ramp.transform.rotation);
+                    }
                     Debug.Log("Level 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 

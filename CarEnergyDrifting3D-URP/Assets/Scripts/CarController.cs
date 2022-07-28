@@ -8,13 +8,13 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame1, rampFlame2;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
-    private bool isDraging, directApp;
+    private bool isDraging, directApp, rampOut;
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
-    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered,isGrounded;
     public static float MainCarWeight, MainSpeed, _carTransformZ;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle, jumpRate, verticalVelocity;
@@ -23,7 +23,7 @@ public class CarController : MonoBehaviour
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = 0;
         coinVal = 0;
-        isDraging = circleLvlEnd = _frontCollision = rampEntered = false;
+        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
@@ -154,7 +154,7 @@ public class CarController : MonoBehaviour
                     spin++;
                 }
 
-                if (jumpRate!=20)
+                if (jumpRate!=15)
                 {
                     verticalVelocity += 1.3f * Time.deltaTime;
                     jumpRate++;
@@ -162,7 +162,7 @@ public class CarController : MonoBehaviour
             }
             else
             {
-
+              
             }
 
             if (gameEnd == false) //Car movement control
@@ -182,7 +182,20 @@ public class CarController : MonoBehaviour
                     ExhaustFlame.SetActive(false);
                 }
 
+                if (rampOut)
+                {
+                    if (isGrounded)
+                    {
+                        movingSpeed = normalSpeed;
+                        verticalVelocity = 0f;
+                        rampEntered = false;
+                        rampOut = true;
+                    }
+                }
+
+                //Movement Line
                 transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime;
+
                 _carTransformZ = transform.position.z;
             }
             else
@@ -353,6 +366,11 @@ public class CarController : MonoBehaviour
 
     public void OnCollisionEnter(Collision coll)
     {
+        if (coll.gameObject.CompareTag("Road"))
+        {
+            isGrounded = true;
+        }
+
         if (coll.gameObject.CompareTag("SpeedBoost"))
         {
             MainSpeed++;
@@ -444,7 +462,8 @@ public class CarController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("rampOut"))
         {
-            StartCoroutine(rampDelay());
+            isGrounded = false;          
+         //   StartCoroutine(rampDelay());
         }
     }
 
@@ -501,8 +520,6 @@ public class CarController : MonoBehaviour
     public IEnumerator rampDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        rampEntered = false;
-        movingSpeed = normalSpeed;
-        verticalVelocity = 0;
+
     }
 }
