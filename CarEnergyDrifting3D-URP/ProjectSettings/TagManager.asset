@@ -20,6 +20,7 @@ TagManager:
   - roadBlocker
   - ramp
   - rampOut
+  - rampFlame
   layers:
   - Default
   - TransparentFX

@@ -23,7 +23,7 @@ public class GlassSpawner : MonoBehaviour
         int[] coinAmounts = { 6, 7, 8, 9, 10 };
         coinAmount = coinAmounts[Random.Range(3, coinAmounts.Length)];
 
-        int[] rampPos = { 1, 2, 3, 4 };
+        int[] rampPos = { 1, 2, 3 };
         randRamp = GlassPos[Random.Range(0, GlassPos.Length)];
 
         if (sceneName == "levelMap_1")
@@ -115,11 +115,11 @@ public class GlassSpawner : MonoBehaviour
 
                     if (randRamp == 2)
                     {
-                        Instantiate(ramp, new Vector3(141, 320.77f, -595f), ramp.transform.rotation);
+                        Instantiate(ramp, new Vector3(0, 0, 40), ramp.transform.rotation);
                     }
                     else if (randRamp == 4)
                     {
-                        Instantiate(ramp, new Vector3(136.9f, 320.77f, -633), ramp.transform.rotation);
+                        Instantiate(ramp, new Vector3(4.4f, 0, 167), ramp.transform.rotation);
                     }
                     Debug.Log("Level 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
@@ -139,13 +139,13 @@ public class GlassSpawner : MonoBehaviour
                     GlassRoad1.SetActive(true);
                     Road1.SetActive(false);
 
-                    if (randRamp == 2)
+                    if (randRamp == 1)
                     {
-                        Instantiate(ramp, new Vector3(141, 320.77f, -600), ramp.transform.rotation);
+                        Instantiate(ramp, new Vector3(4.4f, 0, 50), ramp.transform.rotation);
                     }
-                    else if (randRamp == 4)
+                    else if (randRamp == 2)
                     {
-                        Instantiate(ramp, new Vector3(136.9f, 320.77f, -600), ramp.transform.rotation);
+                        Instantiate(ramp, new Vector3(0, 0, 175), ramp.transform.rotation);
                     }
                     Debug.Log("Level 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
@@ -167,6 +167,15 @@ public class GlassSpawner : MonoBehaviour
                     GlassRoad2.SetActive(true);
                     Road1.SetActive(false);
                     Road2.SetActive(false);
+
+                    if (randRamp == 1)
+                    {
+                        Instantiate(ramp, new Vector3(0, 0, 58), ramp.transform.rotation);
+                    }
+                    else if (randRamp == 2)
+                    {
+                        Instantiate(ramp, new Vector3(0, 0, 170), ramp.transform.rotation);
+                    }
                     Debug.Log("Level 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -190,6 +199,15 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, 167), transform.rotation = Quaternion.Euler(0, -90, 0));
                     GlassRoad2.SetActive(true);
                     Road2.SetActive(false);
+
+                    if (randRamp == 1)
+                    {
+                        Instantiate(ramp, new Vector3(0, 0, 50), ramp.transform.rotation);
+                    }
+                    else if (randRamp == 2)
+                    {
+                        Instantiate(ramp, new Vector3(4.4f, 0, 174), ramp.transform.rotation);
+                    }
                     Debug.Log("Level 2 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
             }

@@ -5,10 +5,10 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
-    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame1, rampFlame2;
+    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, rampFlamePos1, rampFlamePos2;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
-    private bool isDraging, directApp, rampOut;
+    private bool isDraging, directApp, rampOut, flameControl;
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
@@ -23,14 +23,12 @@ public class CarController : MonoBehaviour
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = 0;
         coinVal = 0;
-        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = false;
+        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
         crashEffects.SetActive(false);
-        rampFlame1.SetActive(false);
-        rampFlame2.SetActive(false);
     }
 
     void FixedUpdate()
@@ -135,7 +133,7 @@ public class CarController : MonoBehaviour
             }
             else { XPos = 0; }
 
-            if (movingSpeed >= 14)
+            if (MainSpeed >= 2)
             {
                 if (spin != 35)
                 {
@@ -145,41 +143,37 @@ public class CarController : MonoBehaviour
                     spin++;
                 }
             }
-            if (rampEntered)
-            {
-                if (spin != 35)
-                {
-                    SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f);
-                    transform.Rotate(Vector3.up * 500 * Time.deltaTime);
-                    spin++;
-                }
-
-                if (jumpRate!=15)
-                {
-                    verticalVelocity += 1.3f * Time.deltaTime;
-                    jumpRate++;
-                }
-            }
-            else
-            {
-              
-            }
 
             if (gameEnd == false) //Car movement control
-            {
-                if (movingSpeed >= 14f)
+            {             
+                if (movingSpeed >= 14)
                 {
                     MainCarWeight = 0;
                     transform.localScale = CarSizes;
                     speedIncreaseEffect.SetActive(true);
                     ExhaustFlameEx.SetActive(true);
-                    ExhaustFlame.SetActive(false);
+                    ExhaustFlame.SetActive(false);                
                 }
                 else if (movingSpeed == normalSpeed)
                 {
                     speedIncreaseEffect.SetActive(false);
                     ExhaustFlameEx.SetActive(false);
                     ExhaustFlame.SetActive(false);
+                }
+                if (rampEntered)
+                {
+                    if (spin != 35)
+                    {
+                        SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f);
+                        transform.Rotate(Vector3.up * 500 * Time.deltaTime);
+                        spin++;
+                    }
+
+                    if (jumpRate != 10)
+                    {
+                        verticalVelocity += 1.3f * Time.deltaTime;
+                        jumpRate++;
+                    }
                 }
 
                 if (rampOut)
@@ -188,14 +182,12 @@ public class CarController : MonoBehaviour
                     {
                         movingSpeed = normalSpeed;
                         verticalVelocity = 0f;
-                        rampEntered = false;
-                        rampOut = true;
                     }
                 }
 
-                //Movement Line
+                //Car Movement Line
+              //  Debug.Log("vertical velovity: " + verticalVelocity);
                 transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime;
-
                 _carTransformZ = transform.position.z;
             }
             else
@@ -216,8 +208,6 @@ public class CarController : MonoBehaviour
                 if (SkidMarks.transform.localPosition == new Vector3(0.48f, 0, -1.36f)) { }
                 else { SkidMarks.transform.localPosition = new Vector3(0.48f, 0, -1.36f); }
             }
-
-
         }
         #endregion
 
@@ -366,10 +356,7 @@ public class CarController : MonoBehaviour
 
     public void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.CompareTag("Road"))
-        {
-            isGrounded = true;
-        }
+        if (coll.gameObject.CompareTag("Road")) { isGrounded = true; }
 
         if (coll.gameObject.CompareTag("SpeedBoost"))
         {
@@ -453,17 +440,22 @@ public class CarController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("ramp"))
         {
-            rampFlame1.SetActive(true);
-            rampFlame2.SetActive(true);
             rampEntered = true;          
-            movingSpeed += 6;
+            movingSpeed += 4;
             transform.localScale = CarSizes;
-            MainCarWeight = 0;
+            MainCarWeight = MainSpeed = 0;
+            
+            if (flameControl == false)
+            {
+                Instantiate(rampFlame, new Vector3(rampFlamePos1.transform.position.x, -0.73f, rampFlamePos1.transform.position.z), rampFlame.transform.rotation);
+                Instantiate(rampFlame, new Vector3(rampFlamePos2.transform.position.x, -0.73f, rampFlamePos2.transform.position.z), rampFlame.transform.rotation);
+                flameControl = true;
+            }
         }
         if (other.gameObject.CompareTag("rampOut"))
         {
-            isGrounded = false;          
-         //   StartCoroutine(rampDelay());
+            isGrounded = flameControl = rampEntered = false;
+            rampOut = true;
         }
     }
 
@@ -494,7 +486,7 @@ public class CarController : MonoBehaviour
     public IEnumerator SpeedDelay()
     {
         yield return new WaitForSeconds(3);
-        if (transform.localPosition.y < -1.60) { movingSpeed = normalSpeed; }
+        if (transform.localPosition.y < -1.60f) { movingSpeed = normalSpeed; }
 
         MainSpeed = 0;
         spin = 0;
@@ -504,7 +496,7 @@ public class CarController : MonoBehaviour
     public IEnumerator WeightDelay()
     {
         yield return new WaitForSeconds(3);
-        if (transform.localPosition.y < -1.60) { movingSpeed = normalSpeed; }
+        if (transform.localPosition.y < -1.60f) { movingSpeed = normalSpeed; }
 
         MainCarWeight = 0;   
         transform.localScale = CarSizes;
