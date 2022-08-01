@@ -80,6 +80,19 @@ public class CarController : MonoBehaviour
             }
             else { }
 
+            if (Glass.glassEnter == true)
+            {
+                MainCarWeight = 0;
+                transform.localScale = CarSizes;
+                speedIncreaseEffect.SetActive(false);
+                ExhaustFlameEx.SetActive(false);
+                ExhaustFlame.SetActive(false);
+
+                movingSpeed = normalSpeed;
+                MainSpeed = 0;
+                spin = 0;
+                Glass.glassEnter = false;
+            }
         }
 
         if (LevelEndController.lvlEndEnter == false && LevelEndController.clickCounter < 6)
@@ -145,7 +158,12 @@ public class CarController : MonoBehaviour
             }
 
             if (gameEnd == false) //Car movement control
-            {             
+            {
+                if (MainSpeed == 1)
+                {
+                    ExhaustFlame.SetActive(true);
+                }
+
                 if (movingSpeed >= 14)
                 {
                     MainCarWeight = 0;
@@ -169,18 +187,19 @@ public class CarController : MonoBehaviour
                         spin++;
                     }
 
-                    if (jumpRate != 10)
+                    if (jumpRate != 15)
                     {
-                        verticalVelocity += 1.3f * Time.deltaTime;
+                        verticalVelocity += 1.2f * Time.deltaTime;
                         jumpRate++;
                     }
                 }
 
                 if (rampOut)
                 {
-                    if (isGrounded)
+                    if (transform.localPosition.y < -1.60f)
                     {
                         movingSpeed = normalSpeed;
+                        rampOut = false;
                         verticalVelocity = 0f;
                     }
                 }
@@ -363,10 +382,6 @@ public class CarController : MonoBehaviour
             MainSpeed++;
             movingSpeed += 2;
             Debug.Log("SpeedIncrease Speed: " + MainSpeed);
-            if (MainSpeed == 1)
-            {
-                ExhaustFlame.SetActive(true);
-            }
 
             Quaternion rotParticle = Quaternion.Euler(boostTakenRot);
             Quaternion posParticle = Quaternion.Euler(boostTakenPos);
@@ -374,9 +389,7 @@ public class CarController : MonoBehaviour
 
             Destroy(coll.gameObject);
 
-            if (Glass.glassEnter == false)
-            { StartCoroutine(SpeedDelay()); }
-            
+            if (Glass.glassEnter == false) { StartCoroutine(SpeedDelay()); }                    
         }
 
         if (coll.gameObject.CompareTag("WeightBoost"))
@@ -393,9 +406,7 @@ public class CarController : MonoBehaviour
 
             Destroy(coll.gameObject);
 
-            if (Glass.glassEnter == false)
-            { StartCoroutine(WeightDelay()); }
-      
+            if (Glass.glassEnter == false) { StartCoroutine(WeightDelay()); }
         }
 
         if (coll.gameObject.CompareTag("Coin"))
@@ -424,7 +435,8 @@ public class CarController : MonoBehaviour
             ExhaustFlame.SetActive(false);
             ExhaustFlameEx.SetActive(false);
             speedIncreaseEffect.SetActive(false);
-            //  movingSpeed = normalSpeed;
+            if (movingSpeed < 10) { movingSpeed = normalSpeed; }
+            else if (movingSpeed > 10) { movingSpeed = normalSpeed; }
             MainSpeed = 0;
             spin = 0;
             MainCarWeight = 0;
@@ -440,10 +452,12 @@ public class CarController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("ramp"))
         {
-            rampEntered = true;          
-            movingSpeed += 4;
+            if (MainSpeed >= 2) { movingSpeed = 36; }
+            else if (MainSpeed != 2) { movingSpeed = 30; }
+
+            rampEntered = true;
             transform.localScale = CarSizes;
-            MainCarWeight = MainSpeed = 0;
+            MainCarWeight = jumpRate = 0;
             
             if (flameControl == false)
             {
@@ -454,10 +468,10 @@ public class CarController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("rampOut"))
         {
-            isGrounded = flameControl = rampEntered = false;
-            rampOut = true;
+            StartCoroutine(rampDelay());
         }
     }
+
 
     void CarRotateHome()
     {
@@ -486,7 +500,7 @@ public class CarController : MonoBehaviour
     public IEnumerator SpeedDelay()
     {
         yield return new WaitForSeconds(3);
-        if (transform.localPosition.y < -1.60f) { movingSpeed = normalSpeed; }
+        if (transform.localPosition.y < -1.60f && isGrounded) { movingSpeed = normalSpeed; }
 
         MainSpeed = 0;
         spin = 0;
@@ -496,7 +510,7 @@ public class CarController : MonoBehaviour
     public IEnumerator WeightDelay()
     {
         yield return new WaitForSeconds(3);
-        if (transform.localPosition.y < -1.60f) { movingSpeed = normalSpeed; }
+        if (transform.localPosition.y < -1.60f && isGrounded) { movingSpeed = normalSpeed; }
 
         MainCarWeight = 0;   
         transform.localScale = CarSizes;
@@ -511,7 +525,8 @@ public class CarController : MonoBehaviour
     }
     public IEnumerator rampDelay()
     {
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(1f);
+        isGrounded = flameControl = rampEntered = false;
+        rampOut = true;
     }
 }
