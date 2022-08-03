@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
-    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, rampFlamePos1, rampFlamePos2;
+    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, ramp;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
     private bool isDraging, directApp, rampOut, flameControl;
@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
-        crashEffects.SetActive(false);
+        crashEffects.SetActive(false);       
     }
 
     void FixedUpdate()
@@ -159,10 +159,8 @@ public class CarController : MonoBehaviour
 
             if (gameEnd == false) //Car movement control
             {
-                if (MainSpeed == 1)
-                {
-                    ExhaustFlame.SetActive(true);
-                }
+                if (MainSpeed == 1) { ExhaustFlame.SetActive(true); }
+                else { ExhaustFlame.SetActive(false); }
 
                 if (movingSpeed >= 14)
                 {
@@ -450,7 +448,7 @@ public class CarController : MonoBehaviour
             circleLvlEnd = true;
             center = new Vector3(0, -1.55f, transform.position.z + 7);
         }
-        if (other.gameObject.CompareTag("ramp"))
+        if (other.gameObject.CompareTag("rampIn"))
         {
             if (MainSpeed >= 2) { movingSpeed = 36; }
             else if (MainSpeed != 2) { movingSpeed = 30; }
@@ -458,13 +456,14 @@ public class CarController : MonoBehaviour
             rampEntered = true;
             transform.localScale = CarSizes;
             MainCarWeight = jumpRate = 0;
-            
+            ramp = GameObject.FindGameObjectWithTag("ramp");
+
             if (flameControl == false)
             {
-                Instantiate(rampFlame, new Vector3(rampFlamePos1.transform.position.x, -0.73f, rampFlamePos1.transform.position.z), rampFlame.transform.rotation);
-                Instantiate(rampFlame, new Vector3(rampFlamePos2.transform.position.x, -0.73f, rampFlamePos2.transform.position.z), rampFlame.transform.rotation);
+                Instantiate(rampFlame, new Vector3(ramp.transform.position.x, -0.75f, ramp.transform.position.z), rampFlame.transform.rotation);
                 flameControl = true;
             }
+
         }
         if (other.gameObject.CompareTag("rampOut"))
         {
