@@ -113,11 +113,11 @@ public class GlassSpawner : MonoBehaviour
                     GlassRoad2.SetActive(true);
                     Road2.SetActive(false);
 
-                    if (randRamp == 2)
+                    if (randRamp == 1)
                     {
                         Instantiate(ramp, new Vector3(0, 0, 40), ramp.transform.rotation);
                     }
-                    else if (randRamp == 4)
+                    else if (randRamp == 2)
                     {
                         Instantiate(ramp, new Vector3(4.4f, 0, 167), ramp.transform.rotation);
                     }
@@ -307,11 +307,11 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos1 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos3 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
 
-                    if (randRamp == 2)
+                    if (randRamp == 1)
                     {
                         Instantiate(ramp, new Vector3(0, 0, 40), ramp.transform.rotation);
                     }
-                    else if (randRamp == 4)
+                    else if (randRamp == 2)
                     {
                         Instantiate(ramp, new Vector3(4.4f, 0, 167), ramp.transform.rotation);
                     }
@@ -329,6 +329,15 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos4), transform.rotation = Quaternion.Euler(0, 90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos2 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos4 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
+
+                    if (randRamp == 1)
+                    {
+                        Instantiate(ramp, new Vector3(0, 0, 90), ramp.transform.rotation);
+                    }
+                    else if (randRamp == 2)
+                    {
+                        Instantiate(ramp, new Vector3(4.4f, 0, -19), ramp.transform.rotation);
+                    }
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -344,6 +353,15 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(dubaS, new Vector3(4.89f, -1.608f, pos3), transform.rotation = Quaternion.Euler(0, 90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos2 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos3 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
+
+                    if (randRamp == 1)
+                    {
+                        Instantiate(ramp, new Vector3(0, 0, 20), ramp.transform.rotation);
+                    }
+                    else if (randRamp == 2)
+                    {
+                        Instantiate(ramp, new Vector3(4.4f, 0, 93), ramp.transform.rotation);
+                    }
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 
@@ -361,11 +379,11 @@ public class GlassSpawner : MonoBehaviour
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos1 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
                     Instantiate(stopSign, new Vector3(3.2f, -0.97524f, pos4 - 6f), transform.rotation = Quaternion.Euler(0, -90, 0));
 
-                    if (randRamp == 2)
+                    if (randRamp == 1)
                     {
                         Instantiate(ramp, new Vector3(4.4f, 0, 42), ramp.transform.rotation);
                     }
-                    else if (randRamp == 4)
+                    else if (randRamp == 2)
                     {
                         Instantiate(ramp, new Vector3(0, 0, 105), ramp.transform.rotation);
                     }
