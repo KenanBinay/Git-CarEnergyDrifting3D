@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class LevelController : MonoBehaviour
 {
     public static int currentLevel = 1, levelSave, coinSaved;
@@ -14,7 +13,7 @@ public class LevelController : MonoBehaviour
         coinSaved = PlayerPrefs.GetInt("coin", 0);
         Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin", 0));
         Debug.Log("CurrentLevel: " + PlayerPrefs.GetInt("level_main"));
-        
+
     }
     void Update()
     {
