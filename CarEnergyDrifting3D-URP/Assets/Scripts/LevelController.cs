@@ -6,10 +6,13 @@ public class LevelController : MonoBehaviour
 {
     public static int currentLevel = 1, levelSave, coinSaved;
     public Button button_MenuButton;
+    public GameObject pauseUI;
 
     void Start()
     {
         //   currentLevel = PlayerPrefs.GetFloat("level_main", 0);
+        Time.timeScale = 1f;
+        pauseUI.SetActive(false);
         coinSaved = PlayerPrefs.GetInt("coin", 0);
         Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin", 0));
         Debug.Log("CurrentLevel: " + PlayerPrefs.GetInt("level_main"));
@@ -27,7 +30,8 @@ public class LevelController : MonoBehaviour
 
     void menuClick()
     {
-
+        pauseUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 
 }
