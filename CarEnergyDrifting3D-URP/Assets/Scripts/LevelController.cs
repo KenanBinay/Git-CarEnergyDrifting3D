@@ -7,6 +7,7 @@ public class LevelController : MonoBehaviour
     public static int currentLevel = 1, levelSave, coinSaved;
     public Button button_MenuButton;
     public GameObject pauseUI;
+    public TMPro.TextMeshProUGUI coinTxt_PauseUI;
 
     void Start()
     {
@@ -25,12 +26,14 @@ public class LevelController : MonoBehaviour
 
     private void OnEnable()
     {
-        button_MenuButton.onClick.AddListener(() => menuClick());
+        if (Pause_Controller.paused == false) { button_MenuButton.onClick.AddListener(() => menuClick()); }
     }
 
     void menuClick()
     {
+        Pause_Controller.paused = true;
         pauseUI.SetActive(true);
+        coinTxt_PauseUI.text = coinSaved.ToString();
         Time.timeScale = 0f;
     }
 
