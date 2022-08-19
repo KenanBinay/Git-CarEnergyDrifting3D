@@ -46,6 +46,7 @@ public class Pause_Controller : MonoBehaviour
         restartPressed.SetActive(true);
 
         paused = false;
+        CarController.gameEnd = false;
         SceneManager.LoadScene(GlassSpawner.sceneName);
     }
 

@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
 
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
-    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered,isGrounded;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered, isGrounded;
     public static float MainCarWeight, MainSpeed, _carTransformZ;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle, jumpRate, verticalVelocity;
