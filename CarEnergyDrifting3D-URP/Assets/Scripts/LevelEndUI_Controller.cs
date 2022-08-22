@@ -13,11 +13,11 @@ public class LevelEndUI_Controller : MonoBehaviour
     private Vector3 endVelocity = Vector3.zero;
     public GameObject tireSkidMarks, _starLeft, _starMid, _starRight;
     int scoreTime;
-    bool saved;
+    public static bool saved, x2AdSprite;
     void Start()
     {
         saved = false;
-        LevelEndUI_Delay = star_Delay = false;
+        LevelEndUI_Delay = star_Delay = x2AdSprite = false;
         _starLeft.SetActive(false);
         _starMid.SetActive(false);
         _starRight.SetActive(false);
@@ -48,6 +48,8 @@ public class LevelEndUI_Controller : MonoBehaviour
                 }
                 else if (star_Delay)
                 {
+                    x2AdSprite = true;
+
                     if (scoreTime != CarController.coinVal)
                     {
                         scoreTime++;
