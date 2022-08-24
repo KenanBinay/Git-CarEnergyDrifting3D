@@ -1,71 +1,80 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using GoogleMobileAds.Api;
+using GoogleMobileAds.Common;
 
 public class AdController : MonoBehaviour
 {
     public GameObject x2AdObject;
     public Button x2AdButton;
-    bool x2ButtonCheck;
+    public static bool x2ButtonCheck;
+    bool adRewardedControl;
 
-    private InterstitialAd AdPlain;
-    private RewardedAd AdRewarded;
-    string idPlain, idRewarded;
+    private InterstitialAd adInterstitial;
+    private RewardedAd adRewarded;
+    string idInterstitial, idRewarded;
 
     void Start()
     {
         x2AdObject.SetActive(false);
+        x2ButtonCheck = adRewardedControl = false;
 
-        x2ButtonCheck = false;
-
-        idPlain = "ca-app-pub-9421503984483424/7677277793";
+        idInterstitial = "ca-app-pub-9421503984483424/7677277793";
         idRewarded = "ca-app-pub-9421503984483424/1495012820";
 
+        this.adRewarded = new RewardedAd(idRewarded);
+
+        AdRequest request = new AdRequest.Builder().Build();
+        this.adRewarded.LoadAd(request);
+
+        MobileAds.Initialize(initStatus => { });       
     }
 
     void Update()
-    {
-
-        if (LevelEndUI_Controller.x2AdSprite)
+    {       
+        if (this.adRewarded.IsLoaded())
         {
-
             if (LevelEndUI_Controller.x2AdSprite)
             {
-                AdPlain = new InterstitialAd(idPlain);
-                AdPlain.LoadAd(AdRequestBuild());
-
                 if (x2ButtonCheck == false)
                 {
                     x2AdObject.SetActive(true);
                     x2AdButton.onClick.AddListener(() => x2RewardedAd());
                 }
             }
+        }
+    }
+  
+    void x2RewardedAd()
+    {
+        if (adRewardedControl == false)
+        {
+            adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
+            adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
+            adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
 
+            this.adRewarded.Show();
+            adRewardedControl = true;
         }
     }
 
-    void x2RewardedAd()
+    public void HandleOnRewardedAdLoaded(object sender, EventArgs args) {  }
+    public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
+    public void HandleOnRewardedAdClosed(object sender, EventArgs args)
     {
-
-        if (AdPlain.IsLoaded()) { AdPlain.Show(); }
-    }
-
-    public void HandleOnAdLoaded(object sender, EventArgs args) { }
-    public void HandleOnAdOpening(object sender, EventArgs args) { }
-    public void HandleOnAdClosed(object sender, EventArgs args)
-    {
-        AdPlain.OnAdLoaded -= this.HandleOnAdLoaded;
-        AdPlain.OnAdOpening -= this.HandleOnAdOpening;
-        AdPlain.OnAdClosed -= this.HandleOnAdClosed;
-
-        Debug.Log("x2 Coin = " + CarController.coinVal);
 
         CarController.coinVal *= 2;
+        Debug.Log("x2 Coin = " + CarController.coinVal);
+
         x2ButtonCheck = true;
         LevelEndUI_Controller.x2AdSprite = false;
+       
+        adInterstitial.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
+        adInterstitial.OnAdOpening -= this.HandleOnRewardedAdOpening;
+        adInterstitial.OnAdClosed -= this.HandleOnRewardedAdClosed;
     }
 
     AdRequest AdRequestBuild()

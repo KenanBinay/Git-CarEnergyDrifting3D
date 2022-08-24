@@ -48,13 +48,12 @@ public class LevelEndUI_Controller : MonoBehaviour
                 }
                 else if (star_Delay)
                 {
-                    x2AdSprite = true;
-
                     if (scoreTime != CarController.coinVal)
                     {
                         scoreTime++;
                         coinTxt_levelEndUI.text = scoreTime.ToString();
                     }
+                    else if (scoreTime == CarController.coinVal || AdController.x2ButtonCheck == false) { StartCoroutine(x2AdDelay()); }
                 }
                 if (saved == false) { saveIt(); }
             }
@@ -101,5 +100,11 @@ public class LevelEndUI_Controller : MonoBehaviour
         {
             _starLeft.SetActive(true);
         }
+    }
+
+    public IEnumerator x2AdDelay()
+    {
+        yield return new WaitForSeconds(1.7f);
+        x2AdSprite = true;
     }
 }
