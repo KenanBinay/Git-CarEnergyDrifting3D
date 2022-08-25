@@ -56,8 +56,8 @@ public class AdController : MonoBehaviour
             adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
             adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
 
-            this.adRewarded.Show();
             adRewardedControl = true;
+            this.adRewarded.Show();
         }
     }
 
