@@ -37,8 +37,8 @@ public class Menu_Controller : MonoBehaviour
         button_settings.onClick.AddListener(() => settingsLoad());
         button_home.onClick.AddListener(() => homeLoad());
         button_buy.onClick.AddListener(() => buyButtonOnPress());
-        button_R.onClick.AddListener(() => carNumb++);
-        button_R.onClick.AddListener(() => carNumb--);
+        button_R.onClick.AddListener(() => nextCarButtonR());
+        button_L.onClick.AddListener(() => nextCarButtonL());
     }
 
     void shopLoad()
@@ -67,10 +67,33 @@ public class Menu_Controller : MonoBehaviour
 
     }
 
+
+    void nextCarButtonR()
+    {
+        carNumb++;
+    }
+
+    void nextCarButtonL()
+    {
+        carNumb--;
+    }
+
     void buyButtonOnPress()
     {
         buyButtonNormal.SetActive(false);
         buyButtonPressed.SetActive(true);
+
+        if (carNumb == 1)
+        {
+
+        }
+        if (carNumb == 2)
+        {
+
+        }
+
+        Debug.Log("Car buyed, car number: " + carNumb);
+
         StartCoroutine(buyButtonDelay());
     }
 

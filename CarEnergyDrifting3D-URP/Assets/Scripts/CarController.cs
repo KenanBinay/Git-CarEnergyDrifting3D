@@ -278,9 +278,7 @@ public class CarController : MonoBehaviour
                 }
                 else if (turn >= 17)
                 {
-                    angle += Time.deltaTime * angularSpeed;
-                   
-                   // Debug.Log("Direction: " + direction);
+                    angle += Time.deltaTime * angularSpeed;                
                   
                     if (directApp) { transform.position = center + direction * 5; }           
                     
@@ -309,6 +307,7 @@ public class CarController : MonoBehaviour
     {
         skidMarkControl = 1;
 
+        #region differentTurnCodeLeft
         //kinda realistic drift code 
         /*    if (Lturn != 15f)
             {
@@ -323,6 +322,7 @@ public class CarController : MonoBehaviour
 
             }
           */
+        #endregion
 
         wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
         wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
@@ -338,6 +338,7 @@ public class CarController : MonoBehaviour
     {
         skidMarkControl = 1;
 
+        #region differentTurnCodeRight
         //kinda realistic drift code 
         /*  if (Rturn != 15f)
            {
@@ -352,6 +353,7 @@ public class CarController : MonoBehaviour
                transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
            }
          */
+        #endregion
 
         wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
         wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
