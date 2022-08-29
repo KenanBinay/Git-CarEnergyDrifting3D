@@ -4,15 +4,55 @@ using UnityEngine;
 
 public class TireController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Transform Lwheel_Car1, Rwheel_Car1, Lwheel_Car2, Rwheel_Car2, Lwheel_Car3, Rwheel_Car3;
+
     void Start()
     {
-        
+        Menu_Controller.selectedCarNumb = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (CarController.carTurningL)
+        {
+            if (Menu_Controller.selectedCarNumb == 1)
+            {
+                Lwheel_Car1.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+                Rwheel_Car1.transform.localRotation = Quaternion.Euler(0, 120f, 0);
+
+                Lwheel_Car1.localPosition = new Vector3(-0.47f, 0, -2.9f);
+                Rwheel_Car1.localPosition = new Vector3(2f, 0, -1f);
+            }
+        }
+
+        if (CarController.carTurningR)
+        {
+            if (Menu_Controller.selectedCarNumb == 1)
+            {
+                Lwheel_Car1.transform.localRotation = Quaternion.Euler(0, 60f, 0);
+                Rwheel_Car1.transform.localRotation = Quaternion.Euler(0, 240f, 0);
+
+                Lwheel_Car1.localPosition = new Vector3(2.8f, 0, 0.72f);
+                Rwheel_Car1.localPosition = new Vector3(-1.23f, 0, -4.8f);
+            }
+        }
+
+        if (CarController.carReturning)
+        {
+            if (Menu_Controller.selectedCarNumb == 1)
+            {
+
+                if (transform.eulerAngles.y < 180) { transform.Rotate(Vector3.down * 90f * Time.deltaTime); }
+
+                if (transform.eulerAngles.y > 180) { transform.Rotate(Vector3.up * 90f * Time.deltaTime); }
+
+                Lwheel_Car1.transform.localRotation = Quaternion.Euler(0, 0f, 0);
+                Rwheel_Car1.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+                Lwheel_Car1.localPosition = new Vector3(0.05f, 0, 0f);
+                Rwheel_Car1.localPosition = new Vector3(1.43f, 0, -3.732f);
+
+            }
+        }
     }
 }

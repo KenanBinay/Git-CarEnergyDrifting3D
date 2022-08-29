@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
 
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
-    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered, isGrounded;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered, isGrounded, carTurningL,carTurningR, carReturning;
     public static float MainCarWeight, MainSpeed, _carTransformZ;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle, jumpRate, verticalVelocity;
@@ -23,7 +23,7 @@ public class CarController : MonoBehaviour
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = 0;
         coinVal = 0;
-        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = false;
+        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = carTurningL = carTurningR = carReturning = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
@@ -53,7 +53,7 @@ public class CarController : MonoBehaviour
             {
                 if (transform.eulerAngles.y != 180)
                 {
-
+                    carReturning = true;
                     if (transform.eulerAngles.y < 180)
                     {
                         // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
@@ -306,6 +306,8 @@ public class CarController : MonoBehaviour
     void LocalMoveL(float x)
     {
         skidMarkControl = 1;
+        carReturning = carTurningR = false;
+        carTurningL = true;
 
         #region differentTurnCodeLeft
         //kinda realistic drift code 
@@ -324,12 +326,12 @@ public class CarController : MonoBehaviour
           */
         #endregion
 
-        wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+/*        wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
         wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
 
         wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
         wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
-
+*/
         transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
         transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
     }
@@ -337,6 +339,8 @@ public class CarController : MonoBehaviour
     void LocalMoveR(float x)
     {
         skidMarkControl = 1;
+        carReturning = carTurningL = false;
+        carTurningR = true;
 
         #region differentTurnCodeRight
         //kinda realistic drift code 
@@ -355,12 +359,12 @@ public class CarController : MonoBehaviour
          */
         #endregion
 
-        wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
+  /*      wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
         wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
 
         wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
         wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);
-
+  */
         transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
         transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
 
@@ -480,7 +484,7 @@ public class CarController : MonoBehaviour
         {
          //   Debug.Log("ReturningRotation! Rot: " + transform.eulerAngles.y);
 
-            if (transform.eulerAngles.y < 180) { transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime); }
+        /*    if (transform.eulerAngles.y < 180) { transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime); }
 
             if (transform.eulerAngles.y > 180) { transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime); }
 
@@ -489,7 +493,9 @@ public class CarController : MonoBehaviour
 
             wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
             wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-
+        */
+            carTurningL = carTurningR = false;
+            carReturning = true;
 //            if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
         }
         else

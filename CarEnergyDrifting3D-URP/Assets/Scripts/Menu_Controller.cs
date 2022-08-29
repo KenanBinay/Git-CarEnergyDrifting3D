@@ -11,10 +11,11 @@ public class Menu_Controller : MonoBehaviour
     public Animator shopIcon,homeMenuUI,shopMenuUI;
     public TextMeshProUGUI coinText;
     public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed, settingsSprite, homeSprite;
+    public static int car1, car2, car3, car4, selectedCarNumb;
     int carNumb;
-
     void Start()
     {
+        car1 = 1; car2 = 2; car3 = 3; car4 = 4;   
         coinText.text = LevelController.coinSaved.ToString();
         shopMenu.SetActive(false);
         mainMenu.SetActive(true);
