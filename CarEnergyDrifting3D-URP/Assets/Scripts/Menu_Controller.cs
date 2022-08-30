@@ -27,7 +27,7 @@ public class Menu_Controller : MonoBehaviour
 
     void Update()
     {
-
+      
     }
 
     void OnEnable()
@@ -44,19 +44,22 @@ public class Menu_Controller : MonoBehaviour
 
     void shopLoad()
     {
-        shopMenuUI.enabled = true;
-        homeMenuUI.enabled = false;
+        
         settingsSprite.SetActive(false);
         homeSprite.SetActive(true);
         mainMenu.SetActive(false);
         shopMenu.SetActive(true);
 
+        shopMenuUI.enabled = true;
+        homeMenuUI.enabled = false;
+        shopMenuUI.SetTrigger("carShowing");
     }
 
     void homeLoad()
     {
         homeMenuUI.enabled = true;
         shopMenuUI.enabled = false;
+        shopMenuUI.SetTrigger("carShowing");
         settingsSprite.SetActive(true);
         homeSprite.SetActive(false);
         mainMenu.SetActive(true);

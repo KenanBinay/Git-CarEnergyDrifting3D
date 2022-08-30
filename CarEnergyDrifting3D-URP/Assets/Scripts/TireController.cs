@@ -8,7 +8,7 @@ public class TireController : MonoBehaviour
 
     void Start()
     {
-        Menu_Controller.selectedCarNumb = 1;
+        
     }
 
     void Update()

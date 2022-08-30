@@ -68,12 +68,12 @@ public class CarController : MonoBehaviour
 
                     }
 
-                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
+                /*    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
                     wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
                     wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
                     wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-
+                */
                     if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
 
                 }
@@ -496,7 +496,7 @@ public class CarController : MonoBehaviour
         */
             carTurningL = carTurningR = false;
             carReturning = true;
-//            if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
+         //  if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
         }
         else
         {

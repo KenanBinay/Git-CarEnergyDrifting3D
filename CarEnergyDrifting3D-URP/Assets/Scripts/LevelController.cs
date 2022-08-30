@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
         coinSaved = PlayerPrefs.GetInt("coin", 0);
         Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin", 0));
         Debug.Log("CurrentLevel: " + PlayerPrefs.GetInt("level_main"));
+        Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar"));
 
     }
     void Update()
