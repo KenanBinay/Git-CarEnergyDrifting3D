@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
     void Start()
     {
         //   currentLevel = PlayerPrefs.GetFloat("level_main", 0);
-       
+        Time.timeScale = 1f;
         pauseUI.SetActive(false);
         gameOverUI.SetActive(false);
         coinSaved = PlayerPrefs.GetInt("coin", 0);
@@ -23,6 +23,9 @@ public class LevelController : MonoBehaviour
     }
     void Update()
     {
+        
+        if (coinSaved != PlayerPrefs.GetInt("coin", 0)) { PlayerPrefs.SetInt("coin", coinSaved); }
+
         if (Pause_Controller.paused == false)
         {
             if (Time.timeScale != 1f) { Time.timeScale = 1f; }

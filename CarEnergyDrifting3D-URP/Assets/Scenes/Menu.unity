@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh84416
+  m_Name: pb_Mesh20728
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6285,9 +6285,9 @@ Transform:
   m_LocalScale: {x: 120.55183, y: 120.55183, z: 120.55183}
   m_Children:
   - {fileID: 661930555}
+  - {fileID: 569301360}
   - {fileID: 2116678822}
   - {fileID: 1360461607}
-  - {fileID: 569301360}
   - {fileID: 1588023946}
   m_Father: {fileID: 802429533}
   m_RootOrder: 0
@@ -7130,7 +7130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 569301360}
   m_Layer: 0
-  m_Name: 4 Car_Body
+  m_Name: 2 Car_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7150,7 +7150,7 @@ Transform:
   - {fileID: 320305386}
   - {fileID: 1520399766}
   m_Father: {fileID: 466715223}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 15.301, y: 129.766, z: -18.512}
 --- !u!1 &570816485
 GameObject:
@@ -15313,7 +15313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360461607}
   m_Layer: 0
-  m_Name: 3 Car_DeLorean
+  m_Name: 4 Car_DeLorean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15367,7 +15367,7 @@ Transform:
   - {fileID: 219813258}
   - {fileID: 2127507119}
   m_Father: {fileID: 466715223}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 16.979, y: 139.781, z: -14.845}
 --- !u!1 &1366275041
 GameObject:
@@ -16032,7 +16032,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh84698
+  m_Name: pb_Mesh21358
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21471,7 +21471,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-23712
+  m_Name: pb_Mesh20292
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22930,7 +22930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -23787,12 +23787,17 @@ MonoBehaviour:
   homeMenuUI: {fileID: 165462768}
   shopMenuUI: {fileID: 802429534}
   coinText: {fileID: 628776897}
+  carPriceTxt: {fileID: 1988967590}
   mainMenu: {fileID: 165462766}
   shopMenu: {fileID: 802429532}
   buyButtonNormal: {fileID: 1816239284}
   buyButtonPressed: {fileID: 1704564642}
   settingsSprite: {fileID: 716083075}
   homeSprite: {fileID: 1412511778}
+  car1_go: {fileID: 661930554}
+  car2_go: {fileID: 569301359}
+  car3_go: {fileID: 2116678821}
+  car4_go: {fileID: 1360461606}
 --- !u!4 &2089620004
 Transform:
   m_ObjectHideFlags: 0
@@ -24011,7 +24016,7 @@ GameObject:
   - component: {fileID: 2116678824}
   - component: {fileID: 2116678823}
   m_Layer: 0
-  m_Name: 2 Car_BodyCyberTruck
+  m_Name: 3 Car_BodyCyberTruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24030,7 +24035,7 @@ Transform:
   m_Children:
   - {fileID: 1366275042}
   m_Father: {fileID: 466715223}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 12.976, y: 142.535, z: -12.203}
 --- !u!23 &2116678823
 MeshRenderer:

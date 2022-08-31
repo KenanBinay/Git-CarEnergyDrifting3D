@@ -67,7 +67,7 @@ public class LevelEndUI_Controller : MonoBehaviour
     void saveIt()
     {
         LevelController.coinSaved += CarController.coinVal;
-        PlayerPrefs.SetInt("coin", LevelController.coinSaved);
+    //    PlayerPrefs.SetInt("coin", LevelController.coinSaved);
         Debug.Log("coin: " + PlayerPrefs.GetInt("coin", 0));
         saved = true;
     }
