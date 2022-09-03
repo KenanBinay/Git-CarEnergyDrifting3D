@@ -147,33 +147,40 @@ public class Menu_Controller : MonoBehaviour
         buyButtonNormal.SetActive(false);
         buyButtonPressed.SetActive(true);
 
-        if (carNumb == 2 || car2_save == 0)
+        if (carNumb == 2 || car2_save != 1)
         {
             if (LevelController.coinSaved >= 270)
             {
                 PlayerPrefs.SetInt("car2_saved", 1);
                 LevelController.coinSaved -= 270;
+
+                shopMenuUI.SetTrigger("carBuyed");
+                Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
         }
-        if (carNumb == 3 || car4_save == 0)
+        if (carNumb == 3 || car4_save != 1)
         {
             if (LevelController.coinSaved >= 740)
             {
                 PlayerPrefs.SetInt("car3_saved", 1);
                 LevelController.coinSaved -= 740;
+
+                shopMenuUI.SetTrigger("carBuyed");
+                Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
         }
-        if (carNumb == 4 || car4_save == 0)
+        if (carNumb == 4 || car4_save != 1)
         {
             if (LevelController.coinSaved >= 4600)
             {
                 PlayerPrefs.SetInt("car4_saved", 1);
                 LevelController.coinSaved -= 4600;
+                shopMenuUI.SetTrigger("carBuyed");
+
+                Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
         }
-
-        Debug.Log("Car buyed, car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
-
+     
         StartCoroutine(buyButtonDelay());
     }
 
