@@ -6,7 +6,7 @@ public class LevelController : MonoBehaviour
 {
     public static int currentLevel = 1, levelSave, coinSaved;
     public Button button_MenuButton;
-    public GameObject pauseUI, gameOverUI;
+    public GameObject pauseUI, gameOverUI, car1, car2, car3, car4;
     public TMPro.TextMeshProUGUI coinTxt_PauseUI;
 
     void Start()
@@ -20,6 +20,12 @@ public class LevelController : MonoBehaviour
         Debug.Log("CurrentLevel: " + PlayerPrefs.GetInt("level_main"));
         Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar"));
 
+        car1.SetActive(false); car2.SetActive(false); car3.SetActive(false); car4.SetActive(false);
+
+        if (Menu_Controller.selectedCarNumb == 1) { car1.SetActive(true); }
+        if (Menu_Controller.selectedCarNumb == 2) { car2.SetActive(true); }
+        if (Menu_Controller.selectedCarNumb == 3) { car3.SetActive(true); }
+        if (Menu_Controller.selectedCarNumb == 4) { car4.SetActive(true); }
     }
     void Update()
     {
