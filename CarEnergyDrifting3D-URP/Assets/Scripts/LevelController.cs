@@ -28,19 +28,15 @@ public class LevelController : MonoBehaviour
         if (Menu_Controller.selectedCarNumb == 4) { car4.SetActive(true); }
     }
     void Update()
-    {
-        
-        if (coinSaved != PlayerPrefs.GetInt("coin", 0)) { PlayerPrefs.SetInt("coin", coinSaved); }
+    {        
+    //    if (coinSaved != PlayerPrefs.GetInt("coin", 0)) { PlayerPrefs.SetInt("coin", coinSaved); }
 
         if (Pause_Controller.paused == false)
         {
             if (Time.timeScale != 1f) { Time.timeScale = 1f; }
         }
 
-        if (CarController._frontCollision)
-        {
-            gameOver();
-        }
+        if (CarController._frontCollision) { gameOver(); }
     }
 
     private void OnEnable()

@@ -65,9 +65,11 @@ public class AdController : MonoBehaviour
     public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
     public void HandleOnRewardedAdClosed(object sender, EventArgs args)
     {
+        int doubledCoin;
 
-        CarController.coinVal *= 2;
-        Debug.Log("x2 Coin = " + CarController.coinVal);
+        doubledCoin = CarController.coinVal * 2;
+        PlayerPrefs.SetInt("coin", LevelController.coinSaved + doubledCoin);
+        Debug.Log("x2 Coin = " + doubledCoin + " || savedCoin: " + PlayerPrefs.GetInt("coin", 0));
 
         x2ButtonCheck = true;
         LevelEndUI_Controller.x2AdSprite = false;

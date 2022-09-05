@@ -80,8 +80,6 @@ public class LevelEndController : MonoBehaviour
         }
         if (clickCounter == 6)
         {
-      //      Debug.Log("ClickDone EXECUTE DRIFTT!!");
-
             TxtTap.SetActive(false);
             YellowLight.SetActive(false);
             GreenLight.SetActive(true);

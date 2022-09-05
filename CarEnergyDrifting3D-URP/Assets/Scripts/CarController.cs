@@ -21,8 +21,7 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = 0;
-        coinVal = 0;
+        MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = coinVal = 0;
         isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = carTurningL = carTurningR = carReturning = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
@@ -47,7 +46,6 @@ public class CarController : MonoBehaviour
                 {
                     swipeDelta = (Vector2)Input.mousePosition - startTouch;
                 }
-
             }
             else if (isDraging == false)
             {
@@ -58,14 +56,12 @@ public class CarController : MonoBehaviour
                     {
                         // Debug.Log("ReturningL Rotation: " + transform.eulerAngles.y);
                         transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime);
-
                     }
 
                     if (transform.eulerAngles.y > 180)
                     {
                         // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
                         transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
-
                     }
 
                 /*    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
@@ -75,10 +71,8 @@ public class CarController : MonoBehaviour
                     wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
                 */
                     if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
-
                 }
             }
-            else { }
 
             if (Glass.glassEnter == true)
             {

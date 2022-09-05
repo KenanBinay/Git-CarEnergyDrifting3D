@@ -58,16 +58,13 @@ public class LevelEndUI_Controller : MonoBehaviour
                 if (saved == false) { saveIt(); }
             }
         }
-        else
-        {
-            LevelEnd_UI.localPosition = new Vector3(0, -3000f, 572);
-        }
+        else { LevelEnd_UI.localPosition = new Vector3(0, -3000f, 572); }
     }
 
     void saveIt()
     {
         LevelController.coinSaved += CarController.coinVal;
-    //    PlayerPrefs.SetInt("coin", LevelController.coinSaved);
+        PlayerPrefs.SetInt("coin", LevelController.coinSaved);
         Debug.Log("coin: " + PlayerPrefs.GetInt("coin", 0));
         saved = true;
     }
