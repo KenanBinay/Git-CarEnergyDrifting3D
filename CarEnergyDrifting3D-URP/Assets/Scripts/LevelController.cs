@@ -22,10 +22,10 @@ public class LevelController : MonoBehaviour
 
         car1.SetActive(false); car2.SetActive(false); car3.SetActive(false); car4.SetActive(false);
 
-        if (Menu_Controller.selectedCarNumb == 1) { car1.SetActive(true); }
-        if (Menu_Controller.selectedCarNumb == 2) { car2.SetActive(true); }
-        if (Menu_Controller.selectedCarNumb == 3) { car3.SetActive(true); }
-        if (Menu_Controller.selectedCarNumb == 4) { car4.SetActive(true); }
+        if (PlayerPrefs.GetInt("selectedCar", 0) == 1) { car1.SetActive(true); }
+        if (PlayerPrefs.GetInt("selectedCar", 0) == 2) { car2.SetActive(true); }
+        if (PlayerPrefs.GetInt("selectedCar", 0) == 3) { car3.SetActive(true); }
+        if (PlayerPrefs.GetInt("selectedCar", 0) == 4) { car4.SetActive(true); }
     }
     void Update()
     {        

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ButtonDoubleClickListener : MonoBehaviour
 {
-
     [Tooltip("Max duration between 2 clicks in seconds")]
     [Range(0.01f, 0.5f)] public float doubleClickDuration = 0.4f;
 
@@ -14,7 +13,7 @@ public class ButtonDoubleClickListener : MonoBehaviour
 
     private void Update()
     {
-        if (clicks == 1)
+        if (clicks == 1 && clicks > 1)
         {
             elapsedTime += Time.deltaTime;
             if (elapsedTime > doubleClickDuration)

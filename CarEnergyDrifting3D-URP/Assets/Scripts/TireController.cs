@@ -15,7 +15,7 @@ public class TireController : MonoBehaviour
     {
         if (CarController.carTurningL)
         {
-            if (Menu_Controller.selectedCarNumb == 1)
+            if (PlayerPrefs.GetInt("selectedCar", 0) == 1)
             {
                 Lwheel_Car1.transform.localRotation = Quaternion.Euler(0, -60f, 0);
                 Rwheel_Car1.transform.localRotation = Quaternion.Euler(0, 120f, 0);
@@ -27,7 +27,7 @@ public class TireController : MonoBehaviour
 
         if (CarController.carTurningR)
         {
-            if (Menu_Controller.selectedCarNumb == 1)
+            if (PlayerPrefs.GetInt("selectedCar", 0) == 1)
             {
                 Lwheel_Car1.transform.localRotation = Quaternion.Euler(0, 60f, 0);
                 Rwheel_Car1.transform.localRotation = Quaternion.Euler(0, 240f, 0);
@@ -39,7 +39,7 @@ public class TireController : MonoBehaviour
 
         if (CarController.carReturning)
         {
-            if (Menu_Controller.selectedCarNumb == 1)
+            if (PlayerPrefs.GetInt("selectedCar", 0) == 1)
             {
 
                 if (transform.eulerAngles.y < 180) { transform.Rotate(Vector3.down * 90f * Time.deltaTime); }

@@ -8,11 +8,11 @@ using TMPro;
 public class Menu_Controller : MonoBehaviour
 {
     public Button button_TapToPLay, button_shop, button_settings, button_home, button_buy, button_R, button_L;
-    public Animator shopIcon,homeMenuUI,shopMenuUI;
+    public Animator shopIcon, homeMenuUI, shopMenuUI;
     public TextMeshProUGUI coinText, carPriceTxt;
     public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed, settingsSprite, homeSprite, carSelectedSprite, car1_go, car2_go, car3_go, car4_go;
-    public static int car1_save, car2_save, car3_save, car4_save, selectedCarNumb;
-    int carNumb, carPrice, priceD, coinX, menuCoinVal;
+    public static int car1_save, car2_save, car3_save, car4_save;
+    int carNumb, carPrice, carSelectionNumb, priceD, coinX, menuCoinVal;
     void Start()
     {
         priceD = coinX = 0;
@@ -21,19 +21,21 @@ public class Menu_Controller : MonoBehaviour
         car2_save = PlayerPrefs.GetInt("car2_saved", 0);
         car3_save = PlayerPrefs.GetInt("car3_saved", 0);
         car4_save = PlayerPrefs.GetInt("car4_saved", 0);
-        selectedCarNumb = PlayerPrefs.GetInt("selectedCar",0);
         menuCoinVal = PlayerPrefs.GetInt("coin", 0);
 
-        Debug.Log("car1Save: " + car1_save + " || car2Save: " + car2_save + "/n"+" || car3Save: " + car3_save + " || car4Save: " + car4_save);
-        Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar") + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
-
-        carPriceTxt.text = 0.ToString();     
+        carPriceTxt.text = 0.ToString();
         shopMenu.SetActive(false);
         mainMenu.SetActive(true);
         settingsSprite.SetActive(true);
         homeSprite.SetActive(false);
         homeMenuUI.enabled = true;
         shopMenuUI.enabled = false;
+
+        if (PlayerPrefs.GetInt("selectedCar", 0) == 0) { carSelectionNumb = 1; }
+        else { carSelectionNumb = PlayerPrefs.GetInt("selectedCar", 0); }
+
+        Debug.Log("car1Save: " + car1_save + " || car2Save: " + car2_save + " || car3Save: " + car3_save + " || car4Save: " + car4_save);
+        Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar") + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
     }
 
     void Update()
@@ -51,11 +53,11 @@ public class Menu_Controller : MonoBehaviour
             coinText.text = coinX.ToString();
         }
 
-        if (carNumb != selectedCarNumb) { carSelectedSprite.SetActive(false); }
-        if (carNumb == selectedCarNumb) { carSelectedSprite.SetActive(true); }
+        if (carNumb != carSelectionNumb) { carSelectedSprite.SetActive(false); }
+        if (carNumb == carSelectionNumb) { carSelectedSprite.SetActive(true); }
 
         if (ButtonDoubleClickListener.doubleClick) { SelectCar(); }
-        if (PlayerPrefs.GetInt("selectedCar", 0) != selectedCarNumb) { PlayerPrefs.SetInt("selectedCar", selectedCarNumb); }
+
     }
 
     void OnEnable()
@@ -72,7 +74,7 @@ public class Menu_Controller : MonoBehaviour
 
     void shopLoad()
     {
-        
+
         settingsSprite.SetActive(false);
         homeSprite.SetActive(true);
         mainMenu.SetActive(false);
@@ -200,32 +202,34 @@ public class Menu_Controller : MonoBehaviour
 
     public void SelectCar()
     {
-        if (carNumb == 1 || selectedCarNumb != 1)
+
+        if (carNumb == 1 && carSelectionNumb != 1)
         {
-            selectedCarNumb = 1;
-            shopMenuUI.SetTrigger("carBuyed");
+            carSelectionNumb = 1;
+            Debug.Log("1 enter");
             shopMenuUI.SetTrigger("carSelect");
         }
-        if (carNumb == 2 || car2_save == 1 || selectedCarNumb != 2)
+        if (carNumb == 2 && car2_save == 1 && carSelectionNumb != 2)
         {
-            selectedCarNumb = 2;
-            shopMenuUI.SetTrigger("carBuyed");
+            carSelectionNumb = 2;
+            Debug.Log("2 enter");
             shopMenuUI.SetTrigger("carSelect");
         }
-        if (carNumb == 3 || car3_save == 1 || selectedCarNumb != 3)
+        if (carNumb == 3 && car3_save == 1 && carSelectionNumb != 3)
         {
-            selectedCarNumb = 3;
-            shopMenuUI.SetTrigger("carBuyed");
+            carSelectionNumb = 3;
+            Debug.Log("3 enter");
             shopMenuUI.SetTrigger("carSelect");
         }
-        if (carNumb == 4 || car4_save == 1 || selectedCarNumb != 4)
+        if (carNumb == 4 && car4_save == 1 && carSelectionNumb != 4)
         {
-            selectedCarNumb = 4;
-            shopMenuUI.SetTrigger("carBuyed");
+            carSelectionNumb = 4;
+            Debug.Log("4 enter");
             shopMenuUI.SetTrigger("carSelect");
         }
 
-        Debug.Log("selectedCar: " + selectedCarNumb + " || SavedCarNumb: " + PlayerPrefs.GetInt("selectedCar", 0));
+        PlayerPrefs.SetInt("selectedCar", carSelectionNumb);
+        Debug.Log("Car " + carSelectionNumb + " selected" + " || SavedCarNumb: " + PlayerPrefs.GetInt("selectedCar", 0));
         ButtonDoubleClickListener.doubleClick = false;
     }
 
