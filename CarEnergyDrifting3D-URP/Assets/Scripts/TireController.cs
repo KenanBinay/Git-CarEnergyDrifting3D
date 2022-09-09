@@ -13,6 +13,7 @@ public class TireController : MonoBehaviour
 
     void Update()
     {
+        #region carTurningL
         if (CarController.carTurningL)
         {
             if (PlayerPrefs.GetInt("selectedCar", 0) == 1)
@@ -24,7 +25,9 @@ public class TireController : MonoBehaviour
                 Rwheel_Car1.localPosition = new Vector3(2f, 0, -1f);
             }
         }
+        #endregion
 
+        #region carTurningR
         if (CarController.carTurningR)
         {
             if (PlayerPrefs.GetInt("selectedCar", 0) == 1)
@@ -36,7 +39,9 @@ public class TireController : MonoBehaviour
                 Rwheel_Car1.localPosition = new Vector3(-1.23f, 0, -4.8f);
             }
         }
+        #endregion
 
+        #region carReturning
         if (CarController.carReturning)
         {
             if (PlayerPrefs.GetInt("selectedCar", 0) == 1)
@@ -54,5 +59,6 @@ public class TireController : MonoBehaviour
 
             }
         }
+        #endregion
     }
 }

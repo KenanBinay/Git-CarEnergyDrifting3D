@@ -160,7 +160,7 @@ public class Menu_Controller : MonoBehaviour
         buyButtonNormal.SetActive(false);
         buyButtonPressed.SetActive(true);
 
-        if (carNumb == 2 || car2_save != 1 || menuCoinVal >= 270)
+        if (carNumb == 2 && car2_save != 1 && menuCoinVal >= 270)
         {
             if (PlayerPrefs.GetInt("coin", 0) >= 270)
             {
@@ -172,7 +172,7 @@ public class Menu_Controller : MonoBehaviour
                 Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
         }
-        if (carNumb == 3 || car4_save != 1 || menuCoinVal >= 740)
+        if (carNumb == 3 && car4_save != 1 && menuCoinVal >= 740)
         {
             if (LevelController.coinSaved >= 740)
             {
@@ -184,7 +184,7 @@ public class Menu_Controller : MonoBehaviour
                 Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
         }
-        if (carNumb == 4 || car4_save != 1 || menuCoinVal >= 4600)
+        if (carNumb == 4 && car4_save != 1 && menuCoinVal >= 4600)
         {
             if (LevelController.coinSaved >= 4600)
             {
@@ -202,7 +202,6 @@ public class Menu_Controller : MonoBehaviour
 
     public void SelectCar()
     {
-
         if (carNumb == 1 && carSelectionNumb != 1)
         {
             carSelectionNumb = 1;
