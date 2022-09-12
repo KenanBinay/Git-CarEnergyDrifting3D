@@ -68,6 +68,7 @@ public class AdController : MonoBehaviour
         int doubledCoin;
 
         doubledCoin = CarController.coinVal * 2;
+        CarController.coinVal = doubledCoin;
         PlayerPrefs.SetInt("coin", LevelController.coinSaved + doubledCoin);
         Debug.Log("x2 Coin = " + doubledCoin + " || savedCoin: " + PlayerPrefs.GetInt("coin", 0));
 

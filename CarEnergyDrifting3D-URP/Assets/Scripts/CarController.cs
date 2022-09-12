@@ -277,11 +277,6 @@ public class CarController : MonoBehaviour
                     if (directApp) { transform.position = center + direction * 5; }           
                     
                     transform.Rotate(Vector3.down * 107 * Time.deltaTime);
-                    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
-                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
-
-                    wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
-                    wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);   
                 }           
             }
             else if (circleLvlEnd != true)

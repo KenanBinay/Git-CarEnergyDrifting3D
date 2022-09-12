@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelEndController : MonoBehaviour
 {
-    public GameObject carBodyM, flameM, flameL, smoke, GreenLight, RedLight, YellowLight, TxtTap, textTap, flameLooped;
+    public GameObject carBody1, carBody2, carBody3, carBody4, flameM, flameL, smoke, GreenLight, RedLight, YellowLight, TxtTap, textTap, flameLooped;
     public static bool lvlEndEnter, delayedClick, endDriftCntrl;
     public static float clickCounter;
 
@@ -53,12 +53,12 @@ public class LevelEndController : MonoBehaviour
 
             if (clickCounter != 6)
             {
-                carRx = carBodyM.transform.rotation.eulerAngles.x;
+                carRx = carBody1.transform.rotation.eulerAngles.x;
 
                 Vector3 desiredRot = new Vector3(CarRot.x, CarRot.y, CarRot.z);
                 Quaternion smoothedRot = Quaternion.Euler(desiredRot);
 
-                carBodyM.transform.rotation = Quaternion.Slerp(carBodyM.transform.rotation, smoothedRot, CarRotSmooth * Time.deltaTime);
+                carBody1.transform.rotation = Quaternion.Slerp(carBody1.transform.rotation, smoothedRot, CarRotSmooth * Time.deltaTime);
             }
         }
         else
