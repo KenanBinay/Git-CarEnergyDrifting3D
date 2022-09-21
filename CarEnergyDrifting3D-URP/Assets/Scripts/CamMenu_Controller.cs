@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CamMenu_Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
+ //   public SpriteRenderer rink;
+
     void Start()
     {
-        
+     //   Camera.main.orthographicSize = rink.bounds.size.x * Screen.height / Screen.width * 0.5f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

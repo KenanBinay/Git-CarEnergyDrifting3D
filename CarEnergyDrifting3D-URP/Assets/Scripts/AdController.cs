@@ -26,9 +26,12 @@ public class AdController : MonoBehaviour
         idRewarded = "ca-app-pub-9421503984483424/1495012820";
 
         this.adRewarded = new RewardedAd(idRewarded);
+        this.adInterstitial = new InterstitialAd(idInterstitial);
 
         AdRequest request = new AdRequest.Builder().Build();
+
         this.adRewarded.LoadAd(request);
+        this.adInterstitial.LoadAd(request);
 
         MobileAds.Initialize(initStatus => { });       
     }
@@ -46,6 +49,11 @@ public class AdController : MonoBehaviour
                 }
             }
         }
+
+        if (this.adInterstitial.IsLoaded())
+        {
+            if (CarController.gameEnd) { interstitialAd(); }
+        }
     }
   
     void x2RewardedAd()
@@ -59,6 +67,11 @@ public class AdController : MonoBehaviour
             adRewardedControl = true;
             this.adRewarded.Show();
         }
+    }
+
+    void interstitialAd()
+    {
+        this.adInterstitial.Show();
     }
 
     public void HandleOnRewardedAdLoaded(object sender, EventArgs args) {  }

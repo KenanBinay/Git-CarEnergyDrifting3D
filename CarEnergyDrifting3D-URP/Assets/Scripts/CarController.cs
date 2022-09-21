@@ -34,7 +34,7 @@ public class CarController : MonoBehaviour
     {
         #region InGameController
 
-        if (LevelEndController.clickCounter < 6 && gameEnd == false)
+        if (LevelEndController.clickCounter < 6 && gameEnd == false && LevelEndController.lvlEndEnter == false)
         {
             if (isDraging)
             {
@@ -64,12 +64,12 @@ public class CarController : MonoBehaviour
                         transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
                     }
 
-                /*    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
-                    wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                    /*    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
+                        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
-                    wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
-                    wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-                */
+                        wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
+                        wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
+                    */
                     if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
                 }
             }

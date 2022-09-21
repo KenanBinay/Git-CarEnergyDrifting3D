@@ -10,7 +10,7 @@ public class Menu_Controller : MonoBehaviour
     public Button button_TapToPLay, button_shop, button_settings, button_home, button_buy, button_R, button_L;
     public Animator shopIcon, homeMenuUI, shopMenuUI;
     public TextMeshProUGUI coinText, carPriceTxt;
-    public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed, settingsSprite, homeSprite, carSelectedSprite, car1_go, car2_go, car3_go, car4_go;
+    public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed, settingsSprite, homeSprite, carSelectedSprite, car1_go, car2_go, car3_go, car4_go,car1_Menu, car2_Menu, car3_Menu, car4_Menu;
     public static int car1_save, car2_save, car3_save, car4_save;
     int carNumb, carPrice, carSelectionNumb, priceD, coinX, menuCoinVal;
     void Start()
@@ -25,9 +25,13 @@ public class Menu_Controller : MonoBehaviour
 
         carPriceTxt.text = 0.ToString();
         shopMenu.SetActive(false);
+        homeSprite.SetActive(false);
+        car1_Menu.SetActive(false);
+        car2_Menu.SetActive(false);
+        car3_Menu.SetActive(false);
+        car4_Menu.SetActive(false);
         mainMenu.SetActive(true);
         settingsSprite.SetActive(true);
-        homeSprite.SetActive(false);
         homeMenuUI.enabled = true;
         shopMenuUI.enabled = false;
 
@@ -36,6 +40,7 @@ public class Menu_Controller : MonoBehaviour
 
         Debug.Log("car1Save: " + car1_save + " || car2Save: " + car2_save + " || car3Save: " + car3_save + " || car4Save: " + car4_save);
         Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar") + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
+        
     }
 
     void Update()
@@ -58,6 +63,10 @@ public class Menu_Controller : MonoBehaviour
 
         if (ButtonDoubleClickListener.doubleClick) { SelectCar(); }
 
+        if (carSelectionNumb == 1) { car1_Menu.SetActive(true); }
+        if (carSelectionNumb == 2) { car2_Menu.SetActive(true); }
+        if (carSelectionNumb == 3) { car3_Menu.SetActive(true); }
+        if (carSelectionNumb == 4) { car4_Menu.SetActive(true); }
     }
 
     void OnEnable()
@@ -94,6 +103,11 @@ public class Menu_Controller : MonoBehaviour
         homeSprite.SetActive(false);
         mainMenu.SetActive(true);
         shopMenu.SetActive(false);
+
+        car1_Menu.SetActive(false);
+        car2_Menu.SetActive(false);
+        car3_Menu.SetActive(false);
+        car4_Menu.SetActive(false);       
     }
 
     void settingsLoad()
