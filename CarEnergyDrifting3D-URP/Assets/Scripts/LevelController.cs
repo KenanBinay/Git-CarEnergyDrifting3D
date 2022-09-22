@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LevelController : MonoBehaviour
 {
-    public static int currentLevel = 1, levelSave, coinSaved;
+    public static int currentLevel = 1, levelSave, coinSaved, randx;
     public Button button_MenuButton;
     public GameObject pauseUI, gameOverUI, car1, car2, car3, car4;
     public TMPro.TextMeshProUGUI coinTxt_PauseUI;
@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
     void Start()
     {
         //   currentLevel = PlayerPrefs.GetFloat("level_main", 0);
+        randx = 0;
         Time.timeScale = 1f;
         pauseUI.SetActive(false);
         gameOverUI.SetActive(false);
@@ -36,7 +37,7 @@ public class LevelController : MonoBehaviour
             if (Time.timeScale != 1f) { Time.timeScale = 1f; }
         }
 
-        if (CarController._frontCollision) { gameOver(); }
+        if (CarController._frontCollision || CarController.gameEnd) { gameOver(); }
     }
 
     private void OnEnable()
@@ -54,6 +55,11 @@ public class LevelController : MonoBehaviour
     void gameOver()
     {
         gameOverUI.SetActive(true);
+        if (randx == 0)
+        {
+            int[] randNumbs = { 1, 2, 3 };
+            randx = randNumbs[Random.Range(0, randNumbs.Length)];
+        }
     }
 
     IEnumerator menuDelay()

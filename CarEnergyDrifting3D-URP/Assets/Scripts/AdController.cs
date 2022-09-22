@@ -35,7 +35,7 @@ public class AdController : MonoBehaviour
 
         MobileAds.Initialize(initStatus => { });       
     }
-
+  
     void Update()
     {       
         if (this.adRewarded.IsLoaded())
@@ -48,11 +48,14 @@ public class AdController : MonoBehaviour
                     x2AdButton.onClick.AddListener(() => x2RewardedAd());
                 }
             }
-        }
+        }    
 
         if (this.adInterstitial.IsLoaded())
         {
-            if (CarController.gameEnd) { interstitialAd(); }
+            if (CarController.gameEnd)
+            {
+                if (LevelController.randx == 2) { interstitialAd(); }           
+            }
         }
     }
   
