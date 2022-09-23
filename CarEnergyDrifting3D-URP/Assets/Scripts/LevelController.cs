@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     public GameObject pauseUI, gameOverUI, car1, car2, car3, car4;
     public TMPro.TextMeshProUGUI coinTxt_PauseUI;
 
+    public AudioSource ramp_sfx, crash_sfx, coinCollect_sfx, uiPopUp_sfx, clickButton_sfx, starGiven_sfx, x2AdPopUp_sfx;
     void Start()
     {
         //   currentLevel = PlayerPrefs.GetFloat("level_main", 0);

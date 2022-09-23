@@ -13,8 +13,11 @@ public class Menu_Controller : MonoBehaviour
     public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed, settingsSprite, homeSprite, carSelectedSprite, car1_go, car2_go, car3_go, car4_go,car1_Menu, car2_Menu, car3_Menu, car4_Menu;
     public static int car1_save, car2_save, car3_save, car4_save;
     int carNumb, carPrice, carSelectionNumb, priceD, coinX, menuCoinVal;
+
+    public static bool sfxOn;
     void Start()
     {
+        sfxOn = true;
         priceD = coinX = 0;
         carNumb = 1;
         car1_save = 1;
