@@ -6,6 +6,7 @@ public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
     [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, ramp;
+    public AudioSource ramp_sfx, coinCollect_sfx, crash_sfx;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
     private bool isDraging, directApp, rampOut, flameControl;
@@ -404,6 +405,8 @@ public class CarController : MonoBehaviour
 
         if (coll.gameObject.CompareTag("Coin"))
         {
+            if (PlayerPrefs.GetString("sfx") == "on") { coinCollect_sfx.Play(); }
+
             Coin_Controller.coinCurrent++;
             coinVal++;
 
@@ -445,6 +448,8 @@ public class CarController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("rampIn"))
         {
+            if (PlayerPrefs.GetString("sfx") == "on") { ramp_sfx.Play(); }
+
             if (MainSpeed >= 2) { movingSpeed = 36; }
             else if (MainSpeed != 2) { movingSpeed = 30; }
 

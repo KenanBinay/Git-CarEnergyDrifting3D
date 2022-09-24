@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GlassParts : MonoBehaviour
 {
-   
+    AudioSource glassBreak;
     void Start()
     {
+        glassBreak = GetComponent<AudioSource>();
+        if (PlayerPrefs.GetString("sfx") == "on") { glassBreak.Play(); }
+      
         StartCoroutine(DestroyGlassParts());
     }
 

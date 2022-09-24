@@ -24,6 +24,7 @@ TagManager:
   - rampPrefab
   - rampFlamePos
   - rampIn
+  - sfx
   layers:
   - Default
   - TransparentFX

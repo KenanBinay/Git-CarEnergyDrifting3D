@@ -5,9 +5,10 @@ using UnityEngine;
 public class Glass : MonoBehaviour
 {
     public GameObject GlassBreak;
+
     public static bool glassEnter;
     void Start()
-    {
+    {     
         glassEnter = false;
     }
 
