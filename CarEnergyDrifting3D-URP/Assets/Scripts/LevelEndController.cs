@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelEndController : MonoBehaviour
 {
-    public GameObject carBody1, carBody2, carBody3, carBody4, flameM, flameL, smoke, GreenLight, RedLight, YellowLight, TxtTap, textTap, flameLooped;
+    public AudioSource tapTap_sfx;
+    public GameObject carBody, flameM, flameL, smoke, GreenLight, RedLight, YellowLight, TxtTap, textTap, flameLooped;
     public static bool lvlEndEnter, delayedClick, endDriftCntrl;
     public static float clickCounter;
 
@@ -53,13 +54,14 @@ public class LevelEndController : MonoBehaviour
 
             if (clickCounter != 6)
             {
-                carRx = carBody1.transform.rotation.eulerAngles.x;
+                carRx = carBody.transform.rotation.eulerAngles.x;
 
                 Vector3 desiredRot = new Vector3(CarRot.x, CarRot.y, CarRot.z);
                 Quaternion smoothedRot = Quaternion.Euler(desiredRot);
 
-                carBody1.transform.rotation = Quaternion.Slerp(carBody1.transform.rotation, smoothedRot, CarRotSmooth * Time.deltaTime);
+                carBody.transform.rotation = Quaternion.Slerp(carBody.transform.rotation, smoothedRot, CarRotSmooth * Time.deltaTime);
             }
+    
         }
         else
         {
@@ -98,8 +100,9 @@ public class LevelEndController : MonoBehaviour
             Instantiate(smoke, smoke.transform.position, smoke.transform.rotation);
             smoke.SetActive(true);
             clickCounter += 1;
-            Debug.Log("Click: " + clickCounter + " || carRot.z: " + CarRot.z);
 
+            if (PlayerPrefs.GetString("sfx") == "on") { tapTap_sfx.Play(); }
+            Debug.Log("Click: " + clickCounter + " || carRot.z: " + CarRot.z);
         }
     }
 

@@ -25,6 +25,7 @@ TagManager:
   - rampFlamePos
   - rampIn
   - sfx
+  - falltrigger
   layers:
   - Default
   - TransparentFX

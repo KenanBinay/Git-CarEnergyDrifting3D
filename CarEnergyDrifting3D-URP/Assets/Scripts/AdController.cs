@@ -8,10 +8,11 @@ using GoogleMobileAds.Common;
 
 public class AdController : MonoBehaviour
 {
+    public AudioSource x2Ad_sfx, x2AdWatched_sfx;
     public GameObject x2AdObject;
     public Button x2AdButton;
     public static bool x2ButtonCheck;
-    bool adRewardedControl;
+    bool adRewardedControl, sfx_x2adPlayed;
 
     private InterstitialAd adInterstitial;
     private RewardedAd adRewarded;
@@ -20,7 +21,7 @@ public class AdController : MonoBehaviour
     void Start()
     {
         x2AdObject.SetActive(false);
-        x2ButtonCheck = adRewardedControl = false;
+        sfx_x2adPlayed = x2ButtonCheck = adRewardedControl = false;
 
         idInterstitial = "ca-app-pub-9421503984483424/7677277793";
         idRewarded = "ca-app-pub-9421503984483424/1495012820";
@@ -44,6 +45,7 @@ public class AdController : MonoBehaviour
             {
                 if (x2ButtonCheck == false)
                 {
+                    if (PlayerPrefs.GetString("sfx") == "on") { if (sfx_x2adPlayed == false) { x2Ad_sfx.Play(); sfx_x2adPlayed = true; } }
                     x2AdObject.SetActive(true);
                     x2AdButton.onClick.AddListener(() => x2RewardedAd());
                 }
@@ -90,7 +92,9 @@ public class AdController : MonoBehaviour
 
         x2ButtonCheck = true;
         LevelEndUI_Controller.x2AdSprite = false;
-       
+
+        if (PlayerPrefs.GetString("sfx") == "on") { x2AdWatched_sfx.Play(); }
+
         adInterstitial.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
         adInterstitial.OnAdOpening -= this.HandleOnRewardedAdOpening;
         adInterstitial.OnAdClosed -= this.HandleOnRewardedAdClosed;

@@ -8,10 +8,13 @@ public class LevelController : MonoBehaviour
     public Button button_MenuButton;
     public GameObject pauseUI, gameOverUI, car1, car2, car3, car4;
     public TMPro.TextMeshProUGUI coinTxt_PauseUI;
-  
+    public AudioSource uiPopUp_sfx, buttonClick_sfx;
+
+    bool uiPopUpSfxPlayed;
     void Start()
     {
         //   currentLevel = PlayerPrefs.GetFloat("level_main", 0);
+        uiPopUpSfxPlayed = false;
         randx = 0;
         Time.timeScale = 1f;
         pauseUI.SetActive(false);
@@ -54,6 +57,8 @@ public class LevelController : MonoBehaviour
 
     void gameOver()
     {
+        if (PlayerPrefs.GetString("sfx") == "on") { if (uiPopUpSfxPlayed == false) { uiPopUp_sfx.Play(); uiPopUpSfxPlayed = true; } }
+
         gameOverUI.SetActive(true);
         if (randx == 0)
         {
@@ -64,8 +69,13 @@ public class LevelController : MonoBehaviour
 
     IEnumerator menuDelay()
     {
+        if (PlayerPrefs.GetString("sfx") == "on")
+        {
+            uiPopUp_sfx.Play();
+            buttonClick_sfx.Play();
+        }
         pauseUI.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         menuClick();
     }
 }

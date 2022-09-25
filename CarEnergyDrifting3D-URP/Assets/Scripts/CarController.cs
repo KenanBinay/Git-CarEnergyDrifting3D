@@ -6,10 +6,10 @@ public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
     [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, ramp;
-    public AudioSource ramp_sfx, coinCollect_sfx, crash_sfx;
+    public AudioSource ramp_sfx, coinCollect_sfx, crash_sfx, carTurning_sfx;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
-    private bool isDraging, directApp, rampOut, flameControl;
+    private bool isDraging, directApp, rampOut, flameControl, crashSfxPlayed, carTurningLSfxPLayed, carTurningRSfxPLayed;
     private Vector2 startTouch, swipeDelta;
     private Vector3 CarSizes, boostTakenRot, boostTakenPos, center, radius;
 
@@ -23,7 +23,8 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = coinVal = 0;
-        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = carTurningL = carTurningR = carReturning = false;
+        isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = carTurningL = carTurningR
+        = carReturning = crashSfxPlayed = carTurningLSfxPLayed = carTurningRSfxPLayed = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
@@ -64,13 +65,6 @@ public class CarController : MonoBehaviour
                         // Debug.Log("ReturningR Rotation: " + transform.eulerAngles.y);
                         transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime);
                     }
-
-                    /*    wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
-                        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-                        wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
-                        wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-                    */
                     if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
                 }
             }
@@ -198,7 +192,8 @@ public class CarController : MonoBehaviour
                 }
 
                 //Car Movement Line
-              //  Debug.Log("vertical velovity: " + verticalVelocity);
+                //  Debug.Log("vertical velovity: " + verticalVelocity);
+                
                 transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime;
                 _carTransformZ = transform.position.z;
             }
@@ -206,6 +201,7 @@ public class CarController : MonoBehaviour
             {
                 if (_frontCollision)
                 {
+                    if (crashSfxPlayed == false && PlayerPrefs.GetString("sfx") == "on") { crash_sfx.Play(); crashSfxPlayed = true; }
                     if (!crashEffects.activeSelf)
                     {
                         Debug.Log("GameOver!!");
@@ -213,6 +209,7 @@ public class CarController : MonoBehaviour
                     }
                 }
 
+                Debug.Log("GameOver!!");
             }
 
             if (skidMarkControl == 1)
@@ -324,6 +321,11 @@ public class CarController : MonoBehaviour
 */
         transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
         transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
+
+        if (PlayerPrefs.GetString("sfx") == "on")
+        {
+            if (carTurningL && carTurningLSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningLSfxPLayed = true; }
+        }
     }
 
     void LocalMoveR(float x)
@@ -358,13 +360,18 @@ public class CarController : MonoBehaviour
         transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
         transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
 
+        if (PlayerPrefs.GetString("sfx") == "on")
+        {
+            if (carTurningR && carTurningRSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningRSfxPLayed = true; }
+        }
     }
 
     private void Reset()
     {
         startTouch = swipeDelta = Vector2.zero;
         isDraging = false;
-       // Rturn = Lturn = 0;
+        carTurningRSfxPLayed = carTurningLSfxPLayed = false;
+        // Rturn = Lturn = 0;
     }
 
     public void OnCollisionEnter(Collision coll)
@@ -469,6 +476,8 @@ public class CarController : MonoBehaviour
         {
             StartCoroutine(rampDelay());
         }
+
+        if (other.gameObject.CompareTag("falltrigger")) { gameEnd = true; }
     }
 
 
@@ -476,33 +485,17 @@ public class CarController : MonoBehaviour
     {
         if (transform.eulerAngles.y != 180)
         {
-         //   Debug.Log("ReturningRotation! Rot: " + transform.eulerAngles.y);
-
-        /*    if (transform.eulerAngles.y < 180) { transform.Rotate(Vector3.down * recoverSpeed * Time.deltaTime); }
-
-            if (transform.eulerAngles.y > 180) { transform.Rotate(Vector3.up * recoverSpeed * Time.deltaTime); }
-
-            wheelObjectL.transform.localRotation = Quaternion.Euler(0, 0f, 0);
-            wheelObjectR.transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-            wheelObjectL.localPosition = new Vector3(0.05f, 0, 0f);
-            wheelObjectR.localPosition = new Vector3(1.43f, 0, -3.732f);
-        */
             carTurningL = carTurningR = false;
             carReturning = true;
-         //  if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
         }
-        else
-        {
-          //  Debug.Log("NormalRotation Rot: " + transform.eulerAngles.y);
-        }
+        else { }
     }
 
     public IEnumerator SpeedDelay()
     {
         yield return new WaitForSeconds(3);
         if (transform.localPosition.y < -1.60f && isGrounded) { movingSpeed = normalSpeed; }
-
+        if (isGrounded) { if (movingSpeed != normalSpeed) { movingSpeed = normalSpeed; } }
         MainSpeed = 0;
         spin = 0;
         Glass.glassEnter = false;
@@ -512,7 +505,7 @@ public class CarController : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         if (transform.localPosition.y < -1.60f && isGrounded) { movingSpeed = normalSpeed; }
-
+        if (isGrounded) { if (movingSpeed != normalSpeed) { movingSpeed = normalSpeed; } }
         MainCarWeight = 0;   
         transform.localScale = CarSizes;
         Glass.glassEnter = false;

@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class LevelEndUI_Controller : MonoBehaviour
 {
+    public AudioSource star_sfx, uiPopUp_sfx;
     public Transform LevelEnd_UI;
     public TMPro.TextMeshProUGUI coinTxt_levelEndUI;
-    public static bool LevelEndUI_Delay,star_Delay;
+    public static bool LevelEndUI_Delay, star_Delay, saved, x2AdSprite;
     Vector3 newPosUp = new Vector3(0, 114, 572);
     //  Vector3 newPosDown = new Vector3(0, -1200f, -2377f);
     private Vector3 endVelocity = Vector3.zero;
     public GameObject tireSkidMarks, _starLeft, _starMid, _starRight;
     int scoreTime;
-    public static bool saved, x2AdSprite;
+    bool sfx_uiPopUpPlayed;
     void Start()
     {
         saved = false;
         LevelEndUI_Delay = star_Delay = x2AdSprite = false;
+        sfx_uiPopUpPlayed = false;
         _starLeft.SetActive(false);
         _starMid.SetActive(false);
         _starRight.SetActive(false);
@@ -34,6 +36,8 @@ public class LevelEndUI_Controller : MonoBehaviour
             }
             else if (LevelEndUI_Delay)
             {
+                if (PlayerPrefs.GetString("sfx") == "on") { if (sfx_uiPopUpPlayed == false) { uiPopUp_sfx.Play(); } }
+                sfx_uiPopUpPlayed = true;
 
                 LevelEnd_UI.localPosition = Vector3.SmoothDamp(LevelEnd_UI.localPosition, newPosUp, ref endVelocity, 0.2f);
 
@@ -81,20 +85,29 @@ public class LevelEndUI_Controller : MonoBehaviour
 
         if (CarController.coinVal >= 4)
         {
+            if (PlayerPrefs.GetString("sfx") == "on") { star_sfx.Play(); }
             _starLeft.SetActive(true);
+
             yield return new WaitForSeconds(0.5f);
+            if (PlayerPrefs.GetString("sfx") == "on") { star_sfx.Play(); }
             _starMid.SetActive(true);
+
             yield return new WaitForSeconds(0.5f);
+            if (PlayerPrefs.GetString("sfx") == "on") { star_sfx.Play(); }
             _starRight.SetActive(true);
         }
         if (CarController.coinVal >= 2)
         {
+            if (PlayerPrefs.GetString("sfx") == "on") { star_sfx.Play(); }
             _starLeft.SetActive(true);
+
             yield return new WaitForSeconds(0.5f);
+            if (PlayerPrefs.GetString("sfx") == "on") { star_sfx.Play(); }
             _starMid.SetActive(true);
         }
         if (CarController.coinVal >= 1)
         {
+            if (PlayerPrefs.GetString("sfx") == "on") { star_sfx.Play(); }
             _starLeft.SetActive(true);
         }
     }
