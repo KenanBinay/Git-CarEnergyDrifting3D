@@ -18,16 +18,16 @@ public class CamFollow : MonoBehaviour
  
     void FixedUpdate()
     {
-        if (LevelEndController.lvlEndEnter == false)
+        if (LevelEndController.lvlEndEnter == false && CarController.gameEnd == false)
         {
-         /*   if (CarController.MainSpeed <= 1 || CarController.MainCarWeight <= 1)
-            {
-                Vector3 desiredPosition = new Vector3(0, target.position.y + offset.y, target.position.z + offset.z);
-                Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            /*   if (CarController.MainSpeed <= 1 || CarController.MainCarWeight <= 1)
+               {
+                   Vector3 desiredPosition = new Vector3(0, target.position.y + offset.y, target.position.z + offset.z);
+                   Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-                transform.position = SmoothedPosition;
-            }
-         */
+                   transform.position = SmoothedPosition;
+               }
+            */
             if (CarController.MainSpeed >= 2)
             {
                 Vector3 desiredPosition = new Vector3(0, target.position.y + offset_speedUp.y, target.position.z + offset_speedUp.z);
