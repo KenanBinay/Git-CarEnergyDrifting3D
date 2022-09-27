@@ -371,6 +371,7 @@ public class CarController : MonoBehaviour
         startTouch = swipeDelta = Vector2.zero;
         isDraging = false;
         carTurningRSfxPLayed = carTurningLSfxPLayed = false;
+        carTurning_sfx.Stop();
         // Rturn = Lturn = 0;
     }
 
