@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] Transform wheelObjectL, wheelObjectR, TiresM;
-    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, ramp;
+    [SerializeField] GameObject SkidMarks, ExhaustFlame, ExhaustFlameEx, boostTakenParticle, Boosts, speedIncreaseEffect, crashEffects, rampFlame, ramp, startTuto;
     public AudioSource ramp_sfx, coinCollect_sfx, crash_sfx, carTurning_sfx;
     private float XPos, normalSpeed;
     public float Speed, driftAngle, recoverSpeed, movingSpeed, angularSpeed;
@@ -15,7 +15,7 @@ public class CarController : MonoBehaviour
 
     public delegate void coinValueAction();
     public static event coinValueAction coinGained;
-    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered, isGrounded, carTurningL,carTurningR, carReturning;
+    public static bool carStopped, carStopping, circleLvlEnd, gameEnd, _frontCollision, rampEntered, isGrounded, carTurningL, carTurningR, carReturning, startTouchCheck;
     public static float MainCarWeight, MainSpeed, _carTransformZ;
     public static int coinVal;
     float spin, turn, skidMarkControl, angle, jumpRate, verticalVelocity;
@@ -24,12 +24,13 @@ public class CarController : MonoBehaviour
     {
         MainCarWeight = MainSpeed = skidMarkControl = spin = turn = jumpRate = verticalVelocity = coinVal = 0;
         isDraging = circleLvlEnd = _frontCollision = rampEntered = rampOut = flameControl = carTurningL = carTurningR
-        = carReturning = crashSfxPlayed = carTurningLSfxPLayed = carTurningRSfxPLayed = false;
+        = carReturning = crashSfxPlayed = carTurningLSfxPLayed = carTurningRSfxPLayed = startTouchCheck = false;
         normalSpeed = movingSpeed;
         CarSizes = transform.localScale;
         SkidMarks.transform.localPosition = new Vector3(0, -5f, 0);
         boostTakenRot = new Vector3(0, 0, 0);
-        crashEffects.SetActive(false);       
+        crashEffects.SetActive(false);
+        startTuto.SetActive(true);
     }
 
     void FixedUpdate()
@@ -88,8 +89,14 @@ public class CarController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                isDraging = true;
+                isDraging = true;               
                 startTouch = Input.mousePosition;
+
+                if (startTouchCheck == false)
+                {
+                    startTouchCheck = true;
+                    startTuto.SetActive(false);
+                }
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -193,8 +200,7 @@ public class CarController : MonoBehaviour
 
                 //Car Movement Line
                 //  Debug.Log("vertical velovity: " + verticalVelocity);
-                
-                transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime;
+                if (startTouchCheck) { transform.localPosition += new Vector3(0, verticalVelocity, 1) * movingSpeed * Time.deltaTime; }
                 _carTransformZ = transform.position.z;
             }
             else

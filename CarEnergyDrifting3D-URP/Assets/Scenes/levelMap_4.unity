@@ -53895,7 +53895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1208764834
 RectTransform:
   m_ObjectHideFlags: 0
@@ -95913,6 +95913,7 @@ MonoBehaviour:
   crashEffects: {fileID: 198074728}
   rampFlame: {fileID: 5805824170508624242, guid: 5d94f3d47891380429a588bfd9091c32, type: 3}
   ramp: {fileID: 0}
+  startTuto: {fileID: 0}
   ramp_sfx: {fileID: 394312264}
   coinCollect_sfx: {fileID: 1382513650}
   crash_sfx: {fileID: 1139518154}
