@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LevelController : MonoBehaviour
 {
-    public static int currentLevel = 1, levelSave, coinSaved, randx;
+    public static int currentLevel, levelSave, coinSaved, randx;
     public Button button_MenuButton;
     public GameObject pauseUI, gameOverUI, car1, car2, car3, car4;
     public TMPro.TextMeshProUGUI coinTxt_PauseUI;
@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
         pauseUI.SetActive(false);
         gameOverUI.SetActive(false);
         coinSaved = PlayerPrefs.GetInt("coin", 0);
+
         Debug.Log("CurrentCoin: " + PlayerPrefs.GetInt("coin", 0));
         Debug.Log("CurrentLevel: " + PlayerPrefs.GetInt("level_main"));
         Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar"));

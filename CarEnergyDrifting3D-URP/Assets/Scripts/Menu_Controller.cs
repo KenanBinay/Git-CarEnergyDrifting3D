@@ -27,6 +27,8 @@ public class Menu_Controller : MonoBehaviour
         car3_save = PlayerPrefs.GetInt("car3_saved", 0);
         car4_save = PlayerPrefs.GetInt("car4_saved", 0);
         menuCoinVal = PlayerPrefs.GetInt("coin", 0);
+        if (PlayerPrefs.GetInt("level_main") == 0) { LevelController.currentLevel = 1; }
+        else { LevelController.currentLevel = PlayerPrefs.GetInt("level_main"); }      
 
         carPriceTxt.text = 0.ToString();
         shopMenu.SetActive(false);
@@ -42,11 +44,11 @@ public class Menu_Controller : MonoBehaviour
         shopMenuUI.enabled = false;
 
         if (PlayerPrefs.GetInt("selectedCar", 0) == 0) { carSelectionNumb = 1; }
-        else { carSelectionNumb = PlayerPrefs.GetInt("selectedCar", 0); }      
+        else { carSelectionNumb = PlayerPrefs.GetInt("selectedCar", 0); }
 
         Debug.Log("car1Save: " + car1_save + " || car2Save: " + car2_save + " || car3Save: " + car3_save + " || car4Save: " + car4_save);
         Debug.Log("SelectedCar: " + PlayerPrefs.GetInt("selectedCar") + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
-        
+        Debug.Log("current level: " + LevelController.currentLevel);
     }
 
     void Update()
@@ -57,12 +59,13 @@ public class Menu_Controller : MonoBehaviour
             if (priceD < carPrice) { priceD += 100; }
             carPriceTxt.text = priceD.ToString();
         }
-        if (coinX != menuCoinVal)
+        /*if (coinX != menuCoinVal)
         {
             if (coinX > menuCoinVal) { coinX -= 1; }
-            if (coinX < menuCoinVal) { coinX += 1; }
-            coinText.text = coinX.ToString();
+            if (coinX < menuCoinVal) { coinX += 1; }          
         }
+        */
+        coinText.text = menuCoinVal.ToString();
 
         if (carNumb != carSelectionNumb) { carSelectedSprite.SetActive(false); }
         if (carNumb == carSelectionNumb) { carSelectedSprite.SetActive(true); }
@@ -99,7 +102,7 @@ public class Menu_Controller : MonoBehaviour
             buttonClicking_sfx.Play();
             uiPopUp_sfx.PlayDelayed(0.12f);
         }
-        
+
         settingsSprite.SetActive(false);
         homeSprite.SetActive(true);
         mainMenu.SetActive(false);
@@ -117,7 +120,7 @@ public class Menu_Controller : MonoBehaviour
             buttonClicking_sfx.Play();
             uiPopUp_sfx.PlayDelayed(0.12f);
         }
-       
+
         homeMenuUI.enabled = true;
         shopMenuUI.enabled = false;
         shopMenuUI.SetTrigger("carShowing");
@@ -129,7 +132,7 @@ public class Menu_Controller : MonoBehaviour
         car1_Menu.SetActive(false);
         car2_Menu.SetActive(false);
         car3_Menu.SetActive(false);
-        car4_Menu.SetActive(false);       
+        car4_Menu.SetActive(false);
     }
 
     void settingsLoad()
@@ -137,7 +140,7 @@ public class Menu_Controller : MonoBehaviour
         if (sfxVal == "on")
         {
             buttonClicking_sfx.Play();
-            uiPopUp_sfx.PlayDelayed(0.12f);           
+            uiPopUp_sfx.PlayDelayed(0.12f);
         }
         else { sfxOff_sprite.SetActive(true); }
 
@@ -169,13 +172,17 @@ public class Menu_Controller : MonoBehaviour
         }
         if (carNumb == 2)
         {
-            carPrice = 270;
+            if (car2_save == 1) { carPrice = 0; }
+            else { carPrice = 300; }
+
             car2_go.SetActive(true);
             car3_go.SetActive(false);
         }
         if (carNumb == 3)
         {
-            carPrice = 740;
+            if (car3_save == 1) { carPrice = 0; }
+            else { carPrice = 800; }
+
             car3_go.SetActive(true);
             car4_go.SetActive(false);
         }
@@ -187,24 +194,30 @@ public class Menu_Controller : MonoBehaviour
     void nextCarButtonR()
     {
         if (sfxVal == "on") { buttonClicking_sfx.Play(); }
-       
+
         if (carNumb != 4) { carNumb++; }
 
         if (carNumb == 2)
         {
-            carPrice = 270;
+            if (car2_save == 1) { carPrice = 0; }
+            else { carPrice = 300; }
+
             car2_go.SetActive(true);
             car1_go.SetActive(false);
         }
         if (carNumb == 3)
         {
-            carPrice = 740;
+            if (car3_save == 1) { carPrice = 0; }
+            else { carPrice = 800; }
+
             car3_go.SetActive(true);
             car2_go.SetActive(false);
         }
         if (carNumb == 4)
         {
-            carPrice = 4600;
+            if (car4_save == 1) { carPrice = 0; }
+            else { carPrice = 4600; }
+
             car4_go.SetActive(true);
             car3_go.SetActive(false);
         }
@@ -214,51 +227,59 @@ public class Menu_Controller : MonoBehaviour
     }
 
     void buyButtonOnPress()
-    {      
+    {
         buyButtonNormal.SetActive(false);
         buyButtonPressed.SetActive(true);
 
-        if (carNumb == 2 && car2_save != 1 && menuCoinVal >= 270)
+        if (carNumb == 2)
         {
-            if (PlayerPrefs.GetInt("coin", 0) >= 270)
+            if (car2_save == 0 && menuCoinVal >= 300)
             {
                 if (sfxVal == "on") { buyCar_sfx.Play(); }
 
-                menuCoinVal -= 270;
+                menuCoinVal -= 300;
+                carPrice = 0;
                 PlayerPrefs.SetInt("car2_saved", 1);
                 PlayerPrefs.SetInt("coin", menuCoinVal);
 
                 shopMenuUI.SetTrigger("carBuyed");
                 Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
+            else { Debug.Log("Can't Buyed || car number: " + carNumb + " || car2 save: " + car2_save + " || Coin: " + PlayerPrefs.GetInt("coin", 0)); }
         }
-        if (carNumb == 3 && car4_save != 1 && menuCoinVal >= 740)
+
+        if (carNumb == 3)
         {
-            if (LevelController.coinSaved >= 740)
+            if (car3_save == 0 && menuCoinVal >= 800)
             {
                 if (sfxVal == "on") { buyCar_sfx.Play(); }
 
-                menuCoinVal -= 740;
+                menuCoinVal -= 800;
+                carPrice = 0;
                 PlayerPrefs.SetInt("car3_saved", 1);
                 PlayerPrefs.SetInt("coin", menuCoinVal);
 
                 shopMenuUI.SetTrigger("carBuyed");
                 Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
+            else { Debug.Log("Can't Buyed || car number: " + carNumb + " || car3 save: " + car3_save + " || Coin: " + PlayerPrefs.GetInt("coin", 0)); }
         }
-        if (carNumb == 4 && car4_save != 1 && menuCoinVal >= 4600)
+
+        if (carNumb == 4)
         {
-            if (LevelController.coinSaved >= 4600)
+            if (car4_save == 0 && menuCoinVal >= 4600)
             {
                 if (sfxVal == "on") { buyCar_sfx.Play(); }
 
                 menuCoinVal -= 4600;
+                carPrice = 0;
                 PlayerPrefs.SetInt("car4_saved", 1);
                 PlayerPrefs.SetInt("coin", menuCoinVal);
 
                 shopMenuUI.SetTrigger("carBuyed");
                 Debug.Log("Buyed || car number: " + carNumb + " || Coin: " + PlayerPrefs.GetInt("coin", 0));
             }
+            else { Debug.Log("Can't Buyed || car number: " + carNumb + " || car4 save: " + car4_save + " || Coin: " + PlayerPrefs.GetInt("coin", 0)); }
         }
 
         StartCoroutine(buyButtonDelay());

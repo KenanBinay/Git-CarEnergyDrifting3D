@@ -40,7 +40,7 @@ public class TireController : MonoBehaviour
                     Rwheel_Car3.transform.localRotation = Quaternion.Euler(0, 120f, 0);
 
                     Lwheel_Car3.localPosition = new Vector3(2f, 0, 3.62f);
-                    Rwheel_Car3.localPosition = new Vector3(-2.2f, 0, 3f);
+                    Rwheel_Car3.localPosition = new Vector3(-2.5f, 0, 2f);
                 }
             }
             #endregion

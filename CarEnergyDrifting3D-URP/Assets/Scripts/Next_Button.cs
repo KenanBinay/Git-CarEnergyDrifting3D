@@ -10,7 +10,7 @@ public class Next_Button : MonoBehaviour
     public static bool nextLevel_Button;
     bool _buttonClick, pressControl;
     private int[] levelRand = { 1, 2, 3, 4 };
-
+    int levelNumber;
     void Start()
     {
         pressControl = false;
@@ -35,12 +35,14 @@ public class Next_Button : MonoBehaviour
                 if (LevelController.currentLevel != 4)
                 {
                     LevelController.currentLevel++;
+                    levelNumber = LevelController.currentLevel;
                     pressControl = true;
                     sceneLoad();
                 }
                 else if (LevelController.currentLevel >= 4)
                 {
-                    LevelController.currentLevel = levelRand[Random.Range(0, levelRand.Length)];
+                    levelNumber = levelRand[Random.Range(0, levelRand.Length)];
+                    LevelController.currentLevel = levelNumber;
                     pressControl = true;
                     sceneLoad();
                 }
@@ -51,8 +53,9 @@ public class Next_Button : MonoBehaviour
     void sceneLoad()
     {
         Debug.Log("next level  | currentLevel : " + LevelController.currentLevel);
+        PlayerPrefs.SetInt("level_main", LevelController.currentLevel);
 
-        switch (LevelController.currentLevel)
+        switch (levelNumber)
         {
             case 1:
                 SceneManager.LoadScene("levelMap_1");
