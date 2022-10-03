@@ -50,7 +50,7 @@ public class CarController : MonoBehaviour
                     swipeDelta = (Vector2)Input.mousePosition - startTouch;
                 }
             }
-            else if (isDraging == false)
+            else
             {
                 if (transform.eulerAngles.y != 180)
                 {
@@ -68,6 +68,7 @@ public class CarController : MonoBehaviour
                     }
                     if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
                 }
+
             }
 
             if (Glass.glassEnter == true)
@@ -319,19 +320,28 @@ public class CarController : MonoBehaviour
           */
         #endregion
 
-/*        wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
-        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
+        /*        wheelObjectL.transform.localRotation = Quaternion.Euler(0, -60f, 0);
+                wheelObjectR.transform.localRotation = Quaternion.Euler(0, 120f, 0);
 
-        wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
-        wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
-*/
-        transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
+                wheelObjectL.localPosition = new Vector3(-0.47f, 0, -2.9f);
+                wheelObjectR.localPosition = new Vector3(2f, 0, -1f);
+        */
+
         transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
 
-        if (PlayerPrefs.GetString("sfx") == "on")
+        if (PlayerPrefs.GetInt("selectedCar") == 4)
         {
-            if (carTurningL && carTurningLSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningLSfxPLayed = true; }
+            transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
         }
+        else
+        {
+            transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);        
+
+            if (PlayerPrefs.GetString("sfx") == "on")
+            {
+                if (carTurningL && carTurningLSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningLSfxPLayed = true; }
+            }
+        }    
     }
 
     void LocalMoveR(float x)
@@ -357,18 +367,27 @@ public class CarController : MonoBehaviour
          */
         #endregion
 
-  /*      wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
-        wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
+        /*      wheelObjectL.transform.localRotation = Quaternion.Euler(0, 60f, 0);
+              wheelObjectR.transform.localRotation = Quaternion.Euler(0, 240f, 0);
 
-        wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
-        wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);
-  */
-        transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
+              wheelObjectL.localPosition = new Vector3(2.8f, 0, 0.72f);
+              wheelObjectR.localPosition = new Vector3(-1.23f, 0, -4.8f);
+        */
+
         transform.localPosition += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
 
-        if (PlayerPrefs.GetString("sfx") == "on")
+        if (PlayerPrefs.GetInt("selectedCar") == 4)
         {
-            if (carTurningR && carTurningRSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningRSfxPLayed = true; }
+            transform.Rotate(Vector3.down * 50 * Time.deltaTime);
+        }
+        else
+        {
+            transform.Rotate(Vector3.down * 50 * Time.deltaTime);
+           
+            if (PlayerPrefs.GetString("sfx") == "on")
+            {
+                if (carTurningR && carTurningRSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningRSfxPLayed = true; }
+            }
         }
     }
 
