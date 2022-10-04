@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CarController : MonoBehaviour
 {
@@ -68,7 +69,6 @@ public class CarController : MonoBehaviour
                     }
                     if (skidMarkControl == 1) { StartCoroutine(SkidMarkDelay()); }
                 }
-
             }
 
             if (Glass.glassEnter == true)
@@ -240,7 +240,7 @@ public class CarController : MonoBehaviour
                 Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, 0.1f);
                 transform.position = SmoothedPosition;
 
-                movingSpeed -= 4.7f * Time.deltaTime;
+                movingSpeed -= 5f * Time.deltaTime;
             }
             else if (movingSpeed <= 0)
             {
@@ -335,7 +335,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);        
+            transform.Rotate(Vector3.up * driftAngle * Time.deltaTime);
 
             if (PlayerPrefs.GetString("sfx") == "on")
             {
@@ -378,12 +378,12 @@ public class CarController : MonoBehaviour
 
         if (PlayerPrefs.GetInt("selectedCar") == 4)
         {
-            transform.Rotate(Vector3.down * 50 * Time.deltaTime);
+            transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
         }
         else
         {
-            transform.Rotate(Vector3.down * 50 * Time.deltaTime);
-           
+            transform.Rotate(Vector3.down * driftAngle * Time.deltaTime);
+
             if (PlayerPrefs.GetString("sfx") == "on")
             {
                 if (carTurningR && carTurningRSfxPLayed == false && isGrounded) { carTurning_sfx.Play(); carTurningRSfxPLayed = true; }

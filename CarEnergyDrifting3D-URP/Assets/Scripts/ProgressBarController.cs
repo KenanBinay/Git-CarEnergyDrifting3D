@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ProgressBarController : MonoBehaviour
 {
-    [SerializeField] private Transform endLineTransform, carTransform, barPoint;
+    [SerializeField] private Transform endLineTransform, carTransform;
     [SerializeField] private Image fillForm;
     Vector3 endLinePos;
     float fullDistance, realtimeDistance;
@@ -19,15 +19,17 @@ public class ProgressBarController : MonoBehaviour
 
     void Update()
     {
-        if (CarController.gameEnd == false && LevelEndController.lvlEndEnter == false && RoadGlassController.roadGlassBroke == false)
+        if (CarController.gameEnd == false && LevelEndController.lvlEndEnter == false)
         {
-            realtimeDistance = getDistance();
-            float progressValue = Mathf.InverseLerp(fullDistance, 0f, realtimeDistance);
+           
+        }
 
-            if (realtimeDistance > 10 && fullDistance >= 100 && transform.localPosition.x <= 480)
-            {
-                updateProgressBar(progressValue);
-            }
+        realtimeDistance = getDistance();
+        float progressValue = Mathf.InverseLerp(fullDistance, 0f, realtimeDistance);
+
+        if (realtimeDistance > 10 && fullDistance >= 100 && transform.localPosition.x <= 480)
+        {
+            updateProgressBar(progressValue);
         }
     }
 
@@ -41,7 +43,6 @@ public class ProgressBarController : MonoBehaviour
     {
     //    Debug.Log("ProgressValue: " + value);
         fillForm.fillAmount = value;
-
     }
 
 }

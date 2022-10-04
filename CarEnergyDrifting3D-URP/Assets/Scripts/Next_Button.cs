@@ -32,19 +32,23 @@ public class Next_Button : MonoBehaviour
         {
             if (pressControl == false)
             {
-                if (LevelController.currentLevel != 4)
-                {
-                    LevelController.currentLevel++;
-                    levelNumber = LevelController.currentLevel;
-                    pressControl = true;
-                    sceneLoad();
-                }
-                else if (LevelController.currentLevel >= 4)
+                if (PlayerPrefs.GetInt("randomLoader") == 1)
                 {
                     levelNumber = levelRand[Random.Range(0, levelRand.Length)];
                     LevelController.currentLevel = levelNumber;
                     pressControl = true;
                     sceneLoad();
+                }
+                else
+                {
+                    if (LevelController.currentLevel != 4)
+                    {
+                        LevelController.currentLevel++;
+                        levelNumber = LevelController.currentLevel;
+                        pressControl = true;
+                        sceneLoad();
+                    }
+                    else if (LevelController.currentLevel >= 4) { PlayerPrefs.SetInt("randomLoader", 1); }
                 }
             }     
         }
