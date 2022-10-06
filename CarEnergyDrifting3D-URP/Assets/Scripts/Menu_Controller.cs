@@ -43,7 +43,7 @@ public class Menu_Controller : MonoBehaviour
         homeMenuUI.enabled = true;
         shopMenuUI.enabled = false;
 
-        if (PlayerPrefs.GetInt("selectedCar", 0) == 0) { carSelectionNumb = 1; }
+        if (PlayerPrefs.GetInt("selectedCar", 0) == 0) { carSelectionNumb = 1; PlayerPrefs.SetInt("selectedCar", 1); }
         else { carSelectionNumb = PlayerPrefs.GetInt("selectedCar", 0); }
 
         Debug.Log("car1Save: " + car1_save + " || car2Save: " + car2_save + " || car3Save: " + car3_save + " || car4Save: " + car4_save);
