@@ -216,7 +216,7 @@ public class Menu_Controller : MonoBehaviour
         if (carNumb == 4)
         {
             if (car4_save == 1) { carPrice = 0; }
-            else { carPrice = 4600; }
+            else { carPrice = 1400; }
 
             car4_go.SetActive(true);
             car3_go.SetActive(false);
@@ -267,11 +267,11 @@ public class Menu_Controller : MonoBehaviour
 
         if (carNumb == 4)
         {
-            if (car4_save == 0 && menuCoinVal >= 4600)
+            if (car4_save == 0 && menuCoinVal >= 1400)
             {
                 if (sfxVal == "on") { buyCar_sfx.Play(); }
 
-                menuCoinVal -= 4600;
+                menuCoinVal -= 1400;
                 carPrice = 0;
                 PlayerPrefs.SetInt("car4_saved", 1);
                 PlayerPrefs.SetInt("coin", menuCoinVal);

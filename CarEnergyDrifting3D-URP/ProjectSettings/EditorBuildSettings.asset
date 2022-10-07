@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/levelMap_4.unity
     guid: c4fca87c6f9f9d442809181f278604a1
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b002458823bd6c74ca31955aebcbf005, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 80f6b85f82733da40bba76b054582f46, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 6255f1460d09bd441a47bca3fd1bfb08, type: 2}

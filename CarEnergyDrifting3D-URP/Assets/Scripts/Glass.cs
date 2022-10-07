@@ -12,7 +12,7 @@ public class Glass : MonoBehaviour
         glassEnter = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "PlayerCar")
         {

@@ -28,7 +28,16 @@ public class LevelEndController : MonoBehaviour
     {
         if (lvlEndEnter)
         {
-            
+            if (clickCounter == 6 && endDriftCntrl == false)
+            {
+                TxtTap.SetActive(false);
+                YellowLight.SetActive(false);
+                GreenLight.SetActive(true);
+                flameLooped.SetActive(true);
+                endDriftCntrl = true;
+                CarRot.x = 4;
+            }
+
             if (CarController.carStopped && clickCounter < 6)
             {
                 TxtTap.SetActive(true);

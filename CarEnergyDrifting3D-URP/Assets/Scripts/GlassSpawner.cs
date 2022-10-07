@@ -311,10 +311,7 @@ public class GlassSpawner : MonoBehaviour
                     {
                         Instantiate(ramp, new Vector3(0, 0, 40), ramp.transform.rotation);
                     }
-                    else if (randRamp == 2)
-                    {
-                        Instantiate(ramp, new Vector3(4.4f, 0, 167), ramp.transform.rotation);
-                    }
+
                     Debug.Log("Level 4 | desiredPos " + desiredPos + " | Spawned Coins " + coinAmount);
                     break;
 

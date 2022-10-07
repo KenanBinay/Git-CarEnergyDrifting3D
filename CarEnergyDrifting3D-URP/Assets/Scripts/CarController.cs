@@ -156,7 +156,7 @@ public class CarController : MonoBehaviour
             if (gameEnd == false) //Car movement control
             {
                 if (MainSpeed == 1) { ExhaustFlame.SetActive(true); }
-                else { ExhaustFlame.SetActive(false); }
+                else { if (ExhaustFlame.activeSelf == true) { ExhaustFlame.SetActive(false); } }
 
                 if (movingSpeed >= 14)
                 {
@@ -168,9 +168,9 @@ public class CarController : MonoBehaviour
                 }
                 else if (movingSpeed == normalSpeed)
                 {
-                    speedIncreaseEffect.SetActive(false);
-                    ExhaustFlameEx.SetActive(false);
-                    ExhaustFlame.SetActive(false);
+                    if (speedIncreaseEffect.activeSelf == true) { speedIncreaseEffect.SetActive(false); }
+                    if (ExhaustFlameEx.activeSelf == true) { ExhaustFlameEx.SetActive(false); }
+                    if (ExhaustFlame.activeSelf == true) { ExhaustFlame.SetActive(false); }                                 
                 }
                 if (rampEntered)
                 {
@@ -470,6 +470,7 @@ public class CarController : MonoBehaviour
             MainCarWeight = 0;
             transform.localScale = CarSizes;
             Glass.glassEnter = false;
+            carReturning = true;
 
             LevelEndController.lvlEndEnter = true;
         }
