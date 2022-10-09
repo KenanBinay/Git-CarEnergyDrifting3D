@@ -158,7 +158,7 @@ MonoBehaviour:
       m_MaxBound: 1
     m_AdaptiveBatching:
       m_Name: Adaptive Batching
-      m_Enabled: 0
+      m_Enabled: 1
       m_Scale: 1
       m_VisualImpact: 1
       m_Target: 1
@@ -185,7 +185,7 @@ MonoBehaviour:
       m_MaxBound: 1
     m_AdaptiveMSAA:
       m_Name: Adaptive MSAA
-      m_Enabled: 0
+      m_Enabled: 1
       m_Scale: 1
       m_VisualImpact: 1
       m_Target: 6
@@ -194,7 +194,7 @@ MonoBehaviour:
       m_MaxBound: 1
     m_AdaptiveShadowCascade:
       m_Name: Adaptive Shadow Cascade
-      m_Enabled: 0
+      m_Enabled: 1
       m_Scale: 1
       m_VisualImpact: 1
       m_Target: 3
@@ -212,7 +212,7 @@ MonoBehaviour:
       m_MaxBound: 1
     m_AdaptiveShadowmapResolution:
       m_Name: Adaptive Shadowmap Resolution
-      m_Enabled: 0
+      m_Enabled: 1
       m_Scale: 1
       m_VisualImpact: 0
       m_Target: 2
@@ -259,5 +259,5 @@ MonoBehaviour:
   m_DefaultScalerProfilerIndex: 0
   k_AssetVersion: 2
   m_SamsungProviderLogging: 0
-  m_HighSpeedVRR: 1
+  m_HighSpeedVRR: 0
   m_AutomaticVRR: 1
