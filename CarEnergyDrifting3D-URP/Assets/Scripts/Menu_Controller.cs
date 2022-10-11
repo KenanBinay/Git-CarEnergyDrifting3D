@@ -14,13 +14,13 @@ public class Menu_Controller : MonoBehaviour
     public GameObject mainMenu, shopMenu, buyButtonNormal, buyButtonPressed, settingsSprite,
            homeSprite, carSelectedSprite, car1_go, car2_go, car3_go, car4_go, car1_Menu, car2_Menu, car3_Menu, car4_Menu, settings_UI, sfxOff_sprite;
     public static int car1_save, car2_save, car3_save, car4_save;
-    int carNumb, carPrice, carSelectionNumb, priceD, coinX, menuCoinVal;
+    int carNumb, carPrice, carSelectionNumb, priceD, menuCoinVal;
     string sfxVal;
     void Start()
     {
         sfxVal = PlayerPrefs.GetString("sfx");
 
-        priceD = coinX = 0;
+        priceD = 0;
         carNumb = 1;
         car1_save = 1;
         car2_save = PlayerPrefs.GetInt("car2_saved", 0);
@@ -59,12 +59,7 @@ public class Menu_Controller : MonoBehaviour
             if (priceD < carPrice) { priceD += 100; }
             carPriceTxt.text = priceD.ToString();
         }
-        /*if (coinX != menuCoinVal)
-        {
-            if (coinX > menuCoinVal) { coinX -= 1; }
-            if (coinX < menuCoinVal) { coinX += 1; }          
-        }
-        */
+
         coinText.text = menuCoinVal.ToString();
 
         if (carNumb != carSelectionNumb) { carSelectedSprite.SetActive(false); }

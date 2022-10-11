@@ -32,14 +32,12 @@ public class LevelController : MonoBehaviour
         if (PlayerPrefs.GetInt("selectedCar", 0) == 3) { car3.SetActive(true); }
         if (PlayerPrefs.GetInt("selectedCar", 0) == 4) { car4.SetActive(true); }
     }
+
     void Update()
     {        
     //    if (coinSaved != PlayerPrefs.GetInt("coin", 0)) { PlayerPrefs.SetInt("coin", coinSaved); }
 
-        if (Pause_Controller.paused == false)
-        {
-            if (Time.timeScale != 1f) { Time.timeScale = 1f; }
-        }
+        if (Pause_Controller.paused == false) { if (Time.timeScale != 1f) { Time.timeScale = 1f; } }
 
         if (CarController._frontCollision || CarController.gameEnd) { gameOver(); }
     }
@@ -70,13 +68,16 @@ public class LevelController : MonoBehaviour
 
     IEnumerator menuDelay()
     {
-        if (PlayerPrefs.GetString("sfx") == "on")
+        if (CarController.gameEnd == false && LevelEndController.lvlEndEnter == false)
         {
-            uiPopUp_sfx.Play();
-            buttonClick_sfx.Play();
+            if (PlayerPrefs.GetString("sfx") == "on")
+            {
+                uiPopUp_sfx.Play();
+                buttonClick_sfx.Play();
+            }
+            pauseUI.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            menuClick();
         }
-        pauseUI.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
-        menuClick();
     }
 }
